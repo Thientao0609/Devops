@@ -4,5 +4,6 @@
   "jenkins_parser": "PASSED",
   "agent": "OFFLINE",
   "pipeline": "NOT_RUN",
-  "docker_data_location": "C:; migration to D unverified"
+  "docker_data_location": "D:\\DockerData\\active\\DockerDesktopWSL",
+  "docker_storage_evidence": "docs/evidence/docker-storage-latest.json"
 }

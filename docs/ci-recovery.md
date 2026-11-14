@@ -5,22 +5,22 @@ Trạng thái mới nằm trong [ci-runtime-latest.json](evidence/ci-runtime-lat
 | Hạng mục | Kết quả thực tế | Giới hạn |
 |---|---|---|
 | WSL Ubuntu22.04 | Chạy được shell; Ansible syntax, Bash và Vault synthetic qua lại trong phiên này | Không phải Ansible trên VM hoặc changed=0 |
-| Docker Desktop/engine | Khởi động lại thành công, Server29.9.3; controller/engine riêng healthy | Đĩa dữ liệu vẫn trên C, chưa xác nhận chuyển D |
+| Docker Desktop/engine | Server29.9.3; chuyển active VHDX sang D đã kiểm chứng, inventory giữ nguyên; controller/engine riêng hoạt động | [Bằng chứng chuyển ổ](evidence/docker-storage-latest.json); image dev cũ, không suy thành build mới |
 | Jenkins dự án | http://localhost:18090 hoạt động; useSecurity=true, anonymous API trả403 | Không cấp credential cho Jenkins cũ8080 |
 | Cấu hình Jenkins | Folder an-uyen, credential clinic-github, agent clinic-ci-linux và job clinic-pipeline đã tạo; Git client Jenkins đọc đúng SHA nhánh codex/milestone-4 | Credential GHCR chưa có |
 | Jenkinsfile | Parser thật từng fail vì timestamps() cần plugin chưa cài; bỏ tùy chọn đó rồi parser qua | Chưa có build pipeline, plugin set không thay đổi; timestamp vẫn có trong evidence/artifact |
-| Build agent | Node được đăng ký, numExecutors=1, offline=true | Image agent chưa tồn tại; chờ đĩa D trước build lớn |
+| Build agent | Node được đăng ký, numExecutors=1, offline=true | Image agent chưa tồn tại; D đã chuyển xong nhưng chỉ còn khoảng7,55GiB sau khi giữ backup, cần đo ngân sách build |
 | VM/cluster | Preflight tiếp tục BLOCKED | Thiếu quyền KVM, libvirt/QEMU, RAM và disk cho3VM; không cấp quyền hoặc tạo VM trong phiên này |
 
 Docker trước khôi phục báo `preparing block device /dev/sde ... no such device or address`. Sau khi dừng Desktop, sao lưu dữ liệu, terminate **riêng docker-desktop** và khởi động Desktop lại, engine đã chạy. Không reset Docker, không unregister distro hay xóa volume; Ubuntu không bị shutdown toàn bộ. Chưa đủ bằng chứng kết luận file ext4 hỏng hoặc một nguyên nhân gốc khác; chỉ xác nhận triệu chứng và cách khôi phục đã chạy.
 
 Bản sao mới nằm trên ổ D trong `.ci-local/recovery-backups`, ngoài Git và Docker context. Cả data VHDX13.645.119.488byte và bootstrap VHDX100.663.296byte được giữ mở chỉ đọc độc quyền khi copy, kiểm lại byte count/SHA256 của bản sao. D:\DockerBackup từ chối ghi thêm nên dùng thư mục private trong workspace; giữ backup cũ và nguồn C. Đây là snapshot **trước** khi cấu hình credential/job Jenkins mới, không khẳng định nó chứa các thay đổi sau snapshot.
 
-Việc chuyển ổ còn cần thao tác Settings → Resources → Advanced → Disk image location → D:\DockerData\active → Apply. Công cụ điều khiển cửa sổ bị lỗi nên đã yêu cầu người dùng thực hiện thao tác này; chưa nhận xác nhận. Không build agent/images lớn khi C còn ít chỗ. Sau chuyển cần kiểm VHD trênD thật sự đang dùng, các volume cũ còn đủ và Jenkins/luồng ứng dụng hoạt động trước khi nghiệm thu.
+Cập nhật sau yêu cầu thực hiện trực tiếp15/11: đã chuyển bằng backend API nội bộ mà frontend Docker sử dụng khi Apply, không sửa JSON bằng tay. VHD tại `D:\DockerData\active\DockerDesktopWSL\disk\docker_data.vhdx` bị giữ mở, file data C cũ không còn; backend trả đúng settingD. Giữ nguyên14container/14volume/15image; Jenkins đăng nhập được, anonymous403. Có bản sao data+settings mới nhất kiểm SHA256 trước chuyển; bootstrap còn bị Windows giữ nên dùng các bản backup bootstrap đã kiểm trước đó. Xem [runbook và số đo](runbooks/docker-storage-migration.md). Các snapshot mô tả C ở trên được giữ như lịch sử, không phải trạng thái hiện tại.
 
 Kiểm thử mã mới:81passed/8integration skipped; kiểm thử riêng driver scanner10passed có JUnit. Các bài integration cần dịch vụ riêng chưa chạy trong phiên này. Sửa scanner M4 dùng chung helper bảo mật: cache/temp trênD, ignorefile rỗng, ignore-unfixed=false; lỗi registry/scanner giữ gate đóng và tiếp tục các image độc lập. Kết quả scan thực được lưu riêng khi hoàn tất, không suy từ unit test.
 
-Bước tiếp: xác nhận Docker đã chuyểnD → build/kết nối agent → chạy CI, demo âm và kiểm tra integration → GHCR SHA/digest khi có credential. Webhook thật, VM/cluster, promotion/approval, monitoring ingest/cảnh báo, scale/tải/rollback/video vẫn chưa nghiệm thu.
+Bước tiếp: kiểm ngân sách dung lượng D → build/kết nối agent → chạy CI, demo âm và kiểm tra integration → GHCR SHA/digest khi có credential. Webhook thật, VM/cluster, promotion/approval, monitoring ingest/cảnh báo, scale/tải/rollback/video vẫn chưa nghiệm thu. Sau chuyển đã chạy smoke đặt/hủy lịch và email trên image dev cũ; không thay integration của source M2/M4 mới.
 
 Đối chiếu thực tế: cả8plugin trực tiếp đúng version/active, controller numExecutors=0; engine uid1000/rootless và SecurityOptions có rootless/seccomp/cgroupns. Đây là kiểm chứng controller/engine, không thay image-agent/CI build.
 
