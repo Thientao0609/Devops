@@ -12,3 +12,7 @@ tests
 .registry-token
 .ci-local
 ci-out
+.infra-local
+infra/**
+!infra/versions.json
+deploy

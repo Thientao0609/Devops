@@ -1,5 +1,9 @@
 # Evidence index
 
+## Mốc3 – chuẩn bị local
+
+[Bằng chứng mới nhất](m3-latest.json), [báo cáo](../milestone-3.md). Có Terraform/provider/schema/unit/scanner/controlchecks theo metadata; giữ lỗi WSL và phạm vi từng lượt. Chưa VMapply, máy trắng/idempotency, clusterdeploy, TLStrust, autoscale, backup/restore/rollbackruntime.
+
 ## Mốc 2 – phạm vi local, chưa runtime CI
 
 - [Remote base image scans](m2-base-images-20261114T085952Z/metadata.json): giữ cả nền lỗi và nền thay thế; Python/Nginx/Mailpit mới0CRITICAL, RabbitMQ0; PostgreSQL1ởgosu. Dockerfile đã sửa, custom build/scan/runtime vẫn chưa chạy.

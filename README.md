@@ -4,6 +4,8 @@
 
 **Trạng thái:** Mốc 1 có snapshot Compose dev đạt30/30 Linux và11kiểm tra browser. Giao diện [Soft Minimal](docs/soft-minimal.md) dùng #286789, logo #103783, Inter; đặt lịch3bước và nhắc email có lưu thực tế. **Mốc 2 đang triển khai, chưa nghiệm thu:** [Jenkins/CI và security gates](docs/milestone-2.md) đã có mã, lint/build local đạt và56test passed/8integration skipped; chưa pipeline/webhook/registry digest thật. Baseline b4d0fbc đã push repo private vxxngw/DevOps. Docker đang chuyển dữ liệu sang D; URL/snapshot M1 bên dưới là lịch sử, không khẳng định đang online. Xem [ma trận](docs/compliance-matrix.md), [CI/CD](docs/ci-cd.md) và [evidence](docs/evidence/README.md).
 
+**Mốc 3:** [cấu hình và kiểm chứng chuẩn bị](docs/milestone-3.md) đã có Terraform/Ansible/Kubernetes/HPA/KEDA/TLS/RBAC/backup/rollback. Người dùng chọn chuẩn bị trên máy hiện tại; chưa tạo VM/cluster. [Runbook lab](docs/runbooks/infra-lab.md) và [evidence](docs/evidence/m3-latest.json) phân biệt kiểm tra local với runtime còn bị chặn.
+
 ## Khởi động dev (cần Docker engine hoạt động)
 
 Prerequisites: Git, Docker Desktop/Linux engine có Docker Compose; Python 3.12 để sinh env. Khi chạy native/test cần Python 3.12 và Node 24/npm. Cổng dev: 18080, 8000–8002, 5433, 5673, 15673, 15693, 1025, 8025 phải trống; không mở cổng DB/broker/metrics ra Internet. FRONTEND_PORT có thể đổi; 8080 đang được Jenkins sẵn có sử dụng nên được giữ nguyên.

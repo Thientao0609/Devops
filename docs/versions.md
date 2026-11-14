@@ -34,3 +34,18 @@ Tài liệu chính thức đã đọc để chọn cách triển khai:
 - [PostgreSQL official image](https://hub.docker.com/_/postgres), [RabbitMQ official image](https://hub.docker.com/_/rabbitmq): tag/variant và upstream source. Digest thực cùng inspect output phải lưu trong evidence.
 
 Nguồn trong brief cần kiểm tra lại khi đến Mốc 3–4, chưa xem là cấu hình đã chạy: [KEDA RabbitMQ 2.21](https://keda.sh/docs/2.21/scalers/rabbitmq-queue/), [Kubernetes HPA](https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/), [Promtail lifecycle](https://grafana.com/docs/loki/latest/send-data/promtail/), [libvirt provider](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs/resources/domain). Không ghim KEDA/libvirt chỉ từ liên kết khi chưa chọn nền tảng và kiểm tra tương thích thực.
+
+## Toolchain Mốc3 – ghim14/11/2026
+
+| Thành phần | Phiên bản | Phạm vi |
+|---|---|---|
+| Terraform / libvirt | 1.17.2 /0.9.9 | BinarySHA256, providerlockWindows/Linux; fmt/init/validate đã chạy, chưa VM |
+| Pythoncontrol / Ansible-core | 3.13.18 /2.22.0 | WSLvenv, fulltransitivelock; syntax/Vaultlocal theo evidence, không máy trắng |
+| Collections | community.general14.0.1, community.docker5.4.0, ansible.posix2.2.2, community.library_inventory_filtering_v1 1.1.5 | GalaxyartifactSHA256, offlineinstall; inventoryVM chưa chạy |
+| k3s / Kubernetes | v1.36.6+k3s1 /1.36.6 | Cố ý không lấy stablechannel1.37 để phù hợp KEDA2.21tested1.34–1.36; chưa cài node |
+| KEDA / cert-manager | 2.21.0 /1.21.3 | Releaseassets/SHA256/CRDschema thật, chưaoperator |
+| Nodeexporter | 1.12.1 | Rolepin/checksumupstream, chưa tải/chạy trênVM |
+| kubectl local / Kustomize | 1.36.1 /5.8.1 | Đã render; agentDockerfile chuẩn bị kubectl1.36.6 có checksum, chưabuild |
+| Docker VM packages | infra/versions.json | DockerCE29.9.3/Compose5.7.1 và packages đã chọn từ officialUbuntuAPTindex, chưa càiVM |
+
+Sources: [libvirt0.9.9 schema](https://github.com/dmacvicar/terraform-provider-libvirt/tree/v0.9.9/docs), [HashiCorpreleases](https://releases.hashicorp.com/terraform/1.17.2/), [K3srequirements](https://docs.k3s.io/installation/requirements), [Ansibleinstall](https://docs.ansible.com/projects/ansible/latest/installation_guide/intro_installation.html), [KEDAcompatibility](https://keda.sh/docs/2.21/deploy/), [KubernetesOpenAPI1.36.6](https://raw.githubusercontent.com/kubernetes/kubernetes/v1.36.6/api/openapi-spec/swagger.json). ManifestURL/SHA đầy đủ ở infra/versions.json. Pin/version/schema không thay runtime hoặc scan image.
