@@ -1,0 +1,7 @@
+{
+  "at_utc": "2026-11-14T08:13:35.071349+00:00",
+  "operation": "Set main protection requiring one real review; no force push/delete",
+  "http_status": 403,
+  "result": "BLOCKED",
+  "message": "Upgrade to GitHub Pro or make this repository public to enable this feature."
+}

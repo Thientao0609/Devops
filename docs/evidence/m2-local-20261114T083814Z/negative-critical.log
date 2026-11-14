@@ -1,0 +1,13 @@
+Running: D:\CODE\OOPs\Do_An\.ci-local\bin\trivy.exe --version
+Running: D:\CODE\OOPs\Do_An\.ci-local\bin\trivy.exe image --cache-dir D:\CODE\OOPs\Do_An\.ci-local\trivy-cache --scanners vuln --severity CRITICAL --exit-code 1 --ignorefile D:\CODE\OOPs\Do_An\.ci-local\empty-trivy-ignore --format json --output D:\CODE\OOPs\Do_An\ci-out\security-demo\trivy.json --image-src remote docker.io/library/alpine:3.12.0
+Exit1; log:ci-out\security-demo\trivy.log
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "D:\CODE\OOPs\Do_An\ci\security.py", line 283, in <module>
+    main()
+  File "D:\CODE\OOPs\Do_An\ci\security.py", line 273, in main
+    {
+  File "D:\CODE\OOPs\Do_An\ci\security.py", line 264, in demo_critical
+    raise subprocess.CalledProcessError(result.returncode, result.args)
+subprocess.CalledProcessError: Command '['D:\\CODE\\OOPs\\Do_An\\.ci-local\\bin\\trivy.exe', 'image', '--cache-dir', 'D:\\CODE\\OOPs\\Do_An\\.ci-local\\trivy-cache', '--scanners', 'vuln', '--severity', 'CRITICAL', '--exit-code', '1', '--ignorefile', 'D:\\CODE\\OOPs\\Do_An\\.ci-local\\empty-trivy-ignore', '--format', 'json', '--output', 'D:\\CODE\\OOPs\\Do_An\\ci-out\\security-demo\\trivy.json', '--image-src', 'remote', 'docker.io/library/alpine:3.12.0']' returned non-zero exit status 1.

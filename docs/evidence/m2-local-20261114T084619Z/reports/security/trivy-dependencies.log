@@ -1,0 +1,6 @@
+2026-11-14T15:46:34+07:00	INFO	[vuln] Vulnerability scanning is enabled
+2026-11-14T15:46:34+07:00	INFO	[npm] Run "npm install" to collect the license information of packages	dir="frontend/node_modules"
+2026-11-14T15:46:34+07:00	WARN	[pip] Unable to find python `site-packages` directory. License detection is skipped.	err="site-packages directory not found"
+2026-11-14T15:46:34+07:00	INFO	Number of language-specific files	num=2
+2026-11-14T15:46:34+07:00	INFO	[npm] Detecting vulnerabilities...
+2026-11-14T15:46:34+07:00	INFO	[pip] Detecting vulnerabilities...

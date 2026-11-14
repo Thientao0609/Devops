@@ -2,7 +2,7 @@
 
 Đồ án DevOps đề tài số 8: React/TypeScript → FastAPI → PostgreSQL/outbox → RabbitMQ → worker email. API, publisher và worker là ba tiến trình riêng; có health, readiness, Prometheus metrics và JSON logs. Chỉ sử dụng dữ liệu giả lập.
 
-**Trạng thái:** Mốc 1 chạy trên Compose dev. Giao diện [Soft Minimal](docs/soft-minimal.md) có luồng3bước, xem lại trước xác nhận, giữ dữ liệu khi lỗi và công tắc nhắc email có lưu thực tế. UI dùng #286789, logo #103783 và Inter tự phục vụ. Bản mới đạt suiteLinux30/30 (unit + integration, gồm5test broker/SMTP thật) và11kiểm tra browser. Broker outage/outbox recovery và worker kill/redelivery có evidence riêng trước đó. Chưa hoàn thành các mốc DevOps hoặc toàn bộ rubric. Xem [ma trận](docs/compliance-matrix.md), [báo cáo mốc](docs/milestone-1.md) và [evidence](docs/evidence/README.md). Mã UNCOMMITTED; không có lịch sử/credential/evidence giả.
+**Trạng thái:** Mốc 1 có snapshot Compose dev đạt30/30 Linux và11kiểm tra browser. Giao diện [Soft Minimal](docs/soft-minimal.md) dùng #286789, logo #103783, Inter; đặt lịch3bước và nhắc email có lưu thực tế. **Mốc 2 đang triển khai, chưa nghiệm thu:** [Jenkins/CI và security gates](docs/milestone-2.md) đã có mã, lint/build local đạt và56test passed/8integration skipped; chưa pipeline/webhook/registry digest thật. Baseline b4d0fbc đã push repo private vxxngw/DevOps. Docker đang chuyển dữ liệu sang D; URL/snapshot M1 bên dưới là lịch sử, không khẳng định đang online. Xem [ma trận](docs/compliance-matrix.md), [CI/CD](docs/ci-cd.md) và [evidence](docs/evidence/README.md).
 
 ## Khởi động dev (cần Docker engine hoạt động)
 
@@ -46,7 +46,7 @@ Diễn tập thật trên chính project dev: `.venv/Scripts/python.exe scripts/
 
 [Kiến trúc](docs/architecture.md), [ADR](docs/decisions.md), [quy trình nhóm](docs/team-workflow.md), [nguồn/phiên bản](docs/versions.md), [security](docs/security.md) và [kịch bản 8 bước](docs/demo-script.md) giải thích yêu cầu và cách kiểm chứng.
 
-Jenkins/registry/webhook, Terraform tạo 3 VM, Ansible, k3s/staging/production/TLS/RBAC/HPA/KEDA, Prometheus/Grafana/Alertmanager/EFK còn phải triển khai và chạy ở các mốc sau. Chưa chọn provider VM, chưa có remote/credential/domain/receiver. Không có lệnh provision/deploy/rollback K8s chạy được để công bố lúc này; xem [runbook deploy](docs/runbooks/deploy.md), [rollback](docs/runbooks/rollback.md), [restore](docs/runbooks/restore.md) và [alerts](docs/runbooks/alerts.md) về phạm vi chưa hoàn thành. Runbook sự kiện dev: [notifications](docs/runbooks/notifications.md).
+Jenkins/registry/webhook cần chạy nghiệm thu theo [Mốc 2](docs/milestone-2.md); hiện bị chặn bởi chuyển Docker và GHCR credential. Terraform tạo3VM, Ansible, k3s/staging/production/TLS/RBAC/HPA/KEDA, Prometheus/Grafana/Alertmanager/EFK còn chưa triển khai. Chưa chọn provider VM/domain/receiver. Không có triển khai hoặc rollback K8s đã chạy để công bố; xem [deploy](docs/runbooks/deploy.md), [rollback](docs/runbooks/rollback.md), [restore](docs/runbooks/restore.md), [alerts](docs/runbooks/alerts.md). Runbook sự kiện dev: [notifications](docs/runbooks/notifications.md).
 
 ## Dừng và khắc phục lỗi
 

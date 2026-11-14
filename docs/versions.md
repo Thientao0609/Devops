@@ -16,6 +16,12 @@ Cập nhật 14/11/2026 (Asia/Ho_Chi_Minh). Không dùng tag latest. Pin không 
 | Nginx / Playwright | 1.28.0-alpine / 1.65.0 | Frontend runtime non-root; browser test dùng Edge installed; version browser ghi trong metadata khi có |
 | Inter / Fontsource | @fontsource/inter 5.3.0, lockfile npm | Font Inter tự phục vụ, gồm tiếng Việt và weight400/500/600; SIL OFL1.1 |
 | Docker | Đầu phiên CLI 29.4.0/Desktop 4.69.0; sau phục hồi CLI/engine 29.9.3, Desktop 4.99.0, Compose v5.7.0 | Ghi đúng môi trường thay đổi trong phiên; không ghim phiên bản Docker của máy thay người dùng |
+| ESLint / TypeScript ESLint / React Hooks | 10.15.0 / 8.72.2 / 7.1.1; @eslint/js10.0.1, globals17.14.0 | Exact versions/lockfile; nguồn npm registry chính thức; lint native đạt. ESLint9 đã EOL nên không giữ bộ cài thử9.39.1 |
+| Gitleaks / Trivy | 8.30.1 / 0.76.2 | Native binary đối chiếu SHA256 release chính thức; image CI cùng phiên bản; chưa có scan release image |
+| Jenkins / inbound agent | 2.580.1-jdk21 / 3391.va_37fa_a_305d6d-5-jdk21 | ci/tools.json và Dockerfile; parser Jenkins cũ đã validate, controller mới chưa build/run |
+| Jenkins plugins | ci/controller/plugins.txt, plugins-lock.json | 8 direct plugins, chọn bản compatible core từ update center chính thức; transitive resolver --latest=false chưa chạy, cần lưu kết quả khi build |
+
+Nguồn Mốc2 kiểm tra14/11/2026: [Jenkins update center](https://updates.jenkins.io/update-center.actual.json), [Gitleaks releases](https://github.com/gitleaks/gitleaks/releases/tag/v8.30.1), [Trivy releases](https://github.com/aquasecurity/trivy/releases/tag/v0.76.2), npm registry của eslint/typescript-eslint/react-hooks. Dockerfile CI ghi tag cụ thể; chưa coi pin tag là bằng chứng image đã build hoặc không CVE.
 
 Tài liệu chính thức đã đọc để chọn cách triển khai:
 

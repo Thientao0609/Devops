@@ -1,0 +1,25 @@
+{
+  "status": "COPIED_AND_CONFIGURED_NOT_VERIFIED",
+  "original_disks_retained": true,
+  "files": [
+    {
+      "target": "D:\\DockerData\\DockerDesktopWSL\\disk\\docker_data.vhdx",
+      "bytes": 10972299264,
+      "source": "C:\\Users\\Acer\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+      "target_hash_match": true,
+      "sha256": "36B65A65F79B44564E438ACCEB76024764CFB1A7419D2EDFE32D5D13FCE3ED04"
+    },
+    {
+      "target": "D:\\DockerData\\DockerDesktopWSL\\main\\ext4.vhdx",
+      "bytes": 100663296,
+      "source": "C:\\Users\\Acer\\AppData\\Local\\Docker\\wsl\\main\\ext4.vhdx",
+      "target_hash_match": true,
+      "sha256": "8DBB2D3C3EDB1A13453DDAC607807422939AA9E4FDEDD59EEE0DA3BEE310EEB1"
+    }
+  ],
+  "at_utc": "2026-11-14T07:47:28.3162816Z",
+  "setting": "WslDataFolder",
+  "backup_root": "D:\\DockerBackup\\before-m2-20261114",
+  "value": "D:\\DockerData\\DockerDesktopWSL",
+  "note": "GUI helper failed to initialize. Field and WSL path were checked in installed Docker Desktop frontend/backend. Settings change does not itself prove runtime migration."
+}

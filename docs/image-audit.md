@@ -11,7 +11,11 @@ PDF trang 2 yêu cầu Dockerfile mỗi service với multi-stage, non-root, HEA
 | Frontend | frontend/Dockerfile, node build→nginx | nginx | wget /health:8080 | compose frontend | Có .dockerignore riêng; port host18080 mặc định |
 | PostgreSQL | images/postgres/Dockerfile, chuẩn bị script→runtime official pinned digest | postgres (Alpine UID70 đã kiểm tra) | /opt/health.sh gọi pg_isready | compose postgres | Health dependency override cũng pg_isready; cần volume ownership đúng |
 | RabbitMQ | images/rabbitmq/Dockerfile, enabled_plugins→runtime official | rabbitmq | rabbitmq-diagnostics ping | compose rabbitmq | Plugins thực dùng management và Prometheus; vhost dev riêng |
-| Mailpit upstream | axllent/mailpit:v1.27.10 trực tiếp, chưa Dockerfile custom | Compose user1000:1000 | /mailpit readyz | compose mailpit | Chưa đáp ứng Dockerfile multi-stage riêng/scan/push theo diễn giải chặt; không coi upstream được miễn, cần hoàn thiện Mốc 2 |
+| Mailpit custom | images/mailpit/Dockerfile, binary upstream→configuration→Alpine runtime | 10001:10001 | /mailpit readyz | compose mailpit, ci/compose.test.yaml | Đã viết và config-check, chưa build/run/scan/push bản custom; không dùng evidence upstream để đánh dấu bản mới |
+| Jenkins controller | ci/controller/Dockerfile, plugin configuration→runtime | jenkins | curl /login | compose.ci controller18090 | Chưa build/scan/kiểm tra quyền thực; plugins trực tiếp pin, transitive cần lưu kết quả resolver |
+| Jenkins agent | ci/agent/Dockerfile, pinned tools→runtime | 1000:1000 | Kiểm tra tiến trình Java | compose.ci agent | Chưa build/scan/nối controller |
+| Docker engine CI | ci/engine/Dockerfile, validation→runtime rootless | rootless | docker info qua socket nội bộ | compose.ci engine | Cần privileged để rootlesskit khởi tạo; không mount socket host, chưa chạy thực |
+| Webhook relay CI | ci/webhook/Dockerfile, syntax validation→runtime | 10001:10001 | urllib /health | compose.ci webhook18085 | Chưa build/scan/nhận webhook thật; phụ trợ CI, không phải backend nghiệp vụ |
 | Monitoring/exporters | Chưa chọn image/chart | Chưa có | Chưa có | Mốc 3–4 | Phải bổ sung vào bảng và xác minh; không đánh dấu đủ Docker cho toàn hệ thống |
 
 Các build dev đã thực hiện không thay build theo commit SHA, scan CRITICAL và push digest registry. Docker healthcheck khác Kubernetes probes; cần cả hai theo rubric. Đối chiếu `Config.User`, `Config.Healthcheck`, effective health override và kết quả chạy non-root/volume sau build; không chỉ đọc USER từ Dockerfile rồi coi VERIFIED.

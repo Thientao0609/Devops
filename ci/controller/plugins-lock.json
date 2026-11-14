@@ -1,0 +1,63 @@
+{
+  "at_utc": "2026-11-14T08:29:45.852234+00:00",
+  "source": "https://updates.jenkins.io/update-center.actual.json",
+  "controller": "2.580.1",
+  "plugins": [
+    {
+      "name": "workflow-aggregator",
+      "version": "608.v67378e9d3db_1",
+      "requiredCore": "2.479.3",
+      "sha256": "e5QifBr6AbsmLBSRmtSjM0EvG1HZR8DyGQnsLa/zV9w=",
+      "url": "https://updates.jenkins.io/download/plugins/workflow-aggregator/608.v67378e9d3db_1/workflow-aggregator.hpi"
+    },
+    {
+      "name": "git",
+      "version": "5.11.0",
+      "requiredCore": "2.504.3",
+      "sha256": "v0Y5q7ZebKIQvQ18ubZXDpNxeJS9zQCLLn5akW3YGPY=",
+      "url": "https://updates.jenkins.io/download/plugins/git/5.11.0/git.hpi"
+    },
+    {
+      "name": "github",
+      "version": "1.47.0",
+      "requiredCore": "2.504.3",
+      "sha256": "ufBAoygJd/IBLABXtI23EpWcZl5oW3Tnn6HPQ4M4eNo=",
+      "url": "https://updates.jenkins.io/download/plugins/github/1.47.0/github.hpi"
+    },
+    {
+      "name": "credentials-binding",
+      "version": "728.v902a_273b_8947",
+      "requiredCore": "2.479.3",
+      "sha256": "vX0aGH41yOK2YZzVDy+MXSiq/E74/Z3lcvss+kZPRm0=",
+      "url": "https://updates.jenkins.io/download/plugins/credentials-binding/728.v902a_273b_8947/credentials-binding.hpi"
+    },
+    {
+      "name": "cloudbees-folder",
+      "version": "6.1107.v31f8955765c8",
+      "requiredCore": "2.528.1",
+      "sha256": "5CCipvFeiy4W04x5pPL97KcM7C3/g16OozfzCFtyP0g=",
+      "url": "https://updates.jenkins.io/download/plugins/cloudbees-folder/6.1107.v31f8955765c8/cloudbees-folder.hpi"
+    },
+    {
+      "name": "junit",
+      "version": "1458.1460.vd53b_087eeb_2c",
+      "requiredCore": "2.555.3",
+      "sha256": "2l7h31mlSfQc8hBqRQuoKlNvnuNWqq6SRPcX37wXnp4=",
+      "url": "https://updates.jenkins.io/download/plugins/junit/1458.1460.vd53b_087eeb_2c/junit.hpi"
+    },
+    {
+      "name": "ws-cleanup",
+      "version": "0.49",
+      "requiredCore": "2.479.3",
+      "sha256": "O/X7xLby9er4v017AlQlc+pTejo4Ajo9U80kUg2+zQU=",
+      "url": "https://updates.jenkins.io/download/plugins/ws-cleanup/0.49/ws-cleanup.hpi"
+    },
+    {
+      "name": "matrix-auth",
+      "version": "3.3",
+      "requiredCore": "2.528.3",
+      "sha256": "uPepFvHeCHLUwWJkvPlgT9tbLaGCd2R0WUbHrF9hOUg=",
+      "url": "https://updates.jenkins.io/download/plugins/matrix-auth/3.3/matrix-auth.hpi"
+    }
+  ]
+}

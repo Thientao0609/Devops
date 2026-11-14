@@ -1,0 +1,10 @@
+{
+  "commit": "b4d0fbc6c17ca0dab5833d234ffcf0cedc28a34e",
+  "at_utc": "2026-11-14T08:46:34.559506+00:00",
+  "inputs": {
+    "requirements.lock": "8cea72b78c7859369891cfc856b5363cddd583606e5f973a7089b336651e7f93",
+    "frontend/package.json": "e89290727b0ffd86e859ecab7e0ab2b42b18ac56a30028f83bdf504536a17660",
+    "frontend/package-lock.json": "73683a1e2beeb3c1eabc94bd5b6fb7ac8f2b5e2dee6e9ba6739869787412d715"
+  },
+  "report_sha256": "55705d5b3e6cbb75d174b1b34207e790bff9712990132da5af896830fd924911"
+}

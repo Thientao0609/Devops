@@ -1,0 +1,3 @@
+Running: D:\CODE\OOPs\Do_An\.venv\Scripts\python.exe -m pytest -q tests ci/tests --tb=short --junitxml=D:\CODE\OOPs\Do_An\ci-out\junit-unit.xml
+Exit0; log:ci-out\unit.log
+Running: git -c safe.directory=D:/CODE/OOPs/Do_An rev-parse HEAD

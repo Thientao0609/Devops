@@ -1,0 +1,3 @@
+Scope: existing local Jenkins parser only; no credentials sent, no jobs/config modified, no pipeline run.
+HTTP 200
+Jenkinsfile successfully validated.

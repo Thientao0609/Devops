@@ -1,0 +1,9 @@
+{
+  "gitleaks": {"version": "8.30.1", "image": "ghcr.io/gitleaks/gitleaks:v8.30.1"},
+  "trivy": {"version": "0.76.2", "image": "aquasec/trivy:0.76.2"},
+  "docker": "29.9.3",
+  "jenkins": "2.580.1",
+  "agent": "3391.va_37fa_a_305d6d-5",
+  "registry": "ghcr.io/vxxngw",
+  "repository": "https://github.com/vxxngw/DevOps"
+}

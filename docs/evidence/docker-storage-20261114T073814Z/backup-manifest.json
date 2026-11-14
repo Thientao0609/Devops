@@ -1,0 +1,30 @@
+{
+  "at_utc": "2026-11-14T07:38:14.4577686Z",
+  "status": "BACKUP_VERIFIED_NOT_MIGRATED",
+  "docker_stopped": true,
+  "approved_backup": "D:\\DockerBackup\\before-m2-20261114",
+  "proposed_data": "D:\\DockerData",
+  "files": [
+    {
+      "source": "C:\\Users\\Acer\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx",
+      "backup": "D:\\DockerBackup\\before-m2-20261114\\disk\\docker_data.vhdx",
+      "bytes": 10972299264,
+      "sha256": "36B65A65F79B44564E438ACCEB76024764CFB1A7419D2EDFE32D5D13FCE3ED04",
+      "hash_match": true
+    },
+    {
+      "source": "C:\\Users\\Acer\\AppData\\Local\\Docker\\wsl\\main\\ext4.vhdx",
+      "backup": "D:\\DockerBackup\\before-m2-20261114\\main\\ext4.vhdx",
+      "bytes": 100663296,
+      "sha256": "8DBB2D3C3EDB1A13453DDAC607807422939AA9E4FDEDD59EEE0DA3BEE310EEB1",
+      "hash_match": true
+    },
+    {
+      "source": "C:\\Users\\Acer\\AppData\\Roaming\\Docker\\settings-store.json",
+      "backup": "D:\\DockerBackup\\before-m2-20261114\\settings-store.json",
+      "bytes": 398,
+      "sha256": "FBB02E2A51AEB71BF5FABB0667EC9EFC41E5EDB78EDC95AE31EC56E7ADF6AD4F",
+      "hash_match": true
+    }
+  ]
+}
