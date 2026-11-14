@@ -146,3 +146,41 @@ def test_critical_finding_cannot_be_hidden_by_passing_metadata(scan):
     path.write_text(json.dumps(receipt))
     with pytest.raises(ValueError, match="CRITICAL"):
         check_scan_receipt(path, versions)
+
+
+def test_scanner_outage_does_not_hide_other_reports_or_open_gate(tmp_path, monkeypatch):
+    spec = importlib.util.spec_from_file_location(
+        "scan_obs", ROOT / "scripts/scan-observability.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    versions = {
+        "images": {
+            name: {"reference": name + "@sha256:" + "a" * 64} for name in ["blocked", "scannable"]
+        }
+    }
+    (tmp_path / "observability").mkdir()
+    (tmp_path / "observability/versions.json").write_text(json.dumps(versions))
+    monkeypatch.setattr(module, "ROOT", tmp_path)
+    monkeypatch.setattr(module, "OUTPUT", tmp_path / "output")
+    calls = []
+
+    def scanner(reference, report, remote):
+        calls.append(reference)
+        assert remote is True
+        if reference.startswith("blocked"):
+            raise RuntimeError("No scanner report due to test network outage")
+        data = {"ArtifactName": reference, "Results": [{"Target": "test", "Vulnerabilities": []}]}
+        report.write_text(json.dumps(data))
+        from types import SimpleNamespace
+
+        return SimpleNamespace(returncode=0), data, []
+
+    monkeypatch.setattr(module, "trivy", scanner)
+    with pytest.raises(SystemExit):
+        module.main()
+    receipt = json.loads((tmp_path / "output/observability-images/metadata.json").read_text())
+    assert len(calls) == 2
+    assert receipt["passed"] is False
+    assert receipt["images"]["blocked"]["status"] == "BLOCKED"
+    assert receipt["images"]["scannable"]["exit_code"] == 0

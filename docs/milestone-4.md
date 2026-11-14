@@ -16,8 +16,12 @@
 
 Các fixture PromQL/Vault và parser token **không phải cảnh báo gửi thật**. Không dùng số liệu fixture để vẽ dashboard nghiệm thu. p95 HTTP chỉ dùng route nghiệp vụ /api; worker/publisher dùng throughput/outcome và duration xử lý. Queue delay đo từ lần publish AMQP gần nhất, gồm retry TTL, timestamp độ phân giải giây; không gồm thời gian chờ outbox trước publish và không thay thời gian gọi SMTP.
 
-Bootstrap operator có gate Trivy CRITICAL cho toàn bộ 8 image; thiếu report/scan lỗi/CRITICAL đều chặn. Không dùng ignore-unfixed hay allowlist chung. Lượt này chưa scan các image Mốc 4 và không apply stack. Deployer ứng dụng không được cấp quyền quản trị monitoring/EFK.
+Bootstrap operator có gate Trivy CRITICAL cho toàn bộ 8 image; thiếu report/scan lỗi/CRITICAL đều chặn. Không dùng ignore-unfixed hay allowlist chung. Ngày14/11 chưa scan; cập nhật15/11 đã remote scan8/8digest không CRITICAL, xem [bằng chứng](evidence/ops-security-latest.json). Chưa apply stack. Deployer ứng dụng không được cấp quyền quản trị monitoring/EFK.
 
 Xem [bằng chứng local](evidence/m4-latest.json), [runbook dựng và nghiệm thu](runbooks/observability.md), [ánh xạ metric](metrics-map.md), [từng cảnh báo](runbooks/alerts.md), [8 bước demo](demo-script.md), [ước tính cloud](cloud-cost-estimate.md). Mọi bước demo, tải, rollback 120 giây và video vẫn chưa có kết quả chạy thực tế.
 
 Lượt kiểm cuối có 80 bài unit/regression đạt và8 integration bỏ qua. Native gates của bản cuối đều qua; WSL có lượt lỗi WSAENOTCONN và lượt cuối exit1 không có chẩn đoán. Evidence tổng hợp dẫn lượt Ansible/Bash/Vault thành công trước đó sau khi so hash nguồn liên quan trùng hoàn toàn và xác nhận ansible.cfg không đổi; giữ nguyên cả lượt WSL lỗi. Không gọi WSL hiện tại đã phục hồi. Jenkins parser mới vẫn BLOCKED:ConnectError; không có build Jenkins mới.
+
+Cập nhật15/11/2026: WSL và Docker đã chạy lại, Jenkins riêng18090 đã cấu hình và parser qua sau khi bỏ timestamps() không có plugin. Xem [bằng chứng mới](ci-recovery.md); các lượt lỗi ở trên giữ nguyên theo thời điểm. Agent/pipeline, di chuyển đĩaDockerD và stack/alert/demo vẫn chưa nghiệm thu.
+
+Cập nhật security15/11: scan8image giám sát và kiểm tra raw receipt đã qua, không thay bằng chứng app release image/CI build hoặc runtime. Chi tiết timeout→retry và sanitization checksum công khai trong [CI recovery](ci-recovery.md).

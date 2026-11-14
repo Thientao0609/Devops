@@ -43,3 +43,6 @@ D còn đủ cho một bản backup khoảng10,32GiB, dữ liệu chạy khoản
 Giới hạn: chuyển vị trí không sửa mọi lỗi ext4/containerd đã phát sinh do ghi dở. Backup/copy đã có bằng chứng, chuyển active disk và kiểm tra stack mới còn chờ. Cần ghi rõ Docker dùng D, volume cũ còn đủ và luồng nghiệp vụ chạy thật trước khi công bố hoàn tất.
 
 Nguồn chính thức: [Docker Desktop WSL2 – nơi lưu dữ liệu và đổi location](https://docs.docker.com/desktop/features/wsl/), [Desktop settings](https://docs.docker.com/desktop/settings-and-maintenance/settings/). Phiên bản máy: Desktop4.99.0, engine29.9.3.
+
+
+Khôi phục15/11/2026: Docker engine đã chạy lại nhưng probe thực vẫn thấy VHD C bị giữ mở, bản D cũ mở độc quyền được, D:\DockerData\active chưa tồn tại. Có bản sao mới tại `D:\CODE\OOPs\Do_An\.ci-local\recovery-backups\before-recovery-20261115T005310\disk\docker_data.vhdx` và manifest trong evidence CI recovery, SHA256/bytes đã đối chiếu khi source giữ read-only độc quyền. Bản sao cũ không bị ghi đè; không coi recovery này là chuyển ổ thành công.

@@ -1,0 +1,8 @@
+{
+  "path": "docs/evidence/ci-recovery-20261114T180110Z",
+  "controller": "RUNNING_AUTHENTICATED",
+  "jenkins_parser": "PASSED",
+  "agent": "OFFLINE",
+  "pipeline": "NOT_RUN",
+  "docker_data_location": "C:; migration to D unverified"
+}

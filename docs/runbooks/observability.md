@@ -21,7 +21,7 @@ python scripts/prepare-observability-secrets.py --telegram-chat-id ACTUAL_CHAT_I
 python scripts/bootstrap-observability.py foundation --expected-server https://192.168.150.11:6443 --secrets-file .infra-local/observability/secrets.json
 ```
 
-Chỉ chạy prepare khi chủ kênh đã chỉ định bot/chat thật; không dán token vào chat/Git. Secret file tạo một lần, từ chối ghi đè; bootstrap kiểm credential đang có và từ chối tự xoay password. Scan phải đúng digest, đủ 8 report, không CRITICAL và trong 24 giờ; metadata/report sửa hoặc thiếu đều chặn. Các image Mốc 4 hiện chưa được scan, vì vậy bootstrap chưa đủ điều kiện. Trên Linux giữ private file mode0600; Windows/DrvFS cần ACL phù hợp, không coi chmod là đủ.
+Chỉ chạy prepare khi chủ kênh đã chỉ định bot/chat thật; không dán token vào chat/Git. Secret file tạo một lần, từ chối ghi đè; bootstrap kiểm credential đang có và từ chối tự xoay password. Scan phải đúng digest, đủ 8 report, không CRITICAL và trong 24 giờ; metadata/report sửa hoặc thiếu đều chặn. Ngày15/11 đã scan8digest không CRITICAL và kiểm raw receipt; khi thực thi vẫn cần scan đúng version/digest trong24giờ. VM/cluster và receiver chưa có nên bootstrap runtime vẫn chưa đủ điều kiện. Trên Linux giữ private file mode0600; Windows/DrvFS cần ACL phù hợp, không coi chmod là đủ.
 
 Foundation áp namespace/RBAC/config/PVC/certificate và Elasticsearch. TCP readiness không chứng minh ES đã xác thực/khỏe. Lấy CA **chỉ ca.crt**, không xuất tls.key, vào file riêng:
 

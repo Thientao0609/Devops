@@ -6,7 +6,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from ci.common import OUTPUT, ROOT, now, run, tool, write_json
+from ci.common import OUTPUT, ROOT, now, write_json
+from ci.security import trivy
 
 
 def main():
@@ -20,33 +21,22 @@ def main():
     for name, image in versions["images"].items():
         report = destination / (name + ".json")
         report.unlink(missing_ok=True)
-        result = run(
-            [
-                tool("trivy"),
-                "image",
-                "--image-src",
-                "remote",
-                "--scanners",
-                "vuln",
-                "--severity",
-                "CRITICAL",
-                "--exit-code",
-                "1",
-                "--format",
-                "json",
-                "--output",
-                report,
-                image["reference"],
-            ],
-            log=destination / (name + ".log"),
-            check=False,
-        )
-        data = json.loads(report.read_text(encoding="utf-8")) if report.is_file() else None
-        critical = sum(
-            v["Severity"] == "CRITICAL"
-            for item in (data or {}).get("Results", [])
-            for v in item.get("Vulnerabilities", [])
-        )
+        try:
+            result, data, findings = trivy(image["reference"], report, remote=True)
+        except RuntimeError as error:
+            # A network/scanner failure is not a clean image. Keep collecting other
+            # independent reports while ensuring the overall gate remains closed.
+            results[name] = {
+                "reference": image["reference"],
+                "exit_code": None,
+                "critical": None,
+                "report_valid": False,
+                "report_sha256": None,
+                "status": "BLOCKED",
+                "error_type": type(error).__name__,
+            }
+            continue
+        critical = len(findings)
         valid = bool(
             data and data.get("ArtifactName") == image["reference"] and data.get("Results")
         )
@@ -68,6 +58,7 @@ def main():
             "versions_sha256": hashlib.sha256(versions_file.read_bytes()).hexdigest(),
             "passed": passed,
             "images": results,
+            "policy": {"ignore_unfixed": False, "ignorefile": "empty", "source": "remote"},
         },
     )
     if not passed:

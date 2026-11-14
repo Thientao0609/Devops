@@ -59,7 +59,7 @@ Lệnh tạo/cập nhật đúng endpoint của repo, không in HMAC/token. GitH
 
 ## Nghiệm thu pipeline
 
-Job `an-uyen/clinic-pipeline`, mặc định SOURCE_REF/SOURCE_BRANCH=codex/milestone-2, IS_PR=false, PUBLISH_IMAGES=false, DEPLOY=false. Chỉ người tin cậy có thể sửa mã trong repo private/khởi chạy pipeline có credential. Các kiểm tra PR của thiết kế local này không phải hệ thống chạy code từ fork không tin cậy.
+Job `an-uyen/clinic-pipeline`, mặc định SOURCE_REF/SOURCE_BRANCH=codex/milestone-4, IS_PR=false, PUBLISH_IMAGES=false, DEPLOY=false. Chỉ người tin cậy có thể sửa mã trong repo private/khởi chạy pipeline có credential. Các kiểm tra PR của thiết kế local này không phải hệ thống chạy code từ fork không tin cậy.
 
 1. Push nhánh/PR thật, xác nhận webhook tạo build, checkout đúng SHA. Parser validate thành công chưa đủ bước này.
 2. Build bình thường: secret scan → lint/typecheck → unit → build5images → integration PostgreSQL/RabbitMQ/Mailpit riêng → Trivy image + lockfiles. Kiểm tra JUnit không có integration skip và logs từng gate.
@@ -74,3 +74,6 @@ Mỗi build dùng checkout sạch; private file không trong build context. Inte
 Remote private https://github.com/vxxngw/DevOps. Dùng nhánh codex/, Conventional Commits, PR ≥1 review thật, ưu tiên squash với title theo Conventional Commits. Không tự approve/merge để tạo bằng chứng. Sau kiểm chứng đầy đủ và review mới tag stable semver. Bật main protection yêu cầu review/no force push/no delete khi gói repo hỗ trợ; lần gọi API thật trả403 yêu cầu Pro hoặc public. Chưa đổi visibility/gói; policy trong CONTRIBUTING không thay được enforcement.
 
 Mốc 3 bổ sung overlay/migration Job/kubeconfig namespace, trusted HTTPS smoke, staging → approval có người/thời hạn → production dùng đúng digest, rollback đo thật. Các stage hiện dự kiến, sẽ báo lỗi nếu thiếu sản phẩm Mốc 3; không được dùng DEPLOY=true để công bố đã có Kubernetes.
+
+
+Cập nhật15/11/2026: [Jenkins riêng đã khởi động và validate parser thật](ci-recovery.md); job/credential checkout đã cấu hình, agent còn offline và image agent chưa build. Tùy chọn timestamps() đã bỏ vì plugin set không có Timestamper; timeout, các gate và artifact timestamps vẫn giữ. Chưa có pipeline build/webhook/push digest. Docker data vẫn ởC, cần xác minh chuyểnD trước build lớn.
