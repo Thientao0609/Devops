@@ -54,3 +54,10 @@ Log lỗi user PostgreSQL và các log build/up sau được lưu trong inspecti
 ## Lỗi môi trường trong lượt rà soát DevOps14/11
 
 [Engine pipe mất kết nối](devops-review-20261114T062627Z/metadata.json), [HTTP lỗi sau engine khởi động](devops-outage-20261114T063406Z/metadata.json), [snapshot chỉ5/11HTTP200 dù7container healthy](devops-review-20261114T063627Z/metadata.json) và [probe cổng host](devops-recovery-probe-20261114T063816Z/metadata.json) được giữ nguyên. Không coi container healthy là đủ truy cập từ host. Engine đã phục hồi, recreate riêng API/publisher sửa cổng host; snapshot cuối và smoke ở đầu bảng. Một collector từng gặp WinError1455; WSL bootstrap sau đó có0xc00000fd; chưa xác định nguyên nhân gốc, không khẳng định do RAM. Phục hồi môi trường không phải demo rollback app≤120giây.
+
+
+## Chuẩn bị Mốc 4
+
+[m4-latest.json](m4-latest.json) trỏ lần chạy có source hashes, JUnit, parser Prometheus/Alertmanager, 14 ca rule fixture, 37 query dashboard, schema/policy51đối tượng và Ansible/Bash/Vault local. VMpreflight vẫn BLOCKED, Jenkins parser BLOCKED. Không có stack monitoring/EFK, external alert receipt, tải/scale/rollback/video. [cloud-cost-latest.json](cloud-cost-latest.json) là nguồn giá công khai và phép tính, không phải hóa đơn hay cloud deployment. Các lượt bằng chứng cũ giữ nguyên.
+
+Bằng chứng M4 tổng hợp ghi rõ lượt native cuối và lượt Ansible/Bash/Vault cùng source trước đó; các lượt WSL lỗi WSAENOTCONN và exit1 không có chẩn đoán được giữ lại. local_checks_passed chỉ tổng hợp các kiểm tra nguồn có bằng chứng, không có nghĩa WSL hiện tại hoặc VM/cluster đang chạy.

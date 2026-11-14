@@ -150,8 +150,8 @@ def job_xml():
         "parameterDefinitions",
     )
     for name, value in {
-        "SOURCE_REF": "codex/milestone-3",
-        "SOURCE_BRANCH": "codex/milestone-3",
+        "SOURCE_REF": "codex/milestone-4",
+        "SOURCE_BRANCH": "codex/milestone-4",
         "CLUSTER_SERVER_URL": "https://192.168.150.11:6443",
         "STAGING_URL": "https://staging.anuyen.test",
         "PRODUCTION_URL": "https://hospital.anuyen.test",

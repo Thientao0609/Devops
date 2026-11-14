@@ -21,3 +21,10 @@ Phương án 1 server + 1 agent không HA control plane; PostgreSQL/RabbitMQ m�
 ## ADR012 – Mốc3 local preparation
 
 [THIẾT KẾ] Ngày14/11/2026, phát hiện KVM trong WSL nhưng thiếu quyền/daemon và capacity. Người dùng chọn chuẩn bị trên máy hiện tại. Dùng Terraformlibvirt0.9.9/module3VM, WSL làm controlnode, Ansible2.22/Python3.13, K3s1.36 để nằm trong phạm vi KEDA2.21 đã công bố kiểm thử; namespace là môi trườngứngdụng của cùngcluster. Chưa apply. Chọn CAriêng .test cho lab; clienttrust/RBAC/HTTPS thực chờ kiểm chứng. Không dùng kind thay3VM hoặc coi schemaunit là runtime. ProfileVM/capacity ở infra/lab-budget.json và runbookinfra-lab.
+
+
+## ADR013 – quan sát Mốc 4 [THIẾT KẾ]
+
+Chọn Prometheus scrape trực tiếp + Grafana provisioning, Alertmanager Telegram receiver và EFK9/Fluentd1.20 thay Promtail đã EOL. KSM2.20 phù hợp Kubernetes1.36. Dùng operator riêng cho cluster/RBAC/Secrets; Prometheus không có nodes/proxy hoặc quyền đọc Secrets; app không nhận API token. Collector Fluentd root chỉ đọc host log và buffer hẹp, tách namespace logging/PSA ngoại lệ, không privileged container.
+
+Giữ lab libvirt hiện tại và chuẩn bị local; estimate SGP1 chỉ là phương án tính chi phí, chưa chọn thuê cloud. Mọi pin/schema/unit/fixture không thay runtime, CVE scan, ingest hay delivery. Chưa triển khai tracing/SLO nâng cao; ưu tiên nghiệm thu đầy đủ bắt buộc khi có môi trường.

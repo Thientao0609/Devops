@@ -22,3 +22,5 @@ Logo An Uyên Hospital do chủ dự án cung cấp, giữ nguyên trong fronten
 | Inter (UI font), @fontsource/inter 5.3.0 | The Inter Project Authors; package npm có integrity trong lockfile | SIL Open Font License 1.1; tự phục vụ các weight400/500/600 gồm tiếng Việt; bản license trong frontend/public/brand/Inter-OFL.txt |
 
 Danh sách trên là hướng dẫn kiểm kê, chưa phải SBOM/license audit đầy đủ. Không xóa LICENSE/NOTICE bundled của phụ thuộc/image. Lockfile ghi phiên bản, npm lock ghi integrity; build/scan/SBOM và xác minh license artifact thực phải bổ sung trước phát hành. Chưa chọn license cho mã riêng của nhóm thay người sở hữu.
+
+Mốc4 bổ sung Prometheus/Alertmanager, Grafana, kube-state-metrics, postgres_exporter, Elasticsearch/Kibana và Fluentd/plugins. Nguồn/tag/digest ở observability/versions.json và docs/versions.md; giữ LICENSE/NOTICE từ đúng artifact, gồm phụ thuộc/plugin và điều khoản phân phối Elastic/Grafana. Chưa có SBOM/license audit đầy đủ cho8image này và chưa coi image ghim digest là đã quét CVE.

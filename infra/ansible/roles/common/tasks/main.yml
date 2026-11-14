@@ -74,6 +74,29 @@
     from_ip: "{{ clinic_node_cidr }}"
     port: '9100'
     proto: tcp
+- name: Permit monitoring pod access to node exporter and kubelet
+  community.general.ufw:
+    rule: allow
+    from_ip: "{{ clinic_pod_cidr }}"
+    port: "{{ item }}"
+    proto: tcp
+  loop: ['9100', '10250']
+- name: Configure Elasticsearch memory map capacity on cluster nodes
+  ansible.posix.sysctl:
+    name: vm.max_map_count
+    value: '1048576'
+    state: present
+    sysctl_set: true
+    reload: true
+  when: inventory_hostname in groups.get('k3s_server', []) + groups.get('k3s_agent', [])
+- name: Create bounded Fluentd buffer directory on cluster nodes
+  ansible.builtin.file:
+    path: /var/lib/anuyen-fluentd
+    state: directory
+    owner: root
+    group: root
+    mode: '0700'
+  when: inventory_hostname in groups.get('k3s_server', []) + groups.get('k3s_agent', [])
 - name: Permit private k3s node traffic
   community.general.ufw:
     rule: allow

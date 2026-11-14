@@ -8,6 +8,8 @@ Ngày khảo sát: 13/11/2026; cập nhật 14/11/2026 (giờ Việt Nam). Ngu�
 
 `NOT_STARTED`: chưa triển khai; `IMPLEMENTED_NOT_RUN`: có sản phẩm nhưng chưa chạy đủ tiêu chí; `VERIFIED`: có bằng chứng đúng phạm vi; `BLOCKED`: thiếu môi trường/quyền/thông tin cụ thể. `—` nghĩa chưa có bằng chứng, không phải đã đạt. Các đường dẫn/lệnh tương lai trong bảng là kế hoạch, chưa khẳng định file tồn tại. Không suy rộng test bằng fake thành PostgreSQL/RabbitMQ/SMTP thật.
 
+**Cập nhật Mốc 4:** [phạm vi chuẩn bị](milestone-4.md), [bằng chứng](evidence/m4-latest.json). Đã có source M3/M4, tool parser/schema/provider thật và unit/fixture; stack VM/cluster/monitoring vẫn chưa chạy. Snapshot M2 ở trên chỉ mô tả thời điểm M2; không còn nghĩa là repo hiện thiếu toàn bộ IaC/monitoring source. Các dòng VERIFIED của M1 giữ phạm vi stack lịch sử.
+
 ## Yêu cầu chung và 12 nhóm bắt buộc [ĐỀ BÀI]
 
 | ID | PDF | Tiêu chí | File triển khai / dự kiến | Lệnh/cách kiểm chứng | Trạng thái | Bằng chứng | Giới hạn còn lại |
@@ -33,20 +35,20 @@ Ngày khảo sát: 13/11/2026; cập nhật 14/11/2026 (giờ Việt Nam). Ngu�
 | D09a | 3 | K8s Deployment/Service/Ingress/ConfigMap/Secret; staging/prod tách namespace | deploy/k8s/base, overlays, bootstrap; scripts/prepare-cluster-secrets.py | kustomize/schema/policy; serverapply/isolation | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | Hai namespace/config/vhost/PVC tách; chưa Secret/cluster/apply thật |
 | D09b | 3 | Liveness/readiness, requests/limits, HPA CPU | deploy/k8s/base; scripts/load-http.py | probes/resource/HPA; CPU/replica timeline thật | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | Schema/policy đã kiểm; chưa probeFault/HPA/metrics-server runtime |
 | D09c | 3,6 | Rolling update, rollback; demo không gián đoạn | ci/deploy.py, ci/rollback.py; rollbackrunbook | requestloop/rollout/smoke và thời gian recovery | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | maxUnavailable0, snapshot/digest/configrollback có mã; chưa chạy/đo, coldmiddleware cần maintenance |
-| D10a | 3 | Prometheus/Grafana CPU/RAM/request rate/error rate/p95 từng service | observability/ | query metrics; export JSON; dashboard khi có tải | IMPLEMENTED_NOT_RUN | [M1 evidence](evidence/README.md) | Có metrics ứng dụng và RabbitMQ exporter; chưa Prometheus/Grafana/dashboard/p95 per-service đầy đủ |
-| D10b | 3 | Alertmanager gửi Telegram/Discord/email thật | observability/, docs/runbooks/ | FIRING và RESOLVED thực đến kênh nhận | BLOCKED | — | Chưa có receiver; demo bước 5 yêu cầu Telegram/Discord |
-| D10c | 3 | Loki+Promtail hoặc EFK; lọc service và level | observability/logging/ | tìm request lỗi và correlation trên Kibana | NOT_STARTED | — | Chọn EFK; Alloy là thay thế cần xác nhận nếu đổi |
+| D10a | 3 | Prometheus/Grafana CPU/RAM/request rate/error rate/p95 từng service | observability/, docs/metrics-map.md | promtool/schema; sau đó targets/UI/metric thật | IMPLEMENTED_NOT_RUN | [M4 local](evidence/m4-latest.json) | Có 37 panel, jobs per-pod và nguồn container/exporter; parser không thay scrape/Grafana UI hoặc benchmark |
+| D10b | 3 | Alertmanager gửi Telegram/Discord/email thật | observability/config.py, runbook observability/alerts | Nhận FIRING và RESOLVED ở kênh thật, lưu receipt | BLOCKED | [M4 local](evidence/m4-latest.json) | amtool parser với fixture đã qua; chưa token/chat ID, cluster hoặc delivery thật |
+| D10c | 3 | Loki+Promtail hoặc EFK; lọc service và level | observability/efk/, observability/k8s/, runbook observability | Fluentd dry-run, ingest và Kibana tìm đúng request/correlation | IMPLEMENTED_NOT_RUN | [M4 local](evidence/m4-latest.json) | EFK/TLS/user riêng/JSON filter đã chuẩn bị; chưa Fluentd parser hoặc ES/Kibana/ingest thực |
 | D11a | 3 | Không secret Git; gitleaks trong pipeline | .gitignore, .gitleaks.toml, Jenkinsfile, ci/security.py | gitleaks + demo secret giả chặn deploy | IMPLEMENTED_NOT_RUN | [M2 local](evidence/m2-local-20261114T084619Z/metadata.json) | Gitleaks history baseline exit0, token synthetic exit1/1finding; ngoại lệ hash provenance hẹp có test executable. Chưa chạy gate trong Jenkins |
 | D11b | 3 | Trivy image, CRITICAL chặn build | Jenkinsfile, ci/security.py | Trivy exit-code 1 + ảnh lỗi có chủ đích | IMPLEMENTED_NOT_RUN | [M2 local](evidence/m2-local-20261114T084619Z/metadata.json) | Trivy remote Alpine cũ4CRITICAL/exit1, lock Python/Node0CRITICAL/exit0. Chưa scan image release/build Jenkins; không ignore-unfixed |
 | D11c | 3 | Ingress HTTPS cert-manager; RBAC tối thiểu | bootstrapRBAC/localCA, Certificate/Ingress; ci/cluster.py | certReady/trustedHTTPS; kubectlauthcan-i | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | Có CA/certmanager/namespaceRole/appnoAPItoken/contextguard; chưa issuer/clienttrust/RBAC thực |
-| D12 | 3 | Production cloud hoặc local kèm bảng chi phí lên cloud | docs/cloud-cost-estimate.md | nguồn giá/ngày/region/cấu hình/giờ/disk/egress | BLOCKED | — | Chưa chọn host/provider; không bịa giá |
+| D12 | 3 | Production cloud hoặc local kèm bảng chi phí lên cloud | docs/cloud-cost-estimate.md | Nguồn giá/ngày/region/cấu hình/giờ/disk/backup/egress và local production | IMPLEMENTED_NOT_RUN | [Tra giá thật](evidence/cloud-cost-latest.json) | Có ước tính hạ tầng SGP1 $171/tháng trước thuế và các khoản loại trừ; chưa triển khai local production hoặc thuê cloud |
 
 ## Thử thách đề tài số 8 [ĐỀ BÀI, trang 5]
 
 | ID | PDF | Tiêu chí | File triển khai / dự kiến | Lệnh/cách kiểm chứng | Trạng thái | Bằng chứng | Giới hạn còn lại |
 |---|---|---|---|---|---|---|---|
 | T08a | 5 | Kiến trúc sự kiện với RabbitMQ và email/Telegram | contracts/, services/ | Booking → outbox → broker → worker → hộp thư | VERIFIED | [M1 evidence](evidence/README.md) | Luồng event-driven dev thật đến SMTP Mailpit; chưa mailbox ngoài. RabbitMQ/KEDA toàn thử thách vẫn chưa đủ |
-| T08b | 5 | Giám sát độ dài queue | observability/ | Ready/unacked/backlog/consumer/DLQ trên dashboard | IMPLEMENTED_NOT_RUN | [M1 evidence](evidence/README.md) | Đã bật management/Prometheus listener; chưa dashboard queue/Prometheus scrape được nghiệm thu |
+| T08b | 5 | Giám sát độ dài queue | observability/prometheus/, grafana/dashboards/ | Ready/unacked/backlog/consumer/DLQ trên dashboard thật | IMPLEMENTED_NOT_RUN | [M4 local](evidence/m4-latest.json) | Per-object metrics và PromQL đã chuẩn bị, đối chiếu RabbitMQ 4.2.9; chưa scrape/graph runtime |
 | T08c | 5 | Consumer scale theo queue bằng KEDA | ScaledObject/TriggerAuthentication; load-queue.py | burst/backlog/worker timeline/drain/scale-down | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | HTTPQueueLength gồm unacked, Secretrefs/queue-vhost theoenv, không HPAworker thứhai; schema/unit không thay autoscale thật |
 
 ## Tám bước demo [ĐỀ BÀI, trang 6]
@@ -58,10 +60,10 @@ Ngày khảo sát: 13/11/2026; cập nhật 14/11/2026 (giờ Việt Nam). Ngu�
 | DEMO1 | 6 | terraform apply → ansible-playbook máy trắng → K8s lên | infra/terraform, infra/ansible, runbookinfra-lab | apply/recap/2nodesReady thật | BLOCKED | [M3](evidence/m3-latest.json) | Có provider/module/roles đã validate; chưa đủ quyền/capacity để tạo3VM |
 | DEMO2 | 6 | Code push → Jenkins → staging → duyệt → production liên tục | Jenkinsfile, ci/deploy.py | webhook/build/manualapproval/digest/requestloop | BLOCKED | [M3](evidence/m3-latest.json) | Repo đã có; code pipeline/promotion đã chuẩn bị, chưa controller/registry/cluster/smoke/approval thật |
 | DEMO3 | 6 | Secret giả/dependency lỗi bị pipeline chặn | ci/security.py, ci/tests | Jenkinsfailedgate/report, push/deployskipped | IMPLEMENTED_NOT_RUN | [M2](milestone-2.md) | Scannernegative thật1secret/4CRITICAL đã chặn; chưa buildJenkinsfail và skippedstage evidence |
-| DEMO4 | 6 | Xóa pod → tạo lại, dịch vụ liên tục | tests/load/ | timeline và request loop không lỗi | BLOCKED | — | Chưa có cluster |
-| DEMO5 | 6 | Load → HPA → Grafana → Telegram/Discord | tests/load/, observability/ | RPS/p95/errors, replicas, tin nhận thật | BLOCKED | — | Cần cluster và receiver |
-| DEMO6 | 6 | Bản lỗi → monitoring phát hiện → rollback ≤2 phút | ci/rollback.py, ci/deploy.py, runbookrollback | detect/recoverytimeline + smoke | BLOCKED | [M3](evidence/m3-latest.json) | Có snapshot/configrollback/migrationguard; chưa monitoring/deploy/đo≤120s |
-| DEMO7 | 6 | Request lỗi truy ra log tập trung | docs/runbooks/ | request_id và truy vấn Kibana | NOT_STARTED | — | Chưa có EFK |
+| DEMO4 | 6 | Xóa pod → tạo lại, dịch vụ liên tục | scripts/load-http.py, docs/demo-script.md | Pod timeline + request loop không lỗi, p95/RPS | BLOCKED | [M4](milestone-4.md) | Có script đo HTTP và hướng dẫn; chưa cluster/request loop trong rollout hoặc pod deletion |
+| DEMO5 | 6 | Load → HPA → Grafana → Telegram/Discord | scripts/load-http.py, observability/ | RPS/p95/errors, replicas và tin nhận thật | BLOCKED | [M4 local](evidence/m4-latest.json) | Jobs/panel/rules đã kiểm parser; cần cluster, đủ tải CPU và receiver thật |
+| DEMO6 | 6 | Bản lỗi → monitoring phát hiện → rollback ≤2 phút | ci/rollback.py, rules demo staging, docs/demo-script.md | Timestamp lỗi/phát hiện/rollback/smoke recovery | BLOCKED | [M4](milestone-4.md) | Có snapshot/config rollback và rule staging for=15s; chưa bản lỗi đã build/scan/deploy, alert hoặc số đo ≤120s |
+| DEMO7 | 6 | Request lỗi truy ra log tập trung | observability/efk/, docs/runbooks/observability.md | Request ID, truy vấn Kibana và log đúng | BLOCKED | [M4](milestone-4.md) | Có collector/filter/KQL, API 500 log an toàn đã unit test; chưa EFK runtime/kết quả tìm kiếm |
 | DEMO8 | 5,6 | RabbitMQ backlog → KEDA scale worker → thông báo | scripts/load-queue.py, deploy/k8s/ | ready/unacked/backlog/worker/email timeline | BLOCKED | [M3](evidence/m3-latest.json) | KEDA/schema/loadscript đã có; chưa operator/cluster/backlog/scale thật |
 
 ## Toàn bộ sản phẩm nộp [ĐỀ BÀI, trang 6]
@@ -69,15 +71,15 @@ Ngày khảo sát: 13/11/2026; cập nhật 14/11/2026 (giờ Việt Nam). Ngu�
 | ID | PDF | Sản phẩm | File / dự kiến | Kiểm chứng | Trạng thái | Bằng chứng | Giới hạn |
 |---|---|---|---|---|---|---|---|
 | SUB1 | 6 | Link repo app/hạ tầng và README dựng toàn bộ từ máy trắng | README.md, remote vxxngw/DevOps, runbookinfra-lab | Người khác dựng máy trắng theo runbook | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | Remote/Git thật, monorepo app/infra có source; chưa tái dựng fullstack từ máy trắng |
-| SUB2a | 6 | Báo cáo kiến trúc, pipeline, lý do công nghệ, bảng phân công | docs/architecture.md, docs/report.md, docs/team-workflow.md | Review đối chiếu hệ thống thật | IMPLEMENTED_NOT_RUN | [M1 evidence](evidence/README.md) | Có architecture/ADR/DoD; thiếu báo cáo cuối/sơ đồ pipeline/tên phân công |
+| SUB2a | 6 | Báo cáo kiến trúc, pipeline, lý do công nghệ, bảng phân công | docs/architecture.md, project-report.md, ci-cd.md, team-workflow.md | Review đối chiếu hệ thống thật và đóng góp nhóm | IMPLEMENTED_NOT_RUN | [Bản nháp](project-report.md) | Có kiến trúc/ADR/pipeline và báo cáo nháp; thiếu kết quả runtime/tải và tên phân công/review thật |
 | SUB2b | 6 | Kết quả load test | docs/load-test-results.md | Raw load output + resource/replica timeline | NOT_STARTED | — | Không lấy số minh họa |
 | SUB2c | 6 | ≥1 postmortem sự cố thực nhóm gặp | docs/postmortem.md | Review timeline/tác động/giả thuyết/evidence/action và owner thực | IMPLEMENTED_NOT_RUN | [Bản kỹ thuật](postmortem.md) | Có sự cố triển khai đã quan sát, tách riêng fault injection; cần nhóm review/gán owner/hạn, chưa coi sản phẩm nhóm hoàn tất |
 | SUB3a | 6 | Runbook deploy | docs/runbooks/deploy.md | Người khác deploy theo runbook | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | Quy trình migration/phases/TLS/Mailpitsmoke có code; chưa chạyK8s |
 | SUB3b | 6 | Runbook rollback | docs/runbooks/rollback.md | Image/configtrước/sau, smoke/time | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | Có snapshot/khôi phục config, không replay migration; chưa drillruntime |
 | SUB3c | 6 | Runbook khôi phục DB | docs/runbooks/restore.md, scripts/backup.sh, restore.sh | pg_dump/checksum/newDBrestore/businesssmoke | IMPLEMENTED_NOT_RUN | [M3](evidence/m3-latest.json) | Có timer/retention/script/giới hạn staging; chưa backupartifact/restore/RPO/RTO thật |
-| SUB3d | 6 | Runbook cho từng loại cảnh báo | docs/runbooks/alerts.md | Fault → điều tra → xử lý → RESOLVED | IMPLEMENTED_NOT_RUN | [M1 evidence](evidence/README.md) | Có danh sách alert/điều tra/xử lý; chưa rules hoặc FIRING/RESOLVED thật |
+| SUB3d | 6 | Runbook cho từng loại cảnh báo | docs/runbooks/alerts.md, observability/prometheus/rules/ | Fault → điều tra → xử lý → RESOLVED phía nhận | IMPLEMENTED_NOT_RUN | [M4 local](evidence/m4-latest.json) | Có 14 rule và runbook từng nhóm; 14 ca promtool qua, chưa diễn tập hoặc nhận tin thật |
 | SUB4 | 6 | Video demo ≤10 phút | docs/submission.md | Mở video, kiểm tra thời lượng và nội dung thật | NOT_STARTED | — | Chưa quay video |
-| SUB5 | 6 | Grafana dashboard export và alert rules | observability/ | Import/query được; promtool; alert thật | NOT_STARTED | — | Chưa có Grafana/Prometheus |
+| SUB5 | 6 | Grafana dashboard export và alert rules | observability/grafana/dashboards/operations.json, prometheus/rules/ | Import/UI/query, promtool và cảnh báo thật | IMPLEMENTED_NOT_RUN | [M4 local](evidence/m4-latest.json) | Có 37 panel, 14 rule vận hành và rule demo riêng; parser/schema đã qua, chưa Grafana UI/Alertmanager delivery |
 
 ## Tiêu chí thiết kế Mốc 1 [THIẾT KẾ từ brief, không phải nguyên văn PDF]
 
