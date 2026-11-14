@@ -2,6 +2,8 @@
 
 ## Mốc 2 – phạm vi local, chưa runtime CI
 
+- [Remote base image scans](m2-base-images-20261114T085952Z/metadata.json): giữ cả nền lỗi và nền thay thế; Python/Nginx/Mailpit mới0CRITICAL, RabbitMQ0; PostgreSQL1ởgosu. Dockerfile đã sửa, custom build/scan/runtime vẫn chưa chạy.
+
 - [Local checks](m2-local-20261114T084619Z/metadata.json): Ruff/format/ESLint/typecheck/build,56passed/8integration skipped; Gitleaks history baseline, scan lock Python/Node gồm dev dependencies và hai demo scanner exit1 có finding thật. HEAD/working tree/source hash ghi riêng; chưa phải Jenkins build hoặc scan image release.
 - [Main protection403](m2-git-policy-20261114T081335Z/metadata.json): GitHub Free/private không cho bật bảo vệ main; giữ repo private, không tạo enforcement/review giả.
 - [Backup Docker](docker-storage-20261114T073814Z/backup-manifest.json): nguồn dừng ghi và bản backup khớp SHA256. [Copy/config thử](docker-migration-20261114T074728Z/copy-and-settings.json) không chứng minh đĩa D active; live check sau đó vẫn dùng C. Xem [runbook](../runbooks/docker-storage-migration.md).

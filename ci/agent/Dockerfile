@@ -1,10 +1,10 @@
 FROM jenkins/inbound-agent:3391.va_37fa_a_305d6d-5-jdk21 AS java
 FROM docker:29.9.3-cli AS docker
-FROM node:24.11.1-bookworm-slim AS node
+FROM node:24.22.1-trixie-slim AS node
 FROM ghcr.io/gitleaks/gitleaks:v8.30.1 AS gitleaks
 FROM aquasec/trivy:0.76.2 AS trivy
 
-FROM python:3.12.12-slim-bookworm
+FROM python:3.12.16-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b
 RUN apt-get update && apt-get install -y --no-install-recommends git curl openssh-client libstdc++6 \
     && rm -rf /var/lib/apt/lists/* \
     && groupadd --gid 1000 jenkins && useradd --uid 1000 --gid 1000 --create-home jenkins \

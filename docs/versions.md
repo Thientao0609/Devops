@@ -4,16 +4,16 @@ Cập nhật 14/11/2026 (Asia/Ho_Chi_Minh). Không dùng tag latest. Pin không 
 
 | Thành phần | Phiên bản chọn / môi trường quan sát | Lý do / giới hạn |
 |---|---|---|
-| Python | Host 3.12.6; image 3.12.12-slim-bookworm | Giữ cùng dòng 3.12; chưa tuyên bố không CVE |
+| Python | Host 3.12.6; image mới3.12.16-slim-trixie ghim digest trong Dockerfile | Nền M1 cũ3.12.12-bookworm có9CRITICAL; nền mới remote scan0CRITICAL, custom image chưa build/run/scan |
 | FastAPI / SQLAlchemy / Alembic | 0.162.6 / 2.0.57 / 1.20.1 | Resolve trong phạm vi requirements.in và kiểm tra thực; API SQLAlchemy 2.0 được giữ riêng |
 | psycopg / Pika | 3.3.9 / 1.4.4 | Driver PostgreSQL và AMQP blocking confirms/manual ack |
 | Prometheus client / PyJWT / pwdlib | 0.26.0 / 2.15.1 / 0.3.1 | Metrics, JWT có expiry và Argon2; tất cả trong lock |
 | Pydantic settings / pytest / Ruff | 2.16.3 / 9.2.0 / 0.17.5 | Env config, checks; Starlette 1.10.0 hiện cảnh báo TestClient/httpx deprecation, chưa bỏ cảnh báo để che lỗi |
 | PostgreSQL | 17.12-alpine3.24, digest `sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f` | Variant chính thức đã đọc passwd/user/version. Bookworm local có passwd rỗng; không kết luận lỗi upstream. Dùng volume mới `postgres-data-alpine`, không xóa volume cũ |
 | RabbitMQ | 4.2.9-management | Quorum retry + at-least-once DLX; bật management/Prometheus plugins; broker dev một node không HA |
-| Mailpit | v1.27.10 | SMTP sink dev/test; không chứng minh gửi ra mailbox bên ngoài |
-| Node / React / TypeScript / Vite | Host 24.22.1; build image Node 24.11.1-alpine; React 19.2.0; TS 5.9.3; Vite 7.2.2 | Build đã chạy; scan image/dependency còn cần Mốc 2 |
-| Nginx / Playwright | 1.28.0-alpine / 1.65.0 | Frontend runtime non-root; browser test dùng Edge installed; version browser ghi trong metadata khi có |
+| Mailpit | v1.33.1 ghim digest, binary sang Alpine3.24 | Nguồn cũ1.27.10 có3CRITICAL; nguồn mới remote scan0CRITICAL. Custom image/SMTP test sau upgrade chưa chạy |
+| Node / React / TypeScript / Vite | Host/build Node24.22.1; React19.2.0; TS5.9.3; Vite7.2.2 | Node build dùng Alpine3.24; agent dùng trixie-slim; native build đã chạy, build image mới chưa chạy |
+| Nginx / Playwright | 1.30.6-alpine3.24 ghim digest / 1.65.0 | Nền cũ1.28.0 có3CRITICAL/EOL Alpine; nền mới remote scan0CRITICAL. Frontend image mới chưa chạy |
 | Inter / Fontsource | @fontsource/inter 5.3.0, lockfile npm | Font Inter tự phục vụ, gồm tiếng Việt và weight400/500/600; SIL OFL1.1 |
 | Docker | Đầu phiên CLI 29.4.0/Desktop 4.69.0; sau phục hồi CLI/engine 29.9.3, Desktop 4.99.0, Compose v5.7.0 | Ghi đúng môi trường thay đổi trong phiên; không ghim phiên bản Docker của máy thay người dùng |
 | ESLint / TypeScript ESLint / React Hooks | 10.15.0 / 8.72.2 / 7.1.1; @eslint/js10.0.1, globals17.14.0 | Exact versions/lockfile; nguồn npm registry chính thức; lint native đạt. ESLint9 đã EOL nên không giữ bộ cài thử9.39.1 |

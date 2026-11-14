@@ -13,6 +13,9 @@ Logo An Uyên Hospital do chủ dự án cung cấp, giữ nguyên trong fronten
 | Mailpit | github.com/axllent/mailpit | MIT |
 | Nginx, Node, Python | Official Docker images | BSD-2-Clause / MIT+phụ thuộc / PSF+phụ thuộc |
 | Playwright | github.com/microsoft/playwright | Apache-2.0 |
+| Jenkins và plugins trực tiếp | jenkins.io, ci/controller/plugins-lock.json | Jenkins MIT; kiểm tra LICENSE từng plugin/artifact khi build, không xóa NOTICE |
+| Gitleaks / Trivy / Docker CLI | github.com/gitleaks/gitleaks, aquasecurity/trivy, docker/cli | MIT / Apache-2.0 / Apache-2.0; binary release kiểm SHA256, chưa là SBOM đầy đủ |
+| ESLint / typescript-eslint / React Hooks lint plugin | npm lockfile và repository upstream | MIT; giữ license bundled |
 | Inter (UI font), @fontsource/inter 5.3.0 | The Inter Project Authors; package npm có integrity trong lockfile | SIL Open Font License 1.1; tự phục vụ các weight400/500/600 gồm tiếng Việt; bản license trong frontend/public/brand/Inter-OFL.txt |
 
 Danh sách trên là hướng dẫn kiểm kê, chưa phải SBOM/license audit đầy đủ. Không xóa LICENSE/NOTICE bundled của phụ thuộc/image. Lockfile ghi phiên bản, npm lock ghi integrity; build/scan/SBOM và xác minh license artifact thực phải bổ sung trước phát hành. Chưa chọn license cho mã riêng của nhóm thay người sở hữu.
