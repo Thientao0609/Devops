@@ -1,0 +1,119 @@
+{
+  "started_at_utc": "2026-11-13T17:33:08.833871+00:00",
+  "commit": "UNCOMMITTED",
+  "scope": "Compose frontend proxy -> FastAPI -> PostgreSQL -> RabbitMQ -> SMTP/Mailpit",
+  "checks": [
+    {
+      "name": "booking_email_body_and_sent",
+      "appointment_id": "d5ff40ab-f84b-4289-918a-0d2eb03720f7"
+    },
+    {
+      "name": "frontend_proxy_recovers_api_recreation"
+    },
+    {
+      "name": "broker_stop_booking_outbox_recovery",
+      "appointment_id": "1b0e04fa-8766-4d17-8f6e-7b4cfdb7ec0c"
+    },
+    {
+      "name": "worker_killed_before_ack_recovered",
+      "appointment_id": "a1c2e3b6-3921-472d-9af8-93f1e1bf217f",
+      "recovery_seconds": 114.781
+    },
+    {
+      "name": "cancellation_email_sent_and_slots_released",
+      "count": 3
+    }
+  ],
+  "commands": [
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "up",
+        "-d",
+        "--wait",
+        "--force-recreate",
+        "--no-deps",
+        "api"
+      ],
+      "at_utc": "2026-11-13T17:33:23.474821+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-api-1 Recreate \n Container clinic-dev-api-1 Recreated \n Container clinic-dev-api-1 Starting \n Container clinic-dev-api-1 Started \n Container clinic-dev-api-1 Waiting \n Container clinic-dev-api-1 Healthy \n"
+    },
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "stop",
+        "rabbitmq"
+      ],
+      "at_utc": "2026-11-13T17:33:27.990698+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-rabbitmq-1 Stopping \n Container clinic-dev-rabbitmq-1 Stopped \n"
+    },
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "up",
+        "-d",
+        "--wait",
+        "rabbitmq"
+      ],
+      "at_utc": "2026-11-13T17:33:48.872586+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-rabbitmq-1 Starting \n Container clinic-dev-rabbitmq-1 Started \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-rabbitmq-1 Healthy \n"
+    },
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "D:\\CODE\\OOPs\\Do_An\\tmp\\worker-delay.yaml",
+        "up",
+        "-d",
+        "--wait",
+        "worker"
+      ],
+      "at_utc": "2026-11-13T17:34:00.749424+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-mailpit-1 Running \n Container clinic-dev-rabbitmq-1 Running \n Container clinic-dev-postgres-1 Running \n Container clinic-dev-worker-1 Recreate \n Container clinic-dev-worker-1 Recreated \n Container clinic-dev-mailpit-1 Waiting \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-postgres-1 Waiting \n Container clinic-dev-rabbitmq-1 Healthy \n Container clinic-dev-postgres-1 Healthy \n Container clinic-dev-migrate-1 Starting \n Container clinic-dev-mailpit-1 Healthy \n Container clinic-dev-migrate-1 Started \n Container clinic-dev-migrate-1 Waiting \n Container clinic-dev-migrate-1 Exited \n Container clinic-dev-worker-1 Starting \n Container clinic-dev-worker-1 Started \n Container clinic-dev-mailpit-1 Waiting \n Container clinic-dev-worker-1 Waiting \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-postgres-1 Waiting \n Container clinic-dev-migrate-1 Waiting \n Container clinic-dev-migrate-1 Exited \n Container clinic-dev-postgres-1 Healthy \n Container clinic-dev-rabbitmq-1 Healthy \n Container clinic-dev-mailpit-1 Healthy \n Container clinic-dev-worker-1 Healthy \n"
+    },
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "kill",
+        "-s",
+        "SIGKILL",
+        "worker"
+      ],
+      "at_utc": "2026-11-13T17:34:12.506591+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-worker-1 Killing \n Container clinic-dev-worker-1 Killed \n"
+    },
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "up",
+        "-d",
+        "--wait",
+        "worker"
+      ],
+      "at_utc": "2026-11-13T17:34:20.577317+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-rabbitmq-1 Running \n Container clinic-dev-postgres-1 Running \n Container clinic-dev-mailpit-1 Running \n Container clinic-dev-worker-1 Recreate \n Container clinic-dev-worker-1 Recreated \n Container clinic-dev-postgres-1 Waiting \n Container clinic-dev-mailpit-1 Waiting \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-postgres-1 Healthy \n Container clinic-dev-migrate-1 Starting \n Container clinic-dev-rabbitmq-1 Healthy \n Container clinic-dev-mailpit-1 Healthy \n Container clinic-dev-migrate-1 Started \n Container clinic-dev-migrate-1 Waiting \n Container clinic-dev-migrate-1 Exited \n Container clinic-dev-worker-1 Starting \n Container clinic-dev-worker-1 Started \n Container clinic-dev-migrate-1 Waiting \n Container clinic-dev-worker-1 Waiting \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-postgres-1 Waiting \n Container clinic-dev-mailpit-1 Waiting \n Container clinic-dev-migrate-1 Exited \n Container clinic-dev-postgres-1 Healthy \n Container clinic-dev-mailpit-1 Healthy \n Container clinic-dev-rabbitmq-1 Healthy \n Container clinic-dev-worker-1 Healthy \n"
+    }
+  ],
+  "faults_requested": true,
+  "created_appointments": [
+    "d5ff40ab-f84b-4289-918a-0d2eb03720f7",
+    "1b0e04fa-8766-4d17-8f6e-7b4cfdb7ec0c",
+    "a1c2e3b6-3921-472d-9af8-93f1e1bf217f"
+  ],
+  "exit_code": 0,
+  "ended_at_utc": "2026-11-13T17:36:08.709643+00:00"
+}

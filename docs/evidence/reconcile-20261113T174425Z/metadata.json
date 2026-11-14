@@ -1,0 +1,29 @@
+{
+  "at_utc": "2026-11-13T17:44:25.919575+00:00",
+  "commit": "UNCOMMITTED",
+  "scope": "Cancel only synthetic appointments from the known failed smoke window; preserve history",
+  "filter_window_utc": [
+    "2026-11-13T17:22:54Z",
+    "2026-11-13T17:24:00Z"
+  ],
+  "correlation_prefix": "runtime-",
+  "script_sha256": "5f35b2ed5cb8b1cff325505aa46f923e55d78d1c20218d73e2500e8aa4681f03",
+  "results": [
+    {
+      "id": "43e05518-183a-4fc7-bb51-63786f0f02c3",
+      "status": "CANCELLED",
+      "notification_status": "SENT"
+    },
+    {
+      "id": "860a6b6c-3623-4660-87a4-df82f31dec10",
+      "status": "CANCELLED",
+      "notification_status": "SENT"
+    },
+    {
+      "id": "9703450f-0ab0-4d73-9ab9-d84735001e80",
+      "status": "CANCELLED",
+      "notification_status": "SENT"
+    }
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,8 @@
+clinic-dev-publisher-1 clinic-app:dev Up 41 seconds (healthy)
+clinic-dev-api-1 clinic-app:dev Up 40 seconds (healthy)
+clinic-dev-frontend-1 clinic-frontend:dev Up 3 minutes (healthy)
+clinic-dev-worker-1 clinic-app:dev Up 5 minutes (healthy)
+clinic-dev-postgres-1 f7c623bbf514 Up 4 minutes (healthy)
+clinic-dev-rabbitmq-1 28e9ed1bb328 Up 4 minutes (healthy)
+clinic-dev-mailpit-1 axllent/mailpit:v1.27.10 Up 4 minutes (healthy)
+my-jenkins my-jenkins Up 5 minutes

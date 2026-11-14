@@ -1,0 +1,44 @@
+[
+  {
+    "service": "api",
+    "state": "running",
+    "health": "healthy",
+    "image": "clinic-app:dev"
+  },
+  {
+    "service": "frontend",
+    "state": "running",
+    "health": "healthy",
+    "image": "clinic-frontend:dev"
+  },
+  {
+    "service": "mailpit",
+    "state": "running",
+    "health": "healthy",
+    "image": "axllent/mailpit:v1.27.10"
+  },
+  {
+    "service": "postgres",
+    "state": "running",
+    "health": "healthy",
+    "image": "sha256:f7c623bbf514a3f7f7118f2104d2f40175cbcb92505ef4e3e9ef172de6118b1f"
+  },
+  {
+    "service": "publisher",
+    "state": "running",
+    "health": "healthy",
+    "image": "clinic-app:dev"
+  },
+  {
+    "service": "rabbitmq",
+    "state": "running",
+    "health": "healthy",
+    "image": "sha256:28e9ed1bb3285d572e88a4d770158de6a51cda7a2be3a69f792756439b1f1688"
+  },
+  {
+    "service": "worker",
+    "state": "running",
+    "health": "healthy",
+    "image": "clinic-app:dev"
+  }
+]

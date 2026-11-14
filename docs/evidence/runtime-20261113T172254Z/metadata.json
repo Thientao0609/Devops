@@ -1,0 +1,75 @@
+{
+  "started_at_utc": "2026-11-13T17:22:54.102888+00:00",
+  "commit": "UNCOMMITTED",
+  "scope": "Compose frontend proxy -> FastAPI -> PostgreSQL -> RabbitMQ -> SMTP/Mailpit",
+  "checks": [
+    {
+      "name": "booking_email_body_and_sent",
+      "appointment_id": "43e05518-183a-4fc7-bb51-63786f0f02c3"
+    },
+    {
+      "name": "broker_stop_booking_outbox_recovery",
+      "appointment_id": "860a6b6c-3623-4660-87a4-df82f31dec10"
+    }
+  ],
+  "commands": [
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "stop",
+        "rabbitmq"
+      ],
+      "at_utc": "2026-11-13T17:23:04.047299+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-rabbitmq-1 Stopping \n Container clinic-dev-rabbitmq-1 Stopped \n"
+    },
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "up",
+        "-d",
+        "--wait",
+        "rabbitmq"
+      ],
+      "at_utc": "2026-11-13T17:23:26.155462+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-rabbitmq-1 Starting \n Container clinic-dev-rabbitmq-1 Started \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-rabbitmq-1 Healthy \n"
+    },
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "-f",
+        "compose.yaml",
+        "-f",
+        "D:\\CODE\\OOPs\\Do_An\\tmp\\worker-delay.yaml",
+        "up",
+        "-d",
+        "--wait",
+        "worker"
+      ],
+      "at_utc": "2026-11-13T17:23:37.492253+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-rabbitmq-1 Running \n Container clinic-dev-postgres-1 Running \n Container clinic-dev-mailpit-1 Running \n Container clinic-dev-worker-1 Recreate \n Container clinic-dev-worker-1 Recreated \n Container clinic-dev-postgres-1 Waiting \n Container clinic-dev-mailpit-1 Waiting \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-mailpit-1 Healthy \n Container clinic-dev-postgres-1 Healthy \n Container clinic-dev-migrate-1 Starting \n Container clinic-dev-rabbitmq-1 Healthy \n Container clinic-dev-migrate-1 Started \n Container clinic-dev-migrate-1 Waiting \n Container clinic-dev-migrate-1 Exited \n Container clinic-dev-worker-1 Starting \n Container clinic-dev-worker-1 Started \n Container clinic-dev-migrate-1 Waiting \n Container clinic-dev-worker-1 Waiting \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-postgres-1 Waiting \n Container clinic-dev-mailpit-1 Waiting \n Container clinic-dev-migrate-1 Exited \n Container clinic-dev-postgres-1 Healthy \n Container clinic-dev-mailpit-1 Healthy \n Container clinic-dev-rabbitmq-1 Healthy \n Container clinic-dev-worker-1 Healthy \n"
+    },
+    {
+      "arguments": [
+        "docker",
+        "compose",
+        "up",
+        "-d",
+        "--wait",
+        "worker"
+      ],
+      "at_utc": "2026-11-13T17:23:59.124507+00:00",
+      "exit_code": 0,
+      "output": " Container clinic-dev-rabbitmq-1 Running \n Container clinic-dev-postgres-1 Running \n Container clinic-dev-mailpit-1 Running \n Container clinic-dev-worker-1 Recreate \n Container clinic-dev-worker-1 Recreated \n Container clinic-dev-mailpit-1 Waiting \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-postgres-1 Waiting \n Container clinic-dev-rabbitmq-1 Healthy \n Container clinic-dev-mailpit-1 Healthy \n Container clinic-dev-postgres-1 Healthy \n Container clinic-dev-migrate-1 Starting \n Container clinic-dev-migrate-1 Started \n Container clinic-dev-migrate-1 Waiting \n Container clinic-dev-migrate-1 Exited \n Container clinic-dev-worker-1 Starting \n Container clinic-dev-worker-1 Started \n Container clinic-dev-worker-1 Waiting \n Container clinic-dev-mailpit-1 Waiting \n Container clinic-dev-rabbitmq-1 Waiting \n Container clinic-dev-postgres-1 Waiting \n Container clinic-dev-migrate-1 Waiting \n Container clinic-dev-migrate-1 Exited \n Container clinic-dev-postgres-1 Healthy \n Container clinic-dev-rabbitmq-1 Healthy \n Container clinic-dev-mailpit-1 Healthy \n Container clinic-dev-worker-1 Healthy \n"
+    }
+  ],
+  "faults_requested": true,
+  "exit_code": 1,
+  "error_type": "RemoteProtocolError",
+  "ended_at_utc": "2026-11-13T17:23:59.124507+00:00"
+}

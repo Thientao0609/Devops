@@ -1,0 +1,17 @@
+{
+  "started_at_utc": "2026-11-13T17:00:16.446Z",
+  "commit": "UNCOMMITTED",
+  "scope": "Browser -> native FastAPI -> isolated SQLite; no broker or email verification",
+  "checks": [
+    "patient login/available slots/booking/PENDING notification/mobile no horizontal overflow",
+    "patient cancellation using real API",
+    "second patient cannot see first patient appointment"
+  ],
+  "bundle_sha256": {
+    "index-6tEui3Qe.js": "ad64709b689c92d20b111f23542dcf1dbcaa368c7053fcfee38d5057c47e1367",
+    "index-nnbHwyWe.css": "e7fb237f6fc8032085d3a29361f0342ab38f4ebce7d9cfd2527db78eb651f5ff"
+  },
+  "exit_code": 1,
+  "error": "locator.selectOption: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Bác sĩ', { exact: true })\u001b[22m\n",
+  "ended_at_utc": "2026-11-13T17:00:48.974Z"
+}

@@ -1,0 +1,1 @@
+sha256:73b85715c0c8ba97db00d61d523e87f7ea170df8a63a46242c6cea72608da23f user=nginx health=["CMD-SHELL","wget -q -O /dev/null http://127.0.0.1:8080/health"]

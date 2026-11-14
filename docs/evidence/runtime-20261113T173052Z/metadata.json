@@ -1,0 +1,12 @@
+{
+  "started_at_utc": "2026-11-13T17:30:52.016106+00:00",
+  "commit": "UNCOMMITTED",
+  "scope": "Compose frontend proxy -> FastAPI -> PostgreSQL -> RabbitMQ -> SMTP/Mailpit",
+  "checks": [],
+  "commands": [],
+  "faults_requested": true,
+  "created_appointments": [],
+  "exit_code": 1,
+  "error_type": "HTTPStatusError",
+  "ended_at_utc": "2026-11-13T17:30:54.333355+00:00"
+}

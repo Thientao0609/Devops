@@ -1,0 +1,46 @@
+{
+  "at_utc": "2026-11-14T06:38:16.087666+00:00",
+  "http": [
+    {
+      "url": "http://localhost:8000/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8001/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8002/ready",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:18080/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:18080/api/options",
+      "status": 401
+    },
+    {
+      "url": "http://127.0.0.1:8000/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://127.0.0.1:8001/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://127.0.0.1:8002/ready",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/api/options",
+      "status": 401
+    }
+  ],
+  "scope": "Unauthenticated read-only host HTTP checks. /api/options expects401 when API is reachable."
+}

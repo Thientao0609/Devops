@@ -1,0 +1,322 @@
+{
+  "at_utc": "2026-11-14T06:36:27.966157+00:00",
+  "scope": "Read-only DevOps rubric audit; no provision/deploy/stop/fault/credential modification",
+  "commands": [
+    {
+      "label": "git-head",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/CODE/OOPs/Do_An",
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "exit_code": 128,
+      "output": "git-head.txt"
+    },
+    {
+      "label": "git-tracked",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/CODE/OOPs/Do_An",
+        "ls-files"
+      ],
+      "exit_code": 0,
+      "output": "git-tracked.txt"
+    },
+    {
+      "label": "git-remote-names",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/CODE/OOPs/Do_An",
+        "remote"
+      ],
+      "exit_code": 0,
+      "output": "git-remote-names.txt"
+    },
+    {
+      "label": "git-tags",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/CODE/OOPs/Do_An",
+        "tag",
+        "--list"
+      ],
+      "exit_code": 0,
+      "output": "git-tags.txt"
+    },
+    {
+      "label": "git-env-ignored",
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/CODE/OOPs/Do_An",
+        "check-ignore",
+        ".env"
+      ],
+      "exit_code": 0,
+      "output": "git-env-ignored.txt"
+    },
+    {
+      "label": "kubernetes-current-context",
+      "command": [
+        "kubectl",
+        "config",
+        "current-context"
+      ],
+      "exit_code": 1,
+      "output": "kubernetes-current-context.txt"
+    },
+    {
+      "label": "kubernetes-context-names",
+      "command": [
+        "kubectl",
+        "config",
+        "get-contexts",
+        "-o",
+        "name"
+      ],
+      "exit_code": 0,
+      "output": "kubernetes-context-names.txt"
+    },
+    {
+      "label": "compose-status",
+      "command": [
+        "docker",
+        "compose",
+        "ps",
+        "-a",
+        "--format",
+        "json"
+      ],
+      "exit_code": 0,
+      "output": "compose-status.txt"
+    },
+    {
+      "label": "docker-containers",
+      "command": [
+        "docker",
+        "ps",
+        "--format",
+        "{{.Names}} {{.Image}} {{.Status}}"
+      ],
+      "exit_code": 0,
+      "output": "docker-containers.txt"
+    },
+    {
+      "label": "compose-config-validation",
+      "command": [
+        "docker",
+        "compose",
+        "config",
+        "--quiet"
+      ],
+      "exit_code": 0,
+      "output": "compose-config-validation.txt"
+    },
+    {
+      "label": "alembic-head",
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "api",
+        "alembic",
+        "current"
+      ],
+      "exit_code": 0,
+      "output": "alembic-head.txt"
+    }
+  ],
+  "commit": "UNCOMMITTED",
+  "git": {
+    "tracked_files": 0,
+    "remote_names": [],
+    "tags": [],
+    "env_ignored": true
+  },
+  "artifacts": {
+    "Jenkinsfile": false,
+    "infra/terraform": false,
+    "infra/ansible": false,
+    "deploy/k8s": false,
+    "observability": false,
+    "scripts/backup.sh": false,
+    "scripts/host-health.sh": false,
+    "scripts/restore.sh": false,
+    "tests/load": false,
+    "docs/report.md": false,
+    "docs/ci-cd.md": false,
+    "docs/cloud-cost-estimate.md": true,
+    "docs/postmortem.md": true,
+    "compose.yaml": true,
+    "compose.test.yaml": true,
+    "services/Dockerfile": true,
+    "frontend/Dockerfile": true,
+    "images/postgres/Dockerfile": true,
+    "images/rabbitmq/Dockerfile": true,
+    "images/mailpit/Dockerfile": false
+  },
+  "native_tools": {
+    "git": true,
+    "docker": true,
+    "terraform": false,
+    "ansible": false,
+    "ansible-playbook": false,
+    "kubectl": true,
+    "helm": false,
+    "kind": false,
+    "minikube": false,
+    "VBoxManage": false,
+    "gitleaks": false,
+    "trivy": false,
+    "k6": false
+  },
+  "kubernetes": {
+    "current_context_set": false,
+    "context_names": []
+  },
+  "compose": [
+    {
+      "service": "api",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "frontend",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "mailpit",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "migrate",
+      "state": "exited",
+      "health": "",
+      "exit_code": 0
+    },
+    {
+      "service": "postgres",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "publisher",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "rabbitmq",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    },
+    {
+      "service": "seed",
+      "state": "exited",
+      "health": "",
+      "exit_code": 0
+    },
+    {
+      "service": "worker",
+      "state": "running",
+      "health": "healthy",
+      "exit_code": 0
+    }
+  ],
+  "runtime_inspection": "docs\\evidence\\inspection-20261114T063553Z\\metadata.json",
+  "http": [
+    {
+      "url": "http://localhost:8000/health",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8000/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8000/metrics",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8001/health",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8001/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8001/metrics",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8002/health",
+      "status": 200,
+      "output": "8002-health.txt"
+    },
+    {
+      "url": "http://localhost:8002/ready",
+      "status": 200,
+      "output": "8002-ready.txt"
+    },
+    {
+      "url": "http://localhost:8002/metrics",
+      "status": 200,
+      "output": "8002-metrics.txt"
+    },
+    {
+      "url": "http://localhost:15693/metrics",
+      "status": 200,
+      "output": "rabbitmq-metrics.txt"
+    },
+    {
+      "url": "http://localhost:15693/metrics/per-object",
+      "status": 200,
+      "output": "rabbitmq-metrics-per-object.txt"
+    }
+  ],
+  "json_log_validation": [
+    {
+      "service": "clinic-dev-api-1",
+      "lines": 100,
+      "json_lines": 100
+    },
+    {
+      "service": "clinic-dev-publisher-1",
+      "lines": 87,
+      "json_lines": 87
+    },
+    {
+      "service": "clinic-dev-worker-1",
+      "lines": 100,
+      "json_lines": 100
+    }
+  ],
+  "runtime_command_failures": [],
+  "pdf": {
+    "path": "C:\\Users\\Acer\\Downloads\\Đề tài đồ án môn DevOps.pdf",
+    "sha256": "f6feae5c9c2f67afe571e52e25dd64a52b24ee9854f09c5aae9fe42bfd685bf1"
+  },
+  "brief": {
+    "path": "C:\\Users\\Acer\\Downloads\\CODEX_BRIEF_Dat_lich_kham_DevOps.txt",
+    "sha256": "17fbbf090313f3ec8cca30cae233b447c91fe0341a5d886a11969bf33280b619"
+  },
+  "matrix_before_update": {
+    "sha256": "140510f9427759e18e2910239970750bda505a9f8be65e8bb4f6f82b13a2f19f",
+    "rows": 73
+  }
+}

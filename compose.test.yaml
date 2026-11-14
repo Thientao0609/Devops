@@ -1,0 +1,24 @@
+services:
+  integration-tests:
+    image: clinic-app:${IMAGE_TAG:-dev}
+    profiles: [test]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://clinic:${POSTGRES_PASSWORD:?Run init-env}@postgres:5432/clinic
+      TEST_DATABASE_URL: postgresql+psycopg://clinic:${POSTGRES_PASSWORD:?Run init-env}@postgres:5432/clinic
+      RABBITMQ_URL: amqp://clinic:${RABBITMQ_PASSWORD:?Run init-env}@rabbitmq:5672/clinic-dev
+      SMTP_HOST: mailpit
+      SMTP_PORT: 1025
+      MAILPIT_API_URL: http://mailpit:8025
+      RUN_BROKER_TESTS: '1'
+      ENVIRONMENT: test
+    command: [python, -m, pytest, -q, -s, --tb=short, -o, faulthandler_timeout=30, -o, cache_dir=/tmp/pytest_cache, --junitxml=/evidence/junit.xml]
+    volumes:
+      - ./tests:/app/tests:ro
+      - ./pyproject.toml:/app/pyproject.toml:ro
+      - ${EVIDENCE_DIR:-./docs/evidence/integration-container}:/evidence
+    networks: [clinic]
+    depends_on:
+      postgres: {condition: service_healthy}
+      rabbitmq: {condition: service_healthy}
+      mailpit: {condition: service_healthy}

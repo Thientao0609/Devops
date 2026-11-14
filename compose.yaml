@@ -1,0 +1,113 @@
+name: clinic-dev
+x-app: &app
+  build:
+    context: .
+    dockerfile: services/Dockerfile
+  image: clinic-app:${IMAGE_TAG:-dev}
+  env_file: .env
+  environment: &app-env
+    DATABASE_URL: postgresql+psycopg://clinic:${POSTGRES_PASSWORD:?Run init-env}@postgres:5432/clinic
+    RABBITMQ_URL: amqp://clinic:${RABBITMQ_PASSWORD:?Run init-env}@rabbitmq:5672/clinic-dev
+    SMTP_HOST: mailpit
+    SMTP_PORT: 1025
+  networks: [clinic]
+  init: true
+  stop_grace_period: 45s
+  restart: unless-stopped
+  security_opt: [no-new-privileges:true]
+  cap_drop: [ALL]
+services:
+  postgres:
+    build: images/postgres
+    image: clinic-postgres:${IMAGE_TAG:-dev}
+    environment:
+      POSTGRES_USER: clinic
+      POSTGRES_DB: clinic
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run init-env}
+    ports: ["127.0.0.1:5433:5432"]
+    volumes: [postgres-data-alpine:/var/lib/postgresql/data]
+    networks: [clinic]
+  rabbitmq:
+    build: images/rabbitmq
+    image: clinic-rabbitmq:${IMAGE_TAG:-dev}
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: clinic
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:?Run init-env}
+      RABBITMQ_DEFAULT_VHOST: clinic-dev
+    ports: ["127.0.0.1:5673:5672", "127.0.0.1:15673:15672", "127.0.0.1:15693:15692"]
+    volumes: [rabbitmq-data:/var/lib/rabbitmq]
+    networks: [clinic]
+    healthcheck:
+      test: [CMD, rabbitmq-diagnostics, -q, ping]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+  mailpit:
+    image: axllent/mailpit:v1.27.10
+    user: "1000:1000"
+    ports: ["127.0.0.1:1025:1025", "127.0.0.1:8025:8025"]
+    networks: [clinic]
+    healthcheck:
+      test: [CMD, /mailpit, readyz]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  migrate:
+    <<: *app
+    command: [alembic, upgrade, head]
+    restart: "no"
+    depends_on:
+      postgres: {condition: service_healthy}
+    healthcheck: {disable: true}
+  api:
+    <<: *app
+    command: [python, -m, uvicorn, clinic.api:app, --host, 0.0.0.0, --port, '8000', --no-access-log, --log-config, /app/services/logging.json]
+    ports: ["127.0.0.1:8000:8000"]
+    depends_on:
+      seed: {condition: service_completed_successfully}
+  seed:
+    <<: *app
+    command: [python, -m, clinic.seed]
+    restart: "no"
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+    healthcheck: {disable: true}
+  publisher:
+    <<: *app
+    command: [python, -m, clinic.runtime, publisher, --port, '8001']
+    ports: ["127.0.0.1:8001:8001"]
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8001/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      rabbitmq: {condition: service_healthy}
+  worker:
+    <<: *app
+    command: [python, -m, clinic.runtime, worker, --port, '8002']
+    ports: ["127.0.0.1:8002:8002"]
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://localhost:8002/health', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    depends_on:
+      migrate: {condition: service_completed_successfully}
+      rabbitmq: {condition: service_healthy}
+      mailpit: {condition: service_healthy}
+  frontend:
+    build: frontend
+    image: clinic-frontend:${IMAGE_TAG:-dev}
+    ports: ["127.0.0.1:${FRONTEND_PORT:-18080}:8080"]
+    networks: [clinic]
+    depends_on:
+      api: {condition: service_healthy}
+volumes:
+  postgres-data-alpine:
+  rabbitmq-data:
+networks:
+  clinic:

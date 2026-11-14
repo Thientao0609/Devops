@@ -1,0 +1,61 @@
+{
+  "started_at_utc": "2026-11-14T05:38:24.477Z",
+  "commit": "UNCOMMITTED",
+  "scope": "UI requirement audit: real API login/doctors/slots; intercepted transport failures and synthetic reminder-status responses. No appointment created or changed.",
+  "checks": [
+    {
+      "name": "doctor search empty state retains query",
+      "result": "PASS"
+    },
+    {
+      "name": "slot loading indicator while request is pending",
+      "result": "PASS"
+    },
+    {
+      "name": "slot retry restores selected day and visible available times",
+      "result": "PASS"
+    },
+    {
+      "name": "back/edit preserves chosen time and reminder preference",
+      "result": "PASS"
+    },
+    {
+      "name": "network loss preserves review, email and reminder choice",
+      "result": "PASS"
+    },
+    {
+      "name": "non-JSON gateway error retains review data and same idempotency key",
+      "result": "PASS"
+    },
+    {
+      "name": "concurrent slot conflict retains details and requires another time",
+      "result": "PASS"
+    },
+    {
+      "name": "reminder delivery failure is visible separately from confirmation SENT",
+      "result": "PASS"
+    },
+    {
+      "name": "reminder status PENDING is visible",
+      "result": "PASS"
+    },
+    {
+      "name": "reminder status PROCESSING is visible",
+      "result": "PASS"
+    },
+    {
+      "name": "reminder status RETRY_PENDING is visible",
+      "result": "PASS"
+    },
+    {
+      "name": "reminder status SENT is visible",
+      "result": "PASS"
+    },
+    {
+      "name": "JavaScript has no uncaught error",
+      "result": "PASS"
+    }
+  ],
+  "exit_code": 0,
+  "ended_at_utc": "2026-11-14T05:38:27.608Z"
+}

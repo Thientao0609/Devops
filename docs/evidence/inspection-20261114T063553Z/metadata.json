@@ -1,0 +1,406 @@
+{
+  "at_utc": "2026-11-14T06:35:53.916791+00:00",
+  "commit": "UNCOMMITTED",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "version"
+      ],
+      "exit_code": 0,
+      "output": "command-00.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "exit_code": 0,
+      "output": "command-01.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "config",
+        "--quiet"
+      ],
+      "exit_code": 0,
+      "output": "command-02.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "ps",
+        "-a"
+      ],
+      "exit_code": 0,
+      "output": "command-03.log"
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "safe.directory=D:/CODE/OOPs/Do_An",
+        "status",
+        "--short"
+      ],
+      "exit_code": 0,
+      "output": "command-04.log"
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "clinic-app:dev",
+        "--format",
+        "{{.Id}} user={{index .Config \"User\"}} health={{json (index .Config \"Healthcheck\")}}"
+      ],
+      "exit_code": 0,
+      "output": "command-05.log"
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "clinic-frontend:dev",
+        "--format",
+        "{{.Id}} user={{index .Config \"User\"}} health={{json (index .Config \"Healthcheck\")}}"
+      ],
+      "exit_code": 0,
+      "output": "command-06.log"
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "clinic-postgres:dev",
+        "--format",
+        "{{.Id}} user={{index .Config \"User\"}} health={{json (index .Config \"Healthcheck\")}}"
+      ],
+      "exit_code": 0,
+      "output": "command-07.log"
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "clinic-rabbitmq:dev",
+        "--format",
+        "{{.Id}} user={{index .Config \"User\"}} health={{json (index .Config \"Healthcheck\")}}"
+      ],
+      "exit_code": 0,
+      "output": "command-08.log"
+    },
+    {
+      "command": [
+        "docker",
+        "image",
+        "inspect",
+        "axllent/mailpit:v1.27.10",
+        "--format",
+        "{{.Id}} user={{index .Config \"User\"}} health={{json (index .Config \"Healthcheck\")}}"
+      ],
+      "exit_code": 0,
+      "output": "command-09.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "api",
+        "id"
+      ],
+      "exit_code": 0,
+      "output": "command-10.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "publisher",
+        "id"
+      ],
+      "exit_code": 0,
+      "output": "command-11.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "worker",
+        "id"
+      ],
+      "exit_code": 0,
+      "output": "command-12.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "postgres",
+        "id"
+      ],
+      "exit_code": 0,
+      "output": "command-13.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "rabbitmq",
+        "id"
+      ],
+      "exit_code": 0,
+      "output": "command-14.log"
+    },
+    {
+      "command": [
+        "docker",
+        "logs",
+        "--tail",
+        "100",
+        "clinic-dev-api-1"
+      ],
+      "exit_code": 0,
+      "output": "command-15.log"
+    },
+    {
+      "command": [
+        "docker",
+        "inspect",
+        "clinic-dev-api-1",
+        "--format",
+        "user={{.Config.User}} log_driver={{.HostConfig.LogConfig.Type}} cap_drop={{json .HostConfig.CapDrop}} security_opt={{json .HostConfig.SecurityOpt}}"
+      ],
+      "exit_code": 0,
+      "output": "command-16.log"
+    },
+    {
+      "command": [
+        "docker",
+        "logs",
+        "--tail",
+        "100",
+        "clinic-dev-publisher-1"
+      ],
+      "exit_code": 0,
+      "output": "command-17.log"
+    },
+    {
+      "command": [
+        "docker",
+        "inspect",
+        "clinic-dev-publisher-1",
+        "--format",
+        "user={{.Config.User}} log_driver={{.HostConfig.LogConfig.Type}} cap_drop={{json .HostConfig.CapDrop}} security_opt={{json .HostConfig.SecurityOpt}}"
+      ],
+      "exit_code": 0,
+      "output": "command-18.log"
+    },
+    {
+      "command": [
+        "docker",
+        "logs",
+        "--tail",
+        "100",
+        "clinic-dev-worker-1"
+      ],
+      "exit_code": 0,
+      "output": "command-19.log"
+    },
+    {
+      "command": [
+        "docker",
+        "inspect",
+        "clinic-dev-worker-1",
+        "--format",
+        "user={{.Config.User}} log_driver={{.HostConfig.LogConfig.Type}} cap_drop={{json .HostConfig.CapDrop}} security_opt={{json .HostConfig.SecurityOpt}}"
+      ],
+      "exit_code": 0,
+      "output": "command-20.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "exec",
+        "-T",
+        "worker",
+        "python",
+        "-c",
+        "from clinic.config import settings; print('worker_delay_seconds=', settings().worker_delay_seconds)"
+      ],
+      "exit_code": 0,
+      "output": "command-21.log"
+    }
+  ],
+  "http": [
+    {
+      "url": "http://localhost:8000/health",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8000/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8000/metrics",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8001/health",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8001/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8001/metrics",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8002/health",
+      "status": 200,
+      "output": "8002-health.txt"
+    },
+    {
+      "url": "http://localhost:8002/ready",
+      "status": 200,
+      "output": "8002-ready.txt"
+    },
+    {
+      "url": "http://localhost:8002/metrics",
+      "status": 200,
+      "output": "8002-metrics.txt"
+    },
+    {
+      "url": "http://localhost:15693/metrics",
+      "status": 200,
+      "output": "rabbitmq-metrics.txt"
+    },
+    {
+      "url": "http://localhost:15693/metrics/per-object",
+      "status": 200,
+      "output": "rabbitmq-metrics-per-object.txt"
+    }
+  ],
+  "json_log_validation": [
+    {
+      "service": "clinic-dev-api-1",
+      "lines": 100,
+      "json_lines": 100
+    },
+    {
+      "service": "clinic-dev-publisher-1",
+      "lines": 87,
+      "json_lines": 87
+    },
+    {
+      "service": "clinic-dev-worker-1",
+      "lines": 100,
+      "json_lines": 100
+    }
+  ],
+  "historical_logs": [
+    {
+      "file": "compose-dns-fix.log",
+      "source_mtime_utc": "2026-11-13T17:33:07.617154+00:00",
+      "note": "Original earlier command output; read log/evidence index for success or failure"
+    },
+    {
+      "file": "compose-plugins.log",
+      "source_mtime_utc": "2026-11-13T17:29:50.757553+00:00",
+      "note": "Original earlier command output; read log/evidence index for success or failure"
+    },
+    {
+      "file": "dependencies-alpine.log",
+      "source_mtime_utc": "2026-11-13T17:11:23.064646+00:00",
+      "note": "Original earlier command output; read log/evidence index for success or failure"
+    },
+    {
+      "file": "dependencies-run.log",
+      "source_mtime_utc": "2026-11-13T17:05:16.086539+00:00",
+      "note": "Original earlier command output; read log/evidence index for success or failure"
+    }
+  ],
+  "brief": {
+    "filename": "CODEX_BRIEF_Dat_lich_kham_DevOps.txt",
+    "sha256": "17fbbf090313f3ec8cca30cae233b447c91fe0341a5d886a11969bf33280b619"
+  },
+  "pdf": {
+    "filename": "Đề tài đồ án môn DevOps.pdf",
+    "sha256": "f6feae5c9c2f67afe571e52e25dd64a52b24ee9854f09c5aae9fe42bfd685bf1"
+  },
+  "source_sha256": {
+    "services\\clinic\\api.py": "73ab5a91deef373ac555fa8dffb7777e3d8e59bc228df114d6bbbd434364496f",
+    "services\\clinic\\broker.py": "b6f9171b12e21eb0c7dd6a300b070b5043a6a83f1cec4c7ed02203a0dde781aa",
+    "services\\clinic\\config.py": "3f37106a43ed225983d9744c67b0b6bf24bbc88d36d05fcade31754f8250cb7c",
+    "services\\clinic\\contracts.py": "43738a092027015a14320669e94fa12edfb31616f929478045a9e7833000df6f",
+    "services\\clinic\\db.py": "52c5a85947e181463ca57f191de5977801c76f5d31da7614c9c61e39730fe506",
+    "services\\clinic\\dlq.py": "9b59cc6f31b10c80eeefcc6e376ca48a16b4e6fca313bd971decacc904bdb7ec",
+    "services\\clinic\\events.py": "950e5703304804e526547e46992357524e67a4fe054dfa220c537e8af81c0587",
+    "services\\clinic\\models.py": "39eb0e01558bf91e49576786fb6a1b0513bc2bcdbda0c2a62cd380fdf0b55153",
+    "services\\clinic\\publisher.py": "7f710d6af80fdfb469740769f1583603da5b074d07624fb66f2632ca2781abb7",
+    "services\\clinic\\reminders.py": "cb99c2ba4944767ec3752b1c21ffe5259486f41279bc1ac591d9207620f47b0e",
+    "services\\clinic\\reset_password.py": "1ef93dd40150401731560daf4786d19b524ba16d4469b736441e56af37c65349",
+    "services\\clinic\\runtime.py": "bd397d2d6f37789d2856b6b41e1abd57ea8b98a10166247e3456d8704fd145a1",
+    "services\\clinic\\security.py": "8e3e74a7b27033ccca4d8d6c56f88043173e68cd716923b179a97d0f4095913a",
+    "services\\clinic\\seed.py": "5af5779d45024285099d9185842def3116f1218c83f818f18d116cccde89de17",
+    "services\\clinic\\telemetry.py": "f62c9359092489583adf76d72da44a5d956c5af496738b643a994eade83a8887",
+    "services\\clinic\\worker.py": "73cec1e470c6324277f43b232117d43bfd7c7d1ef7ee266983aeb371f09579d2",
+    "services\\clinic\\__init__.py": "4e87e5a76360973a9d87df6f26c4a27bea16658227e4815e530932a506308f1e",
+    "services\\migrations\\env.py": "22b330dbcdf60e4bdee022e2349ac5997bab5727021b121530711ace5c92f0eb",
+    "services\\migrations\\versions\\0b3e2278237d_initial_schema.py": "5d9a11ed00d1a5d1a8c7f7eda8ad207a2d3561f79f317133df4965b13670852a",
+    "services\\migrations\\versions\\20261114_01_reminders.py": "ae5cfc7adc3a0e6d4d0868c918c90046413765e9cb5031246fe285d4b41a47cb",
+    "tests\\conftest.py": "b113e576cebe3d45c68367486cdba8968dbd68319b69dd609b68bfcbd7f1c5e1",
+    "tests\\test_api.py": "832832bc91cfc396c9a2cb6282a6b1d442225e77bb71bf362d4e1e04f854eef6",
+    "tests\\test_contracts.py": "b9f8a276330229dec67ff54c4ce42a96118872a8e5a19b29cd3520eb4d2b1d75",
+    "tests\\test_events.py": "990d6d319f3be614e4410733899fb02df2e6954f61bce18ff980de6a07a2da8f",
+    "tests\\test_integration.py": "15cca357218a9ad9e0b415468de8909a76630a7fbd9419abb636d00222c0fb13",
+    "tests\\test_reminders.py": "a3dc8c09f6571683a8a1bb75332c6acd37eb490d07c357ee7f039b740d44b0fd",
+    "contracts\\appointment-created.example.json": "5b938dcccbc16d0421c1201b42486a3b112b374d665b2deaef091b22dacea101",
+    "contracts\\appointment-event.schema.json": "957d49f0f9cba8371788ada51a0341ba834c74761545586be4c2c2ff5f1e8fd6",
+    "frontend\\src\\api.ts": "8949b2744c5bff7fa70f1674b98cfe54c83859df5b61212c0e18371c267f8b10",
+    "frontend\\src\\App.tsx": "ac19d1385ded116026bd1ab751fc4f44c36c7ada40f6abc739fc132d5de1f47b",
+    "frontend\\src\\icons.tsx": "39b9f99e4e253a11a1980c4985cf1e1fd5a9bb2b40873ea8a5bf247790f49646",
+    "frontend\\src\\main.tsx": "43875e846e6b11fc8c05c9f65257996f72bb51e820f63c9746d247e921657975",
+    "frontend\\src\\style.css": "8476bdac9a2b95c1ea9bf6b338bd7484fbf63352255baa97a7b1885bf9e68b2d",
+    "frontend\\src\\types.ts": "625ac241fd33d711758175b30e5a865f802d97edba7a2a03c9e17c108561e7c8",
+    "compose.test.yaml": "9807b37cb9134e460d32fdf46c42aa925c41ddcf5b1943e8e2fe0363a9bab010",
+    "compose.yaml": "11b2c04fc36036ea1de1a4847351e9440cb98d67ec89e7bca640eaab0033f515",
+    "requirements.lock": "8cea72b78c7859369891cfc856b5363cddd583606e5f973a7089b336651e7f93",
+    "frontend\\package-lock.json": "91ede70da04e02421185f11dcd2499a0c5cd39c8b7b5b9614670824af54aebff",
+    "images\\postgres\\.dockerignore": "08bb7a70af4ae5a9c15226f499f2e76055ebd521550f87eb102a1316cdb9df38",
+    "images\\postgres\\Dockerfile": "554a5aa3721185467ead0583ecbaca295798fc7ade4af9f44d8562f6c2881899",
+    "images\\rabbitmq\\.dockerignore": "b8199bf59cafb4651505d3396b9d644c30b9e01bc5d865a3bada87789bef9f4d",
+    "images\\rabbitmq\\Dockerfile": "afe475f2cc2faac39bb4bd5bd39ccb2728e2ecfece3930ed043d237079e23d6d",
+    "images\\rabbitmq\\enabled_plugins": "a63f0dd4e9181c82af9ad191df89429da0b761517e4a05570a0c67de4c0c1c2d",
+    "frontend\\Dockerfile": "56ff76e9430dac5e0c4039daf6f55132b60938324bd3556f8aa98b1ddf1d09c4",
+    "frontend\\nginx.conf": "62fdb4ed331164ad26aebbd34a00cca48a98273b898aa1ecd0586c1ee6fe6722",
+    "scripts\\collect-runtime.py": "d7b40fedb5c7ed4485be3689fe877b60ac44407ae47dfbfe6b011bf761c39846",
+    "scripts\\init-env.py": "becbc9ec64f7b8b1e00bccc8ecdfb8dd48608131da173753787a1812973d1dc1",
+    "scripts\\preflight.py": "e895e8f20acb6a56fc96a4a2321bb0e407f662773ce578a23bab14988a0c8ce6",
+    "scripts\\smoke-runtime.py": "12548152b0d0821229e8e41179a9ddb26c9ed3b9c6c64b181bc02b3776f14433",
+    "scripts\\verify.py": "532815c9f746c4bf28f9c9e4cf3a8a6b599c0129434a370e6425ba07d21a420c",
+    "scripts\\check-integration.ps1": "7c75ebc662d973def032942142a56e073cbda772ffbd480e2fe20f4eb537a51b",
+    "scripts\\check-ui.ps1": "dd000d5257b5b0ed1f28df44c1b5ed88cdef51097ac0adfdf96d213a1603630f"
+  }
+}

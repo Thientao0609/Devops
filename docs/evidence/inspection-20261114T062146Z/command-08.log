@@ -1,0 +1,1 @@
+sha256:4c5937cdde211e1b581da7a5c35e0f5580f1b81ed4941c5cf97d38762150bd1b user=rabbitmq health={"Interval":10000000000,"Retries":10,"StartPeriod":20000000000,"Test":["CMD-SHELL","rabbitmq-diagnostics -q ping"],"Timeout":5000000000}

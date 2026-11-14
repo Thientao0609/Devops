@@ -1,0 +1,1 @@
+sha256:b1f1be18af530d939a11ee8820b379e0c88eeec204d904bfad68862adced3a5a user=<no value> health={"Interval":15000000000,"StartInterval":1000000000,"StartPeriod":10000000000,"Test":["CMD","/mailpit","readyz"]}

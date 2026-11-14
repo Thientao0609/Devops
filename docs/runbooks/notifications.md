@@ -1,0 +1,14 @@
+# Thông báo dev: điều tra và replay
+
+Phạm vi: mã Mốc 1. Các lệnh RabbitMQ/SMTP chưa được chứng minh nếu engine đang lỗi; không gọi unit fake là runtime evidence. Chỉ thực hiện trên project `clinic-dev`, dữ liệu synthetic.
+
+Nhắc lịch tùy chọn: `reminder_status=SCHEDULED` là tác vụ hẹn giờ, chưa phải email đang nằm trong queue. Kiểm tra `reminder_at`, tùy chọn và trạng thái lịch trước; đến hạn publisher tạo `appointment.reminder.v1` rồi theo dõi event_id/delivery như bên dưới. Trạng thái email xác nhận được giữ riêng. Tắt nhắc/hủy chặn tác vụ chưa gửi, không thu hồi thư SMTP đã nhận. Tham số `REMINDER_LEAD_MINUTES` mặc định60; không chỉnh clock/SQL trên DB dev để làm giả bằng chứng đã chờ. Test timer dùng clock truyền vào scheduler trên DB test riêng. Chi tiết và bằng chứng ở [Soft Minimal](../soft-minimal.md).
+
+1. Kiểm tra `docker compose ps -a`; API /ready chỉ yêu cầu DB. Publisher/worker /health phản ánh loop còn sống; /ready yêu cầu DB/broker, SMTP lỗi không làm liveness fail/restart.
+2. Nếu PENDING: đối chiếu appointment_id → outbox event_id; xem JSON logs publisher theo correlation_id, metric clinic_outbox_pending/clinic_outbox_oldest_seconds; kiểm tra broker/vhost/queue/binding và route. Không sửa published_at bằng tay. Broker phục hồi thì publisher claim và phát lại; cần đo thực AC06.
+3. Nếu RETRY_PENDING: kiểm tra queue `<prefix>.retry.10/.30/.60`, clinic_events_total, last_error đã che nội dung. Mỗi chu kỳ có 1 lần đầu +3 retry, không nack/requeue nóng khi provider lỗi.
+4. Nếu FAILED_DLQ: sửa nguyên nhân SMTP trước. Xem ID/attempt/reason trong management local hoặc `rabbitmqctl list_queues -p clinic-dev name messages_ready messages_unacknowledged consumers`; không copy payload unknown/PII vào evidence. Không purge DLQ để làm hết alert.
+5. Replay một event được chọn: trong môi trường có env đúng, `python -m clinic.dlq <event_id>` (PYTHONPATH=services hoặc `docker compose exec worker python -m clinic.dlq <event_id>`). Công cụ đọc tối đa 1.000 message, giữ các message khác unacked rồi requeue khi đóng kết nối; event_id giữ nguyên, chỉ FAILED_DLQ còn budget được replay; ghi audit JSON, replay_count và reset attempts. Không sửa SQL để vượt replay budget 1 chu kỳ bổ sung.
+6. Kiểm tra delivery SENT/SKIPPED, email đúng mã/trạng thái/giờ Việt Nam trong Mailpit, queue rút và log event_id. Nếu SENT được redeliver thì không gửi lại; FAILED không được coi thành công. Nếu worker chết trước ghi SENT sau khi SMTP nhận, vẫn có thể trùng email; ghi rõ crash window.
+
+Diễn tập cần chạy và lưu riêng: broker stop/start (API vẫn booking và outbox tồn tại), SMTP outage → retry hữu hạn → DLQ → sửa → replay, ngắt worker trước ack → redelivery, lease expiry, confirm/mandatory unroutable. Test integration hiện có coverage cho các adapter, nhưng broker outage toàn bộ và kill worker đang gửi còn phải diễn tập runtime. Không chạy phá lỗi trên production thật.

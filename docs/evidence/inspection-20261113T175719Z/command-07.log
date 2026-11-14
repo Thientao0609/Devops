@@ -1,0 +1,1 @@
+sha256:bfbaeedaebeefa169b3beebffd12557a20ec9c1b8b749887ac0192b202dc9c87 user=postgres health={"Interval":5000000000,"Retries":20,"Test":["CMD","/opt/health.sh"],"Timeout":3000000000}

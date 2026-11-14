@@ -1,0 +1,114 @@
+ Image clinic-postgres:dev Building 
+ Image clinic-rabbitmq:dev Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.00kB done
+#1 DONE 0.0s
+
+#2 [rabbitmq internal] load build definition from Dockerfile
+#2 transferring dockerfile: 407B done
+#2 DONE 0.0s
+
+#3 [postgres internal] load build definition from Dockerfile
+#3 transferring dockerfile: 545B done
+#3 DONE 0.0s
+
+#4 [postgres internal] load metadata for docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f
+#4 DONE 0.0s
+
+#5 [postgres internal] load .dockerignore
+#5 transferring context: 54B done
+#5 DONE 0.0s
+
+#6 [auth] library/rabbitmq:pull token for registry-1.docker.io
+#6 DONE 0.0s
+
+#7 [postgres config 1/2] FROM docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f
+#7 resolve docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f 0.0s done
+#7 DONE 0.1s
+
+#8 [rabbitmq internal] load metadata for docker.io/library/rabbitmq:4.2.9-management
+#8 ...
+
+#7 [postgres config 1/2] FROM docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f
+#7 extracting sha256:881fc932939efef04ca120ad44bbd2c0917851eb247aa4995428afb1e80ede17 0.1s done
+#7 extracting sha256:dff154c980263477116902e3e887eb7ed46f660a4a2a9d9195795a48f92a262c 0.0s done
+#7 extracting sha256:a010cfcfa1af0053d294e790774d01bc50e595a4d588bf83f97d76e232b60972 0.0s done
+#7 extracting sha256:a4fd82683a7dc6deaa3d047d71add1b6e6602105d6f5c524640a885d9ee0ba08 0.0s done
+#7 extracting sha256:80a6d6821c69b03ddb7d562b65cc77f340611fb64866d428665ed9aa8bc953d2 1.7s done
+#7 DONE 1.9s
+
+#7 [postgres config 1/2] FROM docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f
+#7 extracting sha256:9e2c9b6e22420d1ac5605186b799d2554d0ca8819a2f68e3ee622c515a7e84e3 done
+#7 extracting sha256:896471a54bfa854cb0b775ee9d1ad9366a8b2a7e1003ee1f0e05ca33baf9fac6 done
+#7 extracting sha256:1a3f31804c8b63852e96676a01e2fa3d7582372f5cb65b71566608cdf03c8403 done
+#7 extracting sha256:757a8b4a37a70381dd61367f97d9bfe6628ce667e518a8d3a73cb0dd23e6b3d2 0.0s done
+#7 extracting sha256:85ddf073ee21f6e14cfec64e248664a7d6db6ca59685fce7d9ea9de64553b306 done
+#7 DONE 2.0s
+
+#8 [rabbitmq internal] load metadata for docker.io/library/rabbitmq:4.2.9-management
+#8 DONE 2.1s
+
+#9 [rabbitmq internal] load .dockerignore
+#9 transferring context: 54B done
+#9 DONE 0.0s
+
+#10 [rabbitmq config 1/2] FROM docker.io/library/rabbitmq:4.2.9-management@sha256:7fa20d0d23d63ed90499bbf62e24af48ec4ae5eb22d173f3db96e3f85b26884a
+#10 resolve docker.io/library/rabbitmq:4.2.9-management@sha256:7fa20d0d23d63ed90499bbf62e24af48ec4ae5eb22d173f3db96e3f85b26884a 0.0s done
+#10 DONE 0.0s
+
+#11 [rabbitmq config 2/2] RUN printf '[rabbitmq_management,rabbitmq_prometheus].\n' > /tmp/enabled_plugins
+#11 CACHED
+
+#12 [rabbitmq stage-1 2/2] COPY --from=config --chown=rabbitmq:rabbitmq /tmp/enabled_plugins /etc/rabbitmq/enabled_plugins
+#12 CACHED
+
+#13 [rabbitmq] exporting to image
+#13 exporting layers done
+#13 exporting manifest sha256:05f593aa922a66460d58883163fddb253e6cd4fd2900a30abc18de0490280db7 done
+#13 exporting config sha256:5e102495a93d51de8e343c9553d021271df5de071506312ae85a59287bfcfc3d done
+#13 exporting attestation manifest sha256:c86b86b6b9ba71b15b2cb0aee77e44aec08e37e50b9203e858ee27ae7355fcac done
+#13 exporting manifest list sha256:8c401559bfcce3619f9cc143fd2a3e500804695523c5f7a00f8ccd58bf7142b8 0.0s done
+#13 naming to docker.io/library/clinic-rabbitmq:dev done
+#13 unpacking to docker.io/library/clinic-rabbitmq:dev
+#13 unpacking to docker.io/library/clinic-rabbitmq:dev 0.0s done
+#13 DONE 0.1s
+
+#14 [postgres config 2/2] RUN printf '#!/bin/sh\nexec pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB"\n' > /tmp/health.sh && chmod 0555 /tmp/health.sh
+#14 DONE 0.5s
+
+#15 [rabbitmq] resolving provenance for metadata file
+#15 DONE 0.0s
+
+#16 [postgres stage-1 2/2] COPY --from=config --chown=postgres:postgres /tmp/health.sh /opt/health.sh
+#16 DONE 0.0s
+
+#17 [postgres] exporting to image
+#17 exporting layers 0.0s done
+#17 exporting manifest sha256:2509340ae08d967f66b1c9614c617cf35f26d11ba4306ecf6d254a00e3ce673b done
+#17 exporting config sha256:9347cb23c5b64f8ba974e7388c493905739d3012790028a7d3df58f289cc5dd5 done
+#17 exporting attestation manifest sha256:c6f9fc55e6b81f49b5d3ab87a764bba06cc59016d39145183758d5885f22ba03 0.0s done
+#17 exporting manifest list sha256:c7cc2b20e634667d156b1834711f13cefaf12e5fc10045f2dd5f9996cf9cacdb done
+#17 naming to docker.io/library/clinic-postgres:dev done
+#17 unpacking to docker.io/library/clinic-postgres:dev 0.0s done
+#17 DONE 0.2s
+
+#18 [postgres] resolving provenance for metadata file
+#18 DONE 0.0s
+ Image clinic-postgres:dev Built 
+ Image clinic-rabbitmq:dev Built 
+ Container clinic-dev-mailpit-1 Running 
+ Container clinic-dev-rabbitmq-1 Running 
+ Volume clinic-dev_postgres-data-alpine Creating 
+ Volume clinic-dev_postgres-data-alpine Creating 
+ Volume clinic-dev_postgres-data-alpine Created 
+ Volume clinic-dev_postgres-data-alpine Created 
+ Container clinic-dev-postgres-1 Recreate 
+ Container clinic-dev-postgres-1 Recreated 
+ Container clinic-dev-postgres-1 Starting 
+ Container clinic-dev-postgres-1 Started 
+ Container clinic-dev-rabbitmq-1 Waiting 
+ Container clinic-dev-mailpit-1 Waiting 
+ Container clinic-dev-postgres-1 Waiting 
+ Container clinic-dev-mailpit-1 Healthy 
+ Container clinic-dev-rabbitmq-1 Healthy 
+ Container clinic-dev-postgres-1 Healthy 

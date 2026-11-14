@@ -1,0 +1,100 @@
+{"timestamp": "2026-11-14T06:34:28.608341+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:34:28.609316+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:28.609462+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:28.609502+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:28.609577+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:34:28.609645+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:28.610010+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:34.582348+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:34:34.582668+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:34.582851+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:34.582942+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:34.583046+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:34:34.583110+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:34.583264+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:40.586461+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:34:40.586866+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:40.586951+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:40.586973+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:40.587057+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:34:40.587132+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:40.587284+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:46.562372+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:34:46.562682+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:46.562835+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:46.562889+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:46.562932+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:34:46.562972+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:46.563072+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:52.564866+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:34:52.565179+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:52.565248+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:52.565268+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:52.565300+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:34:52.565323+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:52.565412+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:58.534447+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:34:58.535213+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:58.535296+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:58.535317+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:34:58.535352+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:34:58.535417+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:34:58.535755+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:04.538351+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:35:04.538868+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:04.539001+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:04.539036+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:04.539113+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:35:04.539180+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:04.539366+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:10.502597+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:35:10.503407+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:10.503517+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:10.503595+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:10.503698+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:35:10.503749+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:10.503977+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:16.508014+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:35:16.508969+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:16.509172+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:16.509230+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:16.509310+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:35:16.509415+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:16.509837+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:22.506832+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:35:22.507286+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:22.507373+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:22.507422+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:22.507496+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:35:22.507557+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:22.507721+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:28.511911+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:35:28.512413+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:28.512608+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:28.512696+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:28.512759+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:35:28.512832+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:28.513044+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:34.500394+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-14T06:35:34.500816+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:34.500910+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:34.500944+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:34.501026+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:35:34.501093+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:34.501288+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-14T06:35:36.503240+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.io_services_utils", "error_type": null}
+{"timestamp": "2026-11-14T06:35:36.503346+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:36.503570+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:36.503644+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:36.503679+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:36.503716+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:35:36.503769+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "AMQPConnectionError"}
+{"timestamp": "2026-11-14T06:35:36.503865+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "AMQPConnectionError"}
+{"timestamp": "2026-11-14T06:35:38.505657+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.io_services_utils", "error_type": null}
+{"timestamp": "2026-11-14T06:35:38.505762+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:38.505797+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:38.505838+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:38.505881+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-14T06:35:38.505920+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-14T06:35:38.505966+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "AMQPConnectionError"}
+{"timestamp": "2026-11-14T06:35:38.506040+00:00", "level": "ERROR", "service": "notification-worker", "environment": "development", "message": "consume_loop_failed", "error_type": "AMQPConnectionError"}

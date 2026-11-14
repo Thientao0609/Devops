@@ -1,0 +1,25 @@
+{
+  "started_at_utc": "2026-11-13T17:38:24.921Z",
+  "commit": "UNCOMMITTED",
+  "scope": "Browser -> Nginx -> FastAPI -> PostgreSQL -> RabbitMQ -> SMTP/Mailpit (Compose)",
+  "base_url": "http://127.0.0.1:18080",
+  "checks": [
+    "real-stack browser booking reached SENT delivery",
+    "patient login/available slots/booking/notification state/mobile no horizontal overflow",
+    "patient cancellation using real API",
+    "second patient cannot see first patient appointment",
+    "admin login/create doctor/create slot/list appointments",
+    "no uncaught page errors"
+  ],
+  "bundle_sha256": {
+    "index-BmtqeB0R.js": "bd49925f8bb57d6a32d81477afdce184720dbc6b2643f88edada571d751b10ed",
+    "index-nnbHwyWe.css": "e7fb237f6fc8032085d3a29361f0342ab38f4ebce7d9cfd2527db78eb651f5ff"
+  },
+  "browser_version": "157.0.4341.46",
+  "served_asset_sha256": {
+    "index-BmtqeB0R.js": "bd49925f8bb57d6a32d81477afdce184720dbc6b2643f88edada571d751b10ed",
+    "index-nnbHwyWe.css": "e7fb237f6fc8032085d3a29361f0342ab38f4ebce7d9cfd2527db78eb651f5ff"
+  },
+  "exit_code": 0,
+  "ended_at_utc": "2026-11-13T17:38:34.235Z"
+}

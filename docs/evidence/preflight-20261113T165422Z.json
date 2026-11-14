@@ -1,0 +1,86 @@
+{
+  "at_utc": "2026-11-13T16:54:21.478984+00:00",
+  "host": "Windows-11-10.0.26300-SP0",
+  "commit": "UNCOMMITTED",
+  "commands": [
+    {
+      "command": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "exit_code": 128,
+      "output": "fatal: detected dubious ownership in repository at 'D:/CODE/OOPs/Do_An'\n'D:/CODE/OOPs/Do_An/.git' is owned by:\n\tLAPTOP-47SNTUME/CodexSandboxOffline (S-1-5-21-3845628558-444475808-3761942357-1012)\nbut the current user is:\n\tLAPTOP-47SNTUME/Acer (S-1-5-21-3845628558-444475808-3761942357-1004)\nTo add an exception for this directory, call:\n\n\tgit config --global --add safe.directory D:/CODE/OOPs/Do_An\n"
+    },
+    {
+      "command": [
+        "python",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "Python 3.12.6\n"
+    },
+    {
+      "command": [
+        "node",
+        "--version"
+      ],
+      "exit_code": 0,
+      "output": "v24.22.1\n"
+    },
+    {
+      "command": [
+        "docker",
+        "version"
+      ],
+      "exit_code": 1,
+      "output": "Client:\n Version:           29.4.0\n API version:       1.54\n Go version:        go1.26.1\n Git commit:        9d7ad9f\n Built:             Tue Apr  7 08:39:39 2026\n OS/Arch:           windows/amd64\n Context:           desktop-linux\nfailed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "exit_code": 1,
+      "output": "docker: unknown command: docker compose\n\nRun 'docker --help' for more information\n"
+    },
+    {
+      "command": [
+        "docker",
+        "desktop",
+        "status"
+      ],
+      "exit_code": 1,
+      "output": "docker: unknown command: docker desktop\n\nRun 'docker --help' for more information\n"
+    },
+    {
+      "command": [
+        "kubectl",
+        "config",
+        "current-context"
+      ],
+      "exit_code": 1,
+      "output": "error: current-context is not set\n"
+    },
+    {
+      "command": [
+        "terraform",
+        "version"
+      ],
+      "status": "MISSING"
+    },
+    {
+      "command": [
+        "ansible",
+        "--version"
+      ],
+      "status": "MISSING"
+    }
+  ],
+  "disk": {
+    "total": 209714147328,
+    "used": 132566343680,
+    "free": 77147803648
+  }
+}

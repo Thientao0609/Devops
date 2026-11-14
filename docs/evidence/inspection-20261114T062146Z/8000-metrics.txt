@@ -1,0 +1,340 @@
+# HELP python_gc_objects_collected_total Objects collected during gc
+# TYPE python_gc_objects_collected_total counter
+python_gc_objects_collected_total{generation="0"} 71823.0
+python_gc_objects_collected_total{generation="1"} 16386.0
+python_gc_objects_collected_total{generation="2"} 1294.0
+# HELP python_gc_objects_uncollectable_total Uncollectable objects found during GC
+# TYPE python_gc_objects_uncollectable_total counter
+python_gc_objects_uncollectable_total{generation="0"} 0.0
+python_gc_objects_uncollectable_total{generation="1"} 0.0
+python_gc_objects_uncollectable_total{generation="2"} 0.0
+# HELP python_gc_collections_total Number of times this generation was collected
+# TYPE python_gc_collections_total counter
+python_gc_collections_total{generation="0"} 575.0
+python_gc_collections_total{generation="1"} 52.0
+python_gc_collections_total{generation="2"} 3.0
+# HELP python_info Python platform information
+# TYPE python_info gauge
+python_info{implementation="CPython",major="3",minor="12",patchlevel="12",version="3.12.12"} 1.0
+# HELP process_virtual_memory_bytes Virtual memory size in bytes.
+# TYPE process_virtual_memory_bytes gauge
+process_virtual_memory_bytes 3.48811264e+08
+# HELP process_resident_memory_bytes Resident memory size in bytes.
+# TYPE process_resident_memory_bytes gauge
+process_resident_memory_bytes 8.9092096e+07
+# HELP process_start_time_seconds Start time of the process since unix epoch in seconds.
+# TYPE process_start_time_seconds gauge
+process_start_time_seconds 1.79459786432e+09
+# HELP process_cpu_seconds_total Total user and system CPU time spent in seconds.
+# TYPE process_cpu_seconds_total counter
+process_cpu_seconds_total 119.11
+# HELP process_open_fds Number of open file descriptors.
+# TYPE process_open_fds gauge
+process_open_fds 12.0
+# HELP process_max_fds Maximum number of open file descriptors.
+# TYPE process_max_fds gauge
+process_max_fds 1.048576e+06
+# HELP clinic_http_requests_total HTTP requests
+# TYPE clinic_http_requests_total counter
+clinic_http_requests_total{method="GET",route="/api/appointments",status="401"} 800.0
+clinic_http_requests_total{method="POST",route="/api/auth/login",status="401"} 7.0
+clinic_http_requests_total{method="POST",route="/api/auth/login",status="200"} 29.0
+clinic_http_requests_total{method="GET",route="/api/doctors",status="200"} 28.0
+clinic_http_requests_total{method="GET",route="/api/options",status="200"} 24.0
+clinic_http_requests_total{method="GET",route="/api/appointments",status="200"} 149.0
+clinic_http_requests_total{method="GET",route="/api/doctors/{doctor_id}/slots",status="200"} 35.0
+clinic_http_requests_total{method="POST",route="/api/appointments",status="201"} 11.0
+clinic_http_requests_total{method="PATCH",route="/api/appointments/{appointment_id}/reminder",status="200"} 13.0
+clinic_http_requests_total{method="POST",route="/api/appointments/{appointment_id}/cancel",status="200"} 11.0
+clinic_http_requests_total{method="GET",route="/api/appointments/{appointment_id}",status="200"} 8.0
+clinic_http_requests_total{method="GET",route="/api/admin/appointments",status="200"} 6.0
+clinic_http_requests_total{method="POST",route="/api/admin/doctors",status="201"} 4.0
+clinic_http_requests_total{method="POST",route="/api/admin/slots",status="201"} 4.0
+clinic_http_requests_total{method="DELETE",route="/api/admin/slots/{slot_id}",status="200"} 4.0
+clinic_http_requests_total{method="PUT",route="/api/admin/doctors/{doctor_id}",status="200"} 4.0
+# HELP clinic_http_requests_created HTTP requests
+# TYPE clinic_http_requests_created gauge
+clinic_http_requests_created{method="GET",route="/api/appointments",status="401"} 1.7945979264233518e+09
+clinic_http_requests_created{method="POST",route="/api/auth/login",status="401"} 1.7945980511524804e+09
+clinic_http_requests_created{method="POST",route="/api/auth/login",status="200"} 1.7945980514221823e+09
+clinic_http_requests_created{method="GET",route="/api/doctors",status="200"} 1.7945980514437864e+09
+clinic_http_requests_created{method="GET",route="/api/options",status="200"} 1.7945980514484751e+09
+clinic_http_requests_created{method="GET",route="/api/appointments",status="200"} 1.7945980515013683e+09
+clinic_http_requests_created{method="GET",route="/api/doctors/{doctor_id}/slots",status="200"} 1.7945980516197824e+09
+clinic_http_requests_created{method="POST",route="/api/appointments",status="201"} 1.794598051668683e+09
+clinic_http_requests_created{method="PATCH",route="/api/appointments/{appointment_id}/reminder",status="200"} 1.7945980571109722e+09
+clinic_http_requests_created{method="POST",route="/api/appointments/{appointment_id}/cancel",status="200"} 1.794598057121589e+09
+clinic_http_requests_created{method="GET",route="/api/appointments/{appointment_id}",status="200"} 1.7945980994487455e+09
+clinic_http_requests_created{method="GET",route="/api/admin/appointments",status="200"} 1.7945981003615148e+09
+clinic_http_requests_created{method="POST",route="/api/admin/doctors",status="201"} 1.7945981004468427e+09
+clinic_http_requests_created{method="POST",route="/api/admin/slots",status="201"} 1.7945981005334914e+09
+clinic_http_requests_created{method="DELETE",route="/api/admin/slots/{slot_id}",status="200"} 1.7945981006279385e+09
+clinic_http_requests_created{method="PUT",route="/api/admin/doctors/{doctor_id}",status="200"} 1.7945981006389852e+09
+# HELP clinic_http_duration_seconds Business HTTP duration
+# TYPE clinic_http_duration_seconds histogram
+clinic_http_duration_seconds_bucket{le="0.005",method="GET",route="/api/appointments"} 788.0
+clinic_http_duration_seconds_bucket{le="0.01",method="GET",route="/api/appointments"} 799.0
+clinic_http_duration_seconds_bucket{le="0.025",method="GET",route="/api/appointments"} 800.0
+clinic_http_duration_seconds_bucket{le="0.05",method="GET",route="/api/appointments"} 835.0
+clinic_http_duration_seconds_bucket{le="0.075",method="GET",route="/api/appointments"} 881.0
+clinic_http_duration_seconds_bucket{le="0.1",method="GET",route="/api/appointments"} 926.0
+clinic_http_duration_seconds_bucket{le="0.25",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_bucket{le="0.5",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_bucket{le="0.75",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_bucket{le="1.0",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_bucket{le="2.5",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_bucket{le="5.0",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_bucket{le="7.5",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_bucket{le="10.0",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_count{method="GET",route="/api/appointments"} 949.0
+clinic_http_duration_seconds_sum{method="GET",route="/api/appointments"} 12.633757934081586
+clinic_http_duration_seconds_bucket{le="0.005",method="POST",route="/api/auth/login"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="POST",route="/api/auth/login"} 0.0
+clinic_http_duration_seconds_bucket{le="0.025",method="POST",route="/api/auth/login"} 0.0
+clinic_http_duration_seconds_bucket{le="0.05",method="POST",route="/api/auth/login"} 0.0
+clinic_http_duration_seconds_bucket{le="0.075",method="POST",route="/api/auth/login"} 12.0
+clinic_http_duration_seconds_bucket{le="0.1",method="POST",route="/api/auth/login"} 24.0
+clinic_http_duration_seconds_bucket{le="0.25",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_bucket{le="0.5",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_bucket{le="0.75",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_bucket{le="1.0",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_bucket{le="2.5",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_bucket{le="5.0",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_bucket{le="7.5",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_bucket{le="10.0",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_count{method="POST",route="/api/auth/login"} 36.0
+clinic_http_duration_seconds_sum{method="POST",route="/api/auth/login"} 3.2610249380218193
+clinic_http_duration_seconds_bucket{le="0.005",method="GET",route="/api/doctors"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="GET",route="/api/doctors"} 10.0
+clinic_http_duration_seconds_bucket{le="0.025",method="GET",route="/api/doctors"} 26.0
+clinic_http_duration_seconds_bucket{le="0.05",method="GET",route="/api/doctors"} 27.0
+clinic_http_duration_seconds_bucket{le="0.075",method="GET",route="/api/doctors"} 27.0
+clinic_http_duration_seconds_bucket{le="0.1",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="0.25",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="0.5",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="0.75",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="1.0",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="2.5",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="5.0",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="7.5",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="10.0",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_count{method="GET",route="/api/doctors"} 28.0
+clinic_http_duration_seconds_sum{method="GET",route="/api/doctors"} 0.46333174900155427
+clinic_http_duration_seconds_bucket{le="0.005",method="GET",route="/api/options"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="GET",route="/api/options"} 10.0
+clinic_http_duration_seconds_bucket{le="0.025",method="GET",route="/api/options"} 23.0
+clinic_http_duration_seconds_bucket{le="0.05",method="GET",route="/api/options"} 23.0
+clinic_http_duration_seconds_bucket{le="0.075",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="0.1",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="0.25",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="0.5",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="0.75",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="1.0",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="2.5",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="5.0",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="7.5",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="10.0",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_count{method="GET",route="/api/options"} 24.0
+clinic_http_duration_seconds_sum{method="GET",route="/api/options"} 0.3413822580037049
+clinic_http_duration_seconds_bucket{le="0.005",method="GET",route="/api/doctors/{doctor_id}/slots"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="GET",route="/api/doctors/{doctor_id}/slots"} 21.0
+clinic_http_duration_seconds_bucket{le="0.025",method="GET",route="/api/doctors/{doctor_id}/slots"} 32.0
+clinic_http_duration_seconds_bucket{le="0.05",method="GET",route="/api/doctors/{doctor_id}/slots"} 34.0
+clinic_http_duration_seconds_bucket{le="0.075",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="0.1",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="0.25",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="0.5",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="0.75",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="1.0",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="2.5",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="5.0",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="7.5",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="10.0",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_count{method="GET",route="/api/doctors/{doctor_id}/slots"} 35.0
+clinic_http_duration_seconds_sum{method="GET",route="/api/doctors/{doctor_id}/slots"} 0.39809241900593406
+clinic_http_duration_seconds_bucket{le="0.005",method="POST",route="/api/appointments"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="POST",route="/api/appointments"} 0.0
+clinic_http_duration_seconds_bucket{le="0.025",method="POST",route="/api/appointments"} 7.0
+clinic_http_duration_seconds_bucket{le="0.05",method="POST",route="/api/appointments"} 10.0
+clinic_http_duration_seconds_bucket{le="0.075",method="POST",route="/api/appointments"} 10.0
+clinic_http_duration_seconds_bucket{le="0.1",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="0.25",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="0.5",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="0.75",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="1.0",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="2.5",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="5.0",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="7.5",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="10.0",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_count{method="POST",route="/api/appointments"} 11.0
+clinic_http_duration_seconds_sum{method="POST",route="/api/appointments"} 0.30801989901829074
+clinic_http_duration_seconds_bucket{le="0.005",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 0.0
+clinic_http_duration_seconds_bucket{le="0.025",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 10.0
+clinic_http_duration_seconds_bucket{le="0.05",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 12.0
+clinic_http_duration_seconds_bucket{le="0.075",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="0.1",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="0.25",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="0.5",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="0.75",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="1.0",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="2.5",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="5.0",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="7.5",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="10.0",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_count{method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 13.0
+clinic_http_duration_seconds_sum{method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 0.2937492519981788
+clinic_http_duration_seconds_bucket{le="0.005",method="POST",route="/api/appointments/{appointment_id}/cancel"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="POST",route="/api/appointments/{appointment_id}/cancel"} 0.0
+clinic_http_duration_seconds_bucket{le="0.025",method="POST",route="/api/appointments/{appointment_id}/cancel"} 8.0
+clinic_http_duration_seconds_bucket{le="0.05",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="0.075",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="0.1",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="0.25",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="0.5",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="0.75",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="1.0",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="2.5",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="5.0",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="7.5",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="10.0",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_count{method="POST",route="/api/appointments/{appointment_id}/cancel"} 11.0
+clinic_http_duration_seconds_sum{method="POST",route="/api/appointments/{appointment_id}/cancel"} 0.24246311799925024
+clinic_http_duration_seconds_bucket{le="0.005",method="GET",route="/api/appointments/{appointment_id}"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="GET",route="/api/appointments/{appointment_id}"} 5.0
+clinic_http_duration_seconds_bucket{le="0.025",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="0.05",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="0.075",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="0.1",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="0.25",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="0.5",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="0.75",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="1.0",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="2.5",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="5.0",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="7.5",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="10.0",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_count{method="GET",route="/api/appointments/{appointment_id}"} 8.0
+clinic_http_duration_seconds_sum{method="GET",route="/api/appointments/{appointment_id}"} 0.07762487899026382
+clinic_http_duration_seconds_bucket{le="0.005",method="GET",route="/api/admin/appointments"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="GET",route="/api/admin/appointments"} 0.0
+clinic_http_duration_seconds_bucket{le="0.025",method="GET",route="/api/admin/appointments"} 0.0
+clinic_http_duration_seconds_bucket{le="0.05",method="GET",route="/api/admin/appointments"} 0.0
+clinic_http_duration_seconds_bucket{le="0.075",method="GET",route="/api/admin/appointments"} 3.0
+clinic_http_duration_seconds_bucket{le="0.1",method="GET",route="/api/admin/appointments"} 5.0
+clinic_http_duration_seconds_bucket{le="0.25",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_bucket{le="0.5",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_bucket{le="0.75",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_bucket{le="1.0",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_bucket{le="2.5",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_bucket{le="5.0",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_bucket{le="7.5",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_bucket{le="10.0",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_count{method="GET",route="/api/admin/appointments"} 6.0
+clinic_http_duration_seconds_sum{method="GET",route="/api/admin/appointments"} 0.5355111059921001
+clinic_http_duration_seconds_bucket{le="0.005",method="POST",route="/api/admin/doctors"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="POST",route="/api/admin/doctors"} 3.0
+clinic_http_duration_seconds_bucket{le="0.025",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="0.05",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="0.075",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="0.1",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="0.25",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="0.5",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="0.75",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="1.0",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="2.5",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="5.0",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="7.5",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="10.0",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_count{method="POST",route="/api/admin/doctors"} 4.0
+clinic_http_duration_seconds_sum{method="POST",route="/api/admin/doctors"} 0.03635596000640362
+clinic_http_duration_seconds_bucket{le="0.005",method="POST",route="/api/admin/slots"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="POST",route="/api/admin/slots"} 0.0
+clinic_http_duration_seconds_bucket{le="0.025",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="0.05",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="0.075",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="0.1",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="0.25",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="0.5",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="0.75",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="1.0",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="2.5",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="5.0",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="7.5",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="10.0",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_count{method="POST",route="/api/admin/slots"} 4.0
+clinic_http_duration_seconds_sum{method="POST",route="/api/admin/slots"} 0.04844614899639055
+clinic_http_duration_seconds_bucket{le="0.005",method="DELETE",route="/api/admin/slots/{slot_id}"} 0.0
+clinic_http_duration_seconds_bucket{le="0.01",method="DELETE",route="/api/admin/slots/{slot_id}"} 3.0
+clinic_http_duration_seconds_bucket{le="0.025",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.05",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.075",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.1",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.25",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.5",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.75",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="1.0",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="2.5",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="5.0",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="7.5",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="10.0",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_count{method="DELETE",route="/api/admin/slots/{slot_id}"} 4.0
+clinic_http_duration_seconds_sum{method="DELETE",route="/api/admin/slots/{slot_id}"} 0.037323743001707044
+clinic_http_duration_seconds_bucket{le="0.005",method="PUT",route="/api/admin/doctors/{doctor_id}"} 1.0
+clinic_http_duration_seconds_bucket{le="0.01",method="PUT",route="/api/admin/doctors/{doctor_id}"} 3.0
+clinic_http_duration_seconds_bucket{le="0.025",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.05",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.075",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.1",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.25",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.5",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="0.75",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="1.0",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="2.5",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="5.0",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="7.5",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="10.0",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_bucket{le="+Inf",method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_count{method="PUT",route="/api/admin/doctors/{doctor_id}"} 4.0
+clinic_http_duration_seconds_sum{method="PUT",route="/api/admin/doctors/{doctor_id}"} 0.031828464998397976
+# HELP clinic_http_duration_seconds_created Business HTTP duration
+# TYPE clinic_http_duration_seconds_created gauge
+clinic_http_duration_seconds_created{method="GET",route="/api/appointments"} 1.794597926423389e+09
+clinic_http_duration_seconds_created{method="POST",route="/api/auth/login"} 1.7945980511525292e+09
+clinic_http_duration_seconds_created{method="GET",route="/api/doctors"} 1.7945980514438064e+09
+clinic_http_duration_seconds_created{method="GET",route="/api/options"} 1.7945980514484959e+09
+clinic_http_duration_seconds_created{method="GET",route="/api/doctors/{doctor_id}/slots"} 1.7945980516198018e+09
+clinic_http_duration_seconds_created{method="POST",route="/api/appointments"} 1.7945980516687043e+09
+clinic_http_duration_seconds_created{method="PATCH",route="/api/appointments/{appointment_id}/reminder"} 1.794598057110991e+09
+clinic_http_duration_seconds_created{method="POST",route="/api/appointments/{appointment_id}/cancel"} 1.7945980571216266e+09
+clinic_http_duration_seconds_created{method="GET",route="/api/appointments/{appointment_id}"} 1.794598099448782e+09
+clinic_http_duration_seconds_created{method="GET",route="/api/admin/appointments"} 1.7945981003615334e+09
+clinic_http_duration_seconds_created{method="POST",route="/api/admin/doctors"} 1.7945981004468637e+09
+clinic_http_duration_seconds_created{method="POST",route="/api/admin/slots"} 1.7945981005335174e+09
+clinic_http_duration_seconds_created{method="DELETE",route="/api/admin/slots/{slot_id}"} 1.7945981006279602e+09
+clinic_http_duration_seconds_created{method="PUT",route="/api/admin/doctors/{doctor_id}"} 1.7945981006390038e+09
+# HELP clinic_events_total Event outcomes
+# TYPE clinic_events_total counter
+# HELP clinic_event_duration_seconds Event processing time
+# TYPE clinic_event_duration_seconds histogram
+# HELP clinic_outbox_pending Unpublished events
+# TYPE clinic_outbox_pending gauge
+clinic_outbox_pending 0.0
+# HELP clinic_outbox_oldest_seconds Age of oldest unpublished event
+# TYPE clinic_outbox_oldest_seconds gauge
+clinic_outbox_oldest_seconds 0.0
+# HELP clinic_dependency_ready Dependency connection status
+# TYPE clinic_dependency_ready gauge

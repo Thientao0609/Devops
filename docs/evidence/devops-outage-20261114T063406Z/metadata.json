@@ -1,0 +1,51 @@
+{
+  "at_utc": "2026-11-14T06:34:06.346895+00:00",
+  "scope": "Read-only final availability check after Docker Desktop/WSL bootstrap failure",
+  "commands": [
+    {
+      "command": [
+        "docker",
+        "version",
+        "--format",
+        "{{json .Server}}"
+      ],
+      "exit_code": 0,
+      "output": "docker-version.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "ps",
+        "-a"
+      ],
+      "exit_code": 0,
+      "output": "compose-status.log"
+    }
+  ],
+  "http": [
+    {
+      "url": "http://localhost:18080/health",
+      "error_type": "ConnectTimeout"
+    },
+    {
+      "url": "http://localhost:8000/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8001/ready",
+      "error_type": "RemoteProtocolError"
+    },
+    {
+      "url": "http://localhost:8002/ready",
+      "error_type": "ReadTimeout"
+    },
+    {
+      "url": "http://localhost:15693/metrics",
+      "error_type": "ConnectTimeout"
+    }
+  ],
+  "last_healthy_snapshot": "docs/evidence/devops-review-20261114T062507Z/metadata.json",
+  "recovery_attempt": "Docker Desktop was launched hidden. Engine briefly returned29.9.3; compose up --no-build --wait then failed with HTTP500/seed dependency inspection. Subsequent daemon reply reports WSL bootstrap exit0xc00000fd. This note is from execution transcript, not a fabricated raw log.",
+  "status": "BLOCKED"
+}

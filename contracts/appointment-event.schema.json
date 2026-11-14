@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:clinic:appointment-event:v1",
+  "title": "Appointment event v1 (identifiers only; worker resolves recipient in DB)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "event_type", "schema_version", "occurred_at", "appointment_id", "appointment_version", "correlation_id"],
+  "properties": {
+    "event_id": {"type": "string", "format": "uuid"},
+    "event_type": {"enum": ["appointment.created.v1", "appointment.cancelled.v1", "appointment.reminder.v1"]},
+    "schema_version": {"const": 1},
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "appointment_id": {"type": "string", "format": "uuid"},
+    "appointment_version": {"type": "integer", "minimum": 1},
+    "correlation_id": {"type": "string", "pattern": "^[A-Za-z0-9_.-]{1,64}$"}
+  }
+}

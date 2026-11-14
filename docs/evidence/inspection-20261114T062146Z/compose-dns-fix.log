@@ -1,0 +1,361 @@
+ Image clinic-app:dev Building 
+ Image clinic-rabbitmq:dev Building 
+ Image clinic-postgres:dev Building 
+ Image clinic-frontend:dev Building 
+ Image clinic-app:dev Building 
+ Image clinic-app:dev Building 
+ Image clinic-app:dev Building 
+ Image clinic-app:dev Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.55kB done
+#1 DONE 0.0s
+
+#2 [publisher internal] load build definition from Dockerfile
+#2 transferring dockerfile: 950B 0.0s done
+#2 DONE 0.0s
+
+#3 [rabbitmq internal] load build definition from Dockerfile
+#3 transferring dockerfile: 401B done
+#3 DONE 0.0s
+
+#4 [frontend internal] load build definition from Dockerfile
+#4 transferring dockerfile: 407B 0.0s done
+#4 DONE 0.0s
+
+#5 [postgres internal] load build definition from Dockerfile
+#5 transferring dockerfile: 571B done
+#5 DONE 0.0s
+
+#6 [postgres internal] load metadata for docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f
+#6 DONE 0.0s
+
+#7 [postgres internal] load .dockerignore
+#7 transferring context: 54B done
+#7 DONE 0.0s
+
+#8 [migrate internal] load metadata for docker.io/library/python:3.12.12-slim-bookworm
+#8 ...
+
+#9 [postgres config 1/2] FROM docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f
+#9 resolve docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f 0.0s done
+#9 DONE 0.0s
+
+#10 [postgres config 2/2] RUN printf '#!/bin/sh\nexec pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB"\n' > /tmp/health.sh && chmod 0555 /tmp/health.sh && test -s /tmp/health.sh
+#10 CACHED
+
+#11 [postgres stage-1 2/2] COPY --from=config --chown=postgres:postgres /tmp/health.sh /opt/health.sh
+#11 CACHED
+
+#12 [postgres] exporting to image
+#12 exporting layers done
+#12 exporting manifest sha256:2509340ae08d967f66b1c9614c617cf35f26d11ba4306ecf6d254a00e3ce673b done
+#12 exporting config sha256:9347cb23c5b64f8ba974e7388c493905739d3012790028a7d3df58f289cc5dd5 done
+#12 exporting attestation manifest sha256:c9b9f58508d6b0217b1005a0544f80813bc73de711ac43769fce7293e346359d 0.0s done
+#12 exporting manifest list sha256:bfbaeedaebeefa169b3beebffd12557a20ec9c1b8b749887ac0192b202dc9c87 0.0s done
+#12 naming to docker.io/library/clinic-postgres:dev done
+#12 unpacking to docker.io/library/clinic-postgres:dev done
+#12 DONE 0.1s
+
+#13 [postgres] resolving provenance for metadata file
+#13 DONE 0.0s
+
+#14 [frontend internal] load metadata for docker.io/library/nginx:1.28.0-alpine
+#14 ...
+
+#15 [frontend internal] load metadata for docker.io/library/node:24.11.1-alpine
+#15 DONE 0.9s
+
+#16 [rabbitmq internal] load metadata for docker.io/library/rabbitmq:4.2.9-management
+#16 ...
+
+#14 [frontend internal] load metadata for docker.io/library/nginx:1.28.0-alpine
+#14 DONE 1.2s
+
+#8 [api internal] load metadata for docker.io/library/python:3.12.12-slim-bookworm
+#8 DONE 1.2s
+
+#17 [frontend internal] load .dockerignore
+#17 transferring context: 64B done
+#17 DONE 0.0s
+
+#18 [publisher internal] load .dockerignore
+#18 transferring context: 149B done
+#18 DONE 0.0s
+
+#16 [rabbitmq internal] load metadata for docker.io/library/rabbitmq:4.2.9-management
+#16 DONE 1.2s
+
+#19 [rabbitmq internal] load .dockerignore
+#19 transferring context: 71B 0.0s done
+#19 DONE 0.0s
+
+#20 [publisher internal] load build context
+#20 transferring context: 1.31kB 0.0s done
+#20 DONE 0.0s
+
+#21 [rabbitmq internal] load build context
+#21 DONE 0.0s
+
+#22 [frontend build 1/6] FROM docker.io/library/node:24.11.1-alpine@sha256:682368d8253e0c3364b803956085c456a612d738bd635926d73fa24db3ce53d7
+#22 resolve docker.io/library/node:24.11.1-alpine@sha256:682368d8253e0c3364b803956085c456a612d738bd635926d73fa24db3ce53d7 0.0s done
+#22 DONE 0.0s
+
+#23 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#23 resolve docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.0s done
+#23 DONE 0.1s
+
+#24 [publisher dependencies 1/4] FROM docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c
+#24 resolve docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c 0.0s done
+#24 DONE 0.0s
+
+#25 [api runtime 6/8] COPY services services
+#25 CACHED
+
+#26 [api runtime 2/8] WORKDIR /app
+#26 CACHED
+
+#27 [api runtime 4/8] COPY requirements.lock .
+#27 CACHED
+
+#28 [api dependencies 3/4] COPY requirements.lock .
+#28 CACHED
+
+#29 [api runtime 7/8] COPY contracts contracts
+#29 CACHED
+
+#30 [api dependencies 2/4] WORKDIR /build
+#30 CACHED
+
+#31 [api runtime 3/8] COPY --from=dependencies /wheels /wheels
+#31 CACHED
+
+#32 [api runtime 5/8] RUN pip install --no-cache-dir --no-index --find-links=/wheels -r requirements.lock     && rm -rf /wheels && groupadd -g 10001 clinic && useradd -u 10001 -g clinic -M clinic
+#32 CACHED
+
+#33 [api dependencies 4/4] RUN pip wheel --no-cache-dir --wheel-dir /wheels -r requirements.lock
+#33 CACHED
+
+#34 [seed runtime 8/8] COPY alembic.ini .
+#34 CACHED
+
+#35 [frontend internal] load build context
+#35 transferring context: 13.09kB 0.0s done
+#35 DONE 0.0s
+
+#36 [worker] exporting to image
+#36 ...
+
+#23 [frontend stage-1 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#23 CACHED
+
+#37 [frontend build 2/6] WORKDIR /app
+#37 CACHED
+
+#38 [frontend build 3/6] COPY package*.json .
+#38 CACHED
+
+#39 [frontend build 4/6] RUN npm ci
+#39 CACHED
+
+#40 [rabbitmq config 1/3] FROM docker.io/library/rabbitmq:4.2.9-management@sha256:7fa20d0d23d63ed90499bbf62e24af48ec4ae5eb22d173f3db96e3f85b26884a
+#40 resolve docker.io/library/rabbitmq:4.2.9-management@sha256:7fa20d0d23d63ed90499bbf62e24af48ec4ae5eb22d173f3db96e3f85b26884a 0.0s done
+#40 DONE 0.0s
+
+#21 [rabbitmq internal] load build context
+#21 transferring context: 36B done
+#21 DONE 0.0s
+
+#41 [rabbitmq config 3/3] RUN test -s /tmp/enabled_plugins
+#41 CACHED
+
+#42 [rabbitmq config 2/3] COPY enabled_plugins /tmp/enabled_plugins
+#42 CACHED
+
+#43 [rabbitmq stage-1 2/2] COPY --from=config --chown=rabbitmq:rabbitmq /tmp/enabled_plugins /etc/rabbitmq/enabled_plugins
+#43 CACHED
+
+#44 [frontend stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#44 DONE 0.1s
+
+#45 [frontend build 5/6] COPY . .
+#45 DONE 0.1s
+
+#36 [worker] exporting to image
+#36 exporting layers 0.0s done
+#36 exporting manifest sha256:3faa4a2d95c6598fc03eeb598f5ccc0d6f013654bb5bef0938d2246d0efedec6 0.0s done
+#36 exporting config sha256:1bc2fdbb9cd7c1150e1540c92d2c492913536fb3ee8debb91a83266a01e9e6f6 0.0s done
+#36 exporting attestation manifest sha256:807c8f88b3605dfb417d84b584f38b4ec134917bb160064775321848cd97baa0
+#36 exporting attestation manifest sha256:807c8f88b3605dfb417d84b584f38b4ec134917bb160064775321848cd97baa0 0.1s done
+#36 exporting manifest list sha256:9ed3e905054a4882a339c1e8cf3edfbf630321ed8b0af5ed74d46ae6bf97edc9
+#36 exporting manifest list sha256:9ed3e905054a4882a339c1e8cf3edfbf630321ed8b0af5ed74d46ae6bf97edc9 0.1s done
+#36 naming to docker.io/library/clinic-app:dev 0.0s done
+#36 unpacking to docker.io/library/clinic-app:dev 0.0s done
+#36 DONE 0.3s
+
+#46 [api] exporting to image
+#46 exporting layers 0.0s done
+#46 exporting manifest sha256:4e98be04734e3cbdb03b9bee2cfb10f9cd22d944e99676d2e2baaedb81c60350 0.0s done
+#46 exporting config sha256:7f9cc51e73d90ef60be662d9109b439cc89e3e8e38be54f3dfcc051bcaa93778 0.0s done
+#46 exporting attestation manifest sha256:aaebb4b582dbc9502911f69187ec79e06dd2ffda6b62b4daeb38d742965da2e6 0.1s done
+#46 exporting manifest list sha256:1ea5cdbaf8b260687415aa433866326f4d5f499ebdc7887b97f0bae89b943743 0.1s done
+#46 naming to docker.io/library/clinic-app:dev 0.0s done
+#46 unpacking to docker.io/library/clinic-app:dev 0.0s done
+#46 DONE 0.3s
+
+#47 [migrate] exporting to image
+#47 exporting layers 0.0s done
+#47 exporting manifest sha256:f110d15c14e3c4e10b5201a0079cd9b2c78669a6cba1ef4cd7367d2d94972e3f 0.0s done
+#47 exporting config sha256:4e27948498b44fcdf40d1d1c2494929b163ae6a5354b585f05127d6bf3b36c4f 0.0s done
+#47 exporting attestation manifest sha256:43d5d4318f4365c0981f735b451b5c8d84bbfe282cf4391c87a5aa72d58f8c48 0.1s done
+#47 exporting manifest list sha256:e7841c5ed22c2da6e7b3df18954bc88fada2f6320278572267f7c161acab9729 0.0s done
+#47 naming to docker.io/library/clinic-app:dev 0.0s done
+#47 unpacking to docker.io/library/clinic-app:dev 0.0s done
+#47 DONE 0.3s
+
+#48 [seed] exporting to image
+#48 exporting layers 0.0s done
+#48 exporting manifest sha256:12c7106d26a1f1e253b1af73c567ae0a567920e9c9c97a01e7c14b237126b9e2 0.0s done
+#48 exporting config sha256:7497f143a2d144b89432e1f5fb8bc28a3948de6cf24b0eee07d78e07406ef179 0.0s done
+#48 exporting attestation manifest sha256:43edc3e49dfa40de96a25ddd8c6854df33f3fb35344280054403dc2da2e35799 0.1s done
+#48 exporting manifest list sha256:caa5160dbedf2eaf15635eab2cbf390223b2b5338bf92e8da02af23d008682ed 0.1s done
+#48 naming to docker.io/library/clinic-app:dev 0.0s done
+#48 unpacking to docker.io/library/clinic-app:dev 0.0s done
+#48 DONE 0.3s
+
+#49 [rabbitmq] exporting to image
+#49 exporting layers done
+#49 exporting manifest sha256:2a7375f2e60daa11a00a3000ce5683d3874c3efef20873c24dc39baac9c0b8e1 0.0s done
+#49 exporting config sha256:bd72910cea6a8d38f4b1ba834617ea0636b107160bcaf663d3938218c4c66110 0.0s done
+#49 exporting attestation manifest sha256:a078dd149636e179e73340b5288352e73ddc91ebb4acab3438e37f4139bfe6c0 0.1s done
+#49 exporting manifest list sha256:4c5937cdde211e1b581da7a5c35e0f5580f1b81ed4941c5cf97d38762150bd1b 0.0s done
+#49 naming to docker.io/library/clinic-rabbitmq:dev 0.0s done
+#49 unpacking to docker.io/library/clinic-rabbitmq:dev 0.0s done
+#49 DONE 0.4s
+
+#50 [publisher] exporting to image
+#50 exporting layers 0.0s done
+#50 exporting manifest sha256:ad600e901ad31415b942402c1501d34732957d51cceb5a14a69bd17a4a74ce63 0.0s done
+#50 exporting config sha256:8c5545c52cd13402d8e7a7ff07e286b6a1fd0919f8c85776e0cbc06d86e12f73 0.0s done
+#50 exporting attestation manifest sha256:ade4ab697092d49908b0e02f9808ad1bcfe32632a8e9c5ddcd19df37e5a81d0d 0.1s done
+#50 exporting manifest list sha256:055cb130fdea4c216b0a67b8d48c283d2052d301af6b6a4f9a8b34379f632f74 0.0s done
+#50 naming to docker.io/library/clinic-app:dev 0.0s done
+#50 unpacking to docker.io/library/clinic-app:dev 0.0s done
+#50 DONE 0.4s
+
+#51 [frontend build 6/6] RUN npm run build
+#51 ...
+
+#52 [api] resolving provenance for metadata file
+#52 DONE 0.1s
+
+#53 [rabbitmq] resolving provenance for metadata file
+#53 DONE 0.1s
+
+#54 [seed] resolving provenance for metadata file
+#54 DONE 0.0s
+
+#55 [migrate] resolving provenance for metadata file
+#55 DONE 0.2s
+
+#56 [publisher] resolving provenance for metadata file
+#56 DONE 0.1s
+
+#57 [worker] resolving provenance for metadata file
+#57 DONE 0.2s
+
+#51 [frontend build 6/6] RUN npm run build
+#51 0.798 
+#51 0.798 > clinic-frontend@0.1.0 build
+#51 0.798 > tsc -b && vite build
+#51 0.798 
+#51 2.681 vite v7.2.2 building client environment for production...
+#51 2.768 transforming...
+#51 3.842 ✓ 28 modules transformed.
+#51 4.089 rendering chunks...
+#51 4.102 computing gzip size...
+#51 4.112 dist/index.html                   0.42 kB │ gzip:  0.30 kB
+#51 4.112 dist/assets/index-nnbHwyWe.css    4.23 kB │ gzip:  1.62 kB
+#51 4.112 dist/assets/index-BmtqeB0R.js   203.16 kB │ gzip: 64.31 kB
+#51 4.113 ✓ built in 1.40s
+#51 DONE 4.2s
+
+#58 [frontend stage-1 3/3] COPY --from=build --chown=nginx:nginx /app/dist /usr/share/nginx/html
+#58 DONE 0.1s
+
+#59 [frontend] exporting to image
+#59 exporting layers 0.1s done
+#59 exporting manifest sha256:33eb09bc4ee2b0f4f9c7f5dcfdac4db1dcc841e4df069ae0c200daaf6a79f60a 0.0s done
+#59 exporting config sha256:fb6490076a514215265aa78367d72338e98a95be571f5eb6521d80b67668374f 0.0s done
+#59 exporting attestation manifest sha256:1dce7d074ea5e12aeb9166d119e907683580d7f369e3e68efee70a56c0bd2dfe 0.0s done
+#59 exporting manifest list sha256:73b85715c0c8ba97db00d61d523e87f7ea170df8a63a46242c6cea72608da23f 0.0s done
+#59 naming to docker.io/library/clinic-frontend:dev 0.0s done
+#59 unpacking to docker.io/library/clinic-frontend:dev 0.1s done
+#59 DONE 0.3s
+
+#60 [frontend] resolving provenance for metadata file
+#60 DONE 0.0s
+ Image clinic-app:dev Built 
+ Image clinic-app:dev Built 
+ Image clinic-frontend:dev Built 
+ Image clinic-rabbitmq:dev Built 
+ Image clinic-app:dev Built 
+ Image clinic-app:dev Built 
+ Image clinic-postgres:dev Built 
+ Image clinic-app:dev Built 
+ Container clinic-dev-rabbitmq-1 Running 
+ Container clinic-dev-mailpit-1 Running 
+ Container clinic-dev-postgres-1 Running 
+ Container clinic-dev-migrate-1 Recreate 
+ Container clinic-dev-migrate-1 Recreated 
+ Container clinic-dev-seed-1 Recreate 
+ Container clinic-dev-publisher-1 Recreate 
+ Container clinic-dev-worker-1 Recreate 
+ Container clinic-dev-seed-1 Recreated 
+ Container clinic-dev-api-1 Recreate 
+ Container clinic-dev-api-1 Recreated 
+ Container clinic-dev-frontend-1 Recreate 
+ Container clinic-dev-publisher-1 Recreated 
+ Container clinic-dev-worker-1 Recreated 
+ Container clinic-dev-frontend-1 Recreated 
+ Container clinic-dev-mailpit-1 Waiting 
+ Container clinic-dev-postgres-1 Waiting 
+ Container clinic-dev-rabbitmq-1 Waiting 
+ Container clinic-dev-postgres-1 Healthy 
+ Container clinic-dev-rabbitmq-1 Healthy 
+ Container clinic-dev-migrate-1 Starting 
+ Container clinic-dev-mailpit-1 Healthy 
+ Container clinic-dev-migrate-1 Started 
+ Container clinic-dev-migrate-1 Waiting 
+ Container clinic-dev-migrate-1 Exited 
+ Container clinic-dev-seed-1 Starting 
+ Container clinic-dev-worker-1 Starting 
+ Container clinic-dev-publisher-1 Starting 
+ Container clinic-dev-seed-1 Started 
+ Container clinic-dev-seed-1 Waiting 
+ Container clinic-dev-worker-1 Started 
+ Container clinic-dev-publisher-1 Started 
+ Container clinic-dev-seed-1 Exited 
+ Container clinic-dev-api-1 Starting 
+ Container clinic-dev-api-1 Started 
+ Container clinic-dev-api-1 Waiting 
+ Container clinic-dev-api-1 Healthy 
+ Container clinic-dev-frontend-1 Starting 
+ Container clinic-dev-frontend-1 Started 
+ Container clinic-dev-seed-1 Waiting 
+ Container clinic-dev-publisher-1 Waiting 
+ Container clinic-dev-postgres-1 Waiting 
+ Container clinic-dev-worker-1 Waiting 
+ Container clinic-dev-mailpit-1 Waiting 
+ Container clinic-dev-api-1 Waiting 
+ Container clinic-dev-migrate-1 Waiting 
+ Container clinic-dev-frontend-1 Waiting 
+ Container clinic-dev-rabbitmq-1 Waiting 
+ Container clinic-dev-migrate-1 Exited 
+ Container clinic-dev-seed-1 Exited 
+ Container clinic-dev-mailpit-1 Healthy 
+ Container clinic-dev-postgres-1 Healthy 
+ Container clinic-dev-api-1 Healthy 
+ Container clinic-dev-rabbitmq-1 Healthy 
+ Container clinic-dev-worker-1 Healthy 
+ Container clinic-dev-publisher-1 Healthy 
+ Container clinic-dev-frontend-1 Healthy 

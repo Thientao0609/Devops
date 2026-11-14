@@ -1,0 +1,10 @@
+NAME                     IMAGE                                                                     COMMAND                  SERVICE     CREATED          STATUS                      PORTS
+clinic-dev-api-1         clinic-app:dev                                                            "python -m uvicorn c…"   api         11 hours ago     Up 2 minutes (healthy)      127.0.0.1:8000->8000/tcp
+clinic-dev-frontend-1    clinic-frontend:dev                                                       "/docker-entrypoint.…"   frontend    52 minutes ago   Up 12 seconds (healthy)     127.0.0.1:18080->8080/tcp
+clinic-dev-mailpit-1     axllent/mailpit:v1.27.10                                                  "/mailpit"               mailpit     14 hours ago     Up 20 seconds (healthy)     127.0.0.1:1025->1025/tcp, 127.0.0.1:8025->8025/tcp
+clinic-dev-migrate-1     clinic-app:dev                                                            "alembic upgrade head"   migrate     11 hours ago     Exited (0) 13 seconds ago   
+clinic-dev-postgres-1    sha256:f7c623bbf514a3f7f7118f2104d2f40175cbcb92505ef4e3e9ef172de6118b1f   "docker-entrypoint.s…"   postgres    13 hours ago     Up 21 seconds (healthy)     127.0.0.1:5433->5432/tcp
+clinic-dev-publisher-1   clinic-app:dev                                                            "python -m clinic.ru…"   publisher   11 hours ago     Up 2 minutes (healthy)      127.0.0.1:8001->8001/tcp
+clinic-dev-rabbitmq-1    sha256:28e9ed1bb3285d572e88a4d770158de6a51cda7a2be3a69f792756439b1f1688   "docker-entrypoint.s…"   rabbitmq    13 hours ago     Up 21 seconds (healthy)     127.0.0.1:5673->5672/tcp, 127.0.0.1:15673->15672/tcp, 127.0.0.1:15693->15692/tcp
+clinic-dev-seed-1        clinic-app:dev                                                            "python -m clinic.se…"   seed        11 hours ago     Exited (0) 12 seconds ago   
+clinic-dev-worker-1      clinic-app:dev                                                            "python -m clinic.ru…"   worker      11 hours ago     Up 2 minutes (healthy)      127.0.0.1:8002->8002/tcp

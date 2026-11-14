@@ -1,0 +1,186 @@
+{
+  "started_at_utc": "2026-11-14T05:43:57.810Z",
+  "commit": "UNCOMMITTED",
+  "scope": "Read-only browser inspection of local Compose UI, no booking created",
+  "checks": [
+    "all requested palette values, Inter loaded, 16px body, 24/32px headings, 12/8px radii",
+    "served JS/CSS match final dist and original blue logo asset hash",
+    "login, slots and review have no page overflow at 320/390/768/1440px; fonts served locally"
+  ],
+  "layouts": [
+    {
+      "view": "login",
+      "width": 320,
+      "scroll_width": 320,
+      "h1_px": "28px"
+    },
+    {
+      "view": "login",
+      "width": 390,
+      "scroll_width": 390,
+      "h1_px": "28px"
+    },
+    {
+      "view": "login",
+      "width": 768,
+      "scroll_width": 768,
+      "h1_px": "28px"
+    },
+    {
+      "view": "login",
+      "width": 1440,
+      "scroll_width": 1440,
+      "h1_px": "32px"
+    },
+    {
+      "view": "slots",
+      "width": 320,
+      "scroll_width": 320,
+      "h1_px": "28px"
+    },
+    {
+      "view": "slots",
+      "width": 390,
+      "scroll_width": 390,
+      "h1_px": "28px"
+    },
+    {
+      "view": "slots",
+      "width": 768,
+      "scroll_width": 768,
+      "h1_px": "28px"
+    },
+    {
+      "view": "slots",
+      "width": 1440,
+      "scroll_width": 1440,
+      "h1_px": "32px"
+    },
+    {
+      "view": "review",
+      "width": 320,
+      "scroll_width": 320,
+      "h1_px": "28px"
+    },
+    {
+      "view": "review",
+      "width": 390,
+      "scroll_width": 390,
+      "h1_px": "28px"
+    },
+    {
+      "view": "review",
+      "width": 768,
+      "scroll_width": 768,
+      "h1_px": "28px"
+    },
+    {
+      "view": "review",
+      "width": 1440,
+      "scroll_width": 1440,
+      "h1_px": "32px"
+    }
+  ],
+  "css": {
+    "font": "Inter, sans-serif",
+    "font_loaded": true,
+    "body_px": "16px",
+    "h1_px": "32px",
+    "h2_px": "24px",
+    "page": "rgb(243, 247, 250)",
+    "surface": "rgb(255, 255, 255)",
+    "primary": "rgb(40, 103, 137)",
+    "text": "rgb(34, 52, 67)",
+    "secondary": "rgb(86, 104, 116)",
+    "border": "rgb(216, 226, 233)",
+    "card_radius": "12px",
+    "button_radius": "8px",
+    "input_radius": "8px"
+  },
+  "served_assets": [
+    {
+      "path": "/assets/index-CjoOw9lU.js",
+      "sha256": "358f5fb89a9da234f50c625ccdbd81804f90dbbf99484f01e624c0fc8de78a12",
+      "matches_dist": true
+    },
+    {
+      "path": "/assets/index-Eniegz4H.css",
+      "sha256": "9a291e9ea771f2b1ee7a564875ef9c3500fff2d9203c79ee7368e6f5fdfb37e9",
+      "matches_dist": true
+    }
+  ],
+  "logo": {
+    "path": "/brand/an-uyen-logo-blue.svg",
+    "sha256": "207345e6bef8c08c133f5ff5313cb74f41c22cfb95f6618cacd47829e1585f1d"
+  },
+  "font_requests": [
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-latin-600-normal-LgqL8muc.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-latin-500-normal-Cerq10X2.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-latin-400-normal-C38fXH4l.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-latin-ext-400-normal-C1nco2VV.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-vietnamese-400-normal-DMkecbls.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-vietnamese-500-normal-DOriooB6.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-vietnamese-600-normal-Cc8MFFhd.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2",
+      "status": 200
+    },
+    {
+      "url": "http://127.0.0.1:18080/assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2",
+      "status": 200
+    }
+  ],
+  "exit_code": 0,
+  "ended_at_utc": "2026-11-14T05:44:00.656Z",
+  "runtime": {
+    "inspected_at_utc": "2026-11-14T05:44:54.562Z",
+    "healthy_services": 7,
+    "migration": "20261114_01 (head)",
+    "build_logs": [
+      "vite-build.log",
+      "docker-frontend-build.log"
+    ]
+  },
+  "source_sha256": {
+    "frontend/src/App.tsx": "ac19d1385ded116026bd1ab751fc4f44c36c7ada40f6abc739fc132d5de1f47b",
+    "frontend/src/style.css": "8476bdac9a2b95c1ea9bf6b338bd7484fbf63352255baa97a7b1885bf9e68b2d",
+    "frontend/src/api.ts": "8949b2744c5bff7fa70f1674b98cfe54c83859df5b61212c0e18371c267f8b10",
+    "frontend/src/types.ts": "625ac241fd33d711758175b30e5a865f802d97edba7a2a03c9e17c108561e7c8",
+    "frontend/src/icons.tsx": "39b9f99e4e253a11a1980c4985cf1e1fd5a9bb2b40873ea8a5bf247790f49646",
+    "frontend/src/main.tsx": "43875e846e6b11fc8c05c9f65257996f72bb51e820f63c9746d247e921657975",
+    "frontend/tests/soft-minimal-smoke.cjs": "605b0f231478fdf1858ea856ddbdbdf45e6f286053592fa98ea46556965b7d5e",
+    "frontend/tests/requirements-audit.cjs": "cc6dd36e44e5cbb2699d87404e81564fb8a6604a4bfe4a48d16f0d7e0c54b8c2"
+  },
+  "previous_backend_suite": {
+    "metadata": "docs/evidence/integration-20261113T192650Z/metadata.json",
+    "compared_files": 29,
+    "source_unchanged": true,
+    "mismatches": [],
+    "note": "Previous 30-pass backend suite retained; not rerun for frontend-only changes."
+  },
+  "related": {
+    "audit": "ui-requirements-final-20261114T054356Z",
+    "smoke": "ui-double-check-20261114T054401Z"
+  }
+}

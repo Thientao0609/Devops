@@ -1,0 +1,27 @@
+{
+  "at_utc": "2026-11-14T07:06:51.305920+00:00",
+  "scope": "Credential capability probe; no credential contents retained",
+  "credential_available": true,
+  "git_credential_exit": 0,
+  "user_status": 200,
+  "login": "vxxngw",
+  "plan": "free",
+  "oauth_scopes": [
+    "gist",
+    "notifications",
+    "read:gpg_key",
+    "read:org",
+    "repo",
+    "user",
+    "workflow",
+    "write:public_key"
+  ],
+  "repo_status": 200,
+  "permissions": {
+    "admin": true,
+    "maintain": true,
+    "push": true,
+    "triage": true,
+    "pull": true
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "started_at_utc": "2026-11-14T05:36:03.752Z",
+  "commit": "UNCOMMITTED",
+  "scope": "UI requirement audit: real API login/doctors/slots; intercepted transport failures and synthetic reminder-status responses. No appointment created or changed.",
+  "checks": [
+    {
+      "name": "doctor search empty state retains query",
+      "result": "PASS"
+    },
+    {
+      "name": "slot loading indicator while request is pending",
+      "result": "PASS"
+    },
+    {
+      "name": "slot retry restores selected day and visible available times",
+      "result": "FAIL",
+      "error": "expect(locator).toHaveCount(expected) failed\n\nLocator:  locator('.date-strip button[aria-pressed=\"true\"]')\nExpected: 1\nReceived: 0\nTimeout:  3000ms\n\nCall log:\n  - Expect \"toHaveCount\" locator('.date-strip button[aria-pressed=\"true\"]') with timeout 3000ms\n  - waiting for locator('.date-strip button[aria-pressed=\"true\"]')\n    10 × locator resolved to 0 elements\n       - unexpected value \"0\"\n"
+    },
+    {
+      "name": "back/edit preserves chosen time and reminder preference",
+      "result": "PASS"
+    },
+    {
+      "name": "network loss preserves review, email and reminder choice",
+      "result": "PASS"
+    },
+    {
+      "name": "non-JSON gateway error retains review data and same idempotency key",
+      "result": "PASS"
+    },
+    {
+      "name": "concurrent slot conflict retains details and requires another time",
+      "result": "PASS"
+    },
+    {
+      "name": "reminder delivery failure is visible separately from confirmation SENT",
+      "result": "FAIL",
+      "error": "expect(locator).toContainText(expected) failed\n\nLocator: locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]').getByRole('alert')\nExpected substring: \"Email nhắc lịch chưa gửi được\"\nTimeout: 3000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"toContainText\" locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]').getByRole('alert') with timeout 3000ms\n  - waiting for locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]').getByRole('alert')\n"
+    },
+    {
+      "name": "reminder status PENDING is visible",
+      "result": "FAIL",
+      "error": "expect(locator).toContainText(expected) failed\n\nLocator: locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]')\nExpected substring: \"Đang chờ gửi email nhắc lịch\"\nReceived string:    \"BS. Nguyễn AnMã lịch hẹn E387728DSắp tới14/11/202613:06 – 13:36Đã gửi email xác nhậnNhắc lịch qua emailĐã qua thời gian bật nhắc. Bạn vẫn có thể xem email xác nhận.Hủy lịch hẹn\"\nTimeout: 1500ms\n\nCall log:\n  - Expect \"toContainText\" locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]') with timeout 1500ms\n  - waiting for locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]')\n    16 × locator resolved to <li class=\"appointment-item\" data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\">…</li>\n       - unexpected value \"BS. Nguyễn AnMã lịch hẹn E387728DSắp tới14/11/202613:06 – 13:36Đã gửi email xác nhậnNhắc lịch qua emailĐã qua thời gian bật nhắc. Bạn vẫn có thể xem email xác nhận.Hủy lịch hẹn\"\n"
+    },
+    {
+      "name": "reminder status PROCESSING is visible",
+      "result": "FAIL",
+      "error": "expect(locator).toContainText(expected) failed\n\nLocator: locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]')\nExpected substring: \"Đang gửi email nhắc lịch\"\nReceived string:    \"BS. Nguyễn AnMã lịch hẹn E387728DSắp tới14/11/202613:06 – 13:36Đã gửi email xác nhậnNhắc lịch qua emailĐã qua thời gian bật nhắc. Bạn vẫn có thể xem email xác nhận.Hủy lịch hẹn\"\nTimeout: 1500ms\n\nCall log:\n  - Expect \"toContainText\" locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]') with timeout 1500ms\n  - waiting for locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]')\n    16 × locator resolved to <li class=\"appointment-item\" data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\">…</li>\n       - unexpected value \"BS. Nguyễn AnMã lịch hẹn E387728DSắp tới14/11/202613:06 – 13:36Đã gửi email xác nhậnNhắc lịch qua emailĐã qua thời gian bật nhắc. Bạn vẫn có thể xem email xác nhận.Hủy lịch hẹn\"\n"
+    },
+    {
+      "name": "reminder status RETRY_PENDING is visible",
+      "result": "FAIL",
+      "error": "expect(locator).toContainText(expected) failed\n\nLocator: locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]')\nExpected substring: \"Đang thử gửi lại email nhắc lịch\"\nReceived string:    \"BS. Nguyễn AnMã lịch hẹn E387728DSắp tới14/11/202613:06 – 13:36Đã gửi email xác nhậnNhắc lịch qua emailĐã qua thời gian bật nhắc. Bạn vẫn có thể xem email xác nhận.Hủy lịch hẹn\"\nTimeout: 1500ms\n\nCall log:\n  - Expect \"toContainText\" locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]') with timeout 1500ms\n  - waiting for locator('[data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\"]')\n    16 × locator resolved to <li class=\"appointment-item\" data-appointment=\"e387728d-6249-4e2d-b34b-a3a5fd2d2382\">…</li>\n       - unexpected value \"BS. Nguyễn AnMã lịch hẹn E387728DSắp tới14/11/202613:06 – 13:36Đã gửi email xác nhậnNhắc lịch qua emailĐã qua thời gian bật nhắc. Bạn vẫn có thể xem email xác nhận.Hủy lịch hẹn\"\n"
+    },
+    {
+      "name": "reminder status SENT is visible",
+      "result": "PASS"
+    },
+    {
+      "name": "JavaScript has no uncaught error",
+      "result": "PASS"
+    }
+  ],
+  "exit_code": 1,
+  "ended_at_utc": "2026-11-14T05:36:17.200Z"
+}

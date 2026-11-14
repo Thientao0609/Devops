@@ -1,0 +1,14 @@
+title = "Clinic: default rules with a narrow source-provenance hash exception"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "Only64hex SHA256 source hashes for the five verified path keys in evidence metadata; not credentials or whole evidence files"
+condition = "AND"
+regexTarget = "line"
+paths = ['''(^|[/\\])docs[/\\]evidence[/\\].*[/\\]metadata\.json$''']
+regexes = ['''^\s*"(?:services(?:/|\\\\)clinic(?:/|\\\\)(?:api|reset_password)\.py|tests(?:/|\\\\)test_api\.py|frontend(?:/|\\\\)src(?:/|\\\\)api\.ts)"\s*:\s*"[a-fA-F0-9]{64}",?\s*$''']

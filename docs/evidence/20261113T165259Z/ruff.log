@@ -1,0 +1,77 @@
+F811 Redefinition of unused `event` from line 14
+  --> tests\test_integration.py:51:38
+   |
+51 | def test_real_broker_smtp_and_dedupe(event, broker):
+   |                                      ^^^^^ `event` redefined here
+52 |     before = httpx.get("http://localhost:8025/api/v1/messages").json()["total"]
+53 |     assert publisher.publish_one(broker)
+   |
+  ::: tests\test_integration.py:14:25
+   |
+12 | from clinic.dlq import replay
+13 | from clinic.models import Delivery, OutboxEvent
+14 | from test_events import event  # noqa: F401 - fixture shared with unit boundary tests
+   |                         ----- previous definition of `event` here
+15 |
+16 | pytestmark = pytest.mark.integration
+   |
+help: Remove definition: `event`
+
+F811 Redefinition of unused `event` from line 14
+  --> tests\test_integration.py:64:40
+   |
+64 | def test_real_unroutable_not_confirmed(event, broker):
+   |                                        ^^^^^ `event` redefined here
+65 |     with pytest.raises(pika.exceptions.UnroutableError):
+66 |         broker.basic_publish(
+   |
+  ::: tests\test_integration.py:14:25
+   |
+12 | from clinic.dlq import replay
+13 | from clinic.models import Delivery, OutboxEvent
+14 | from test_events import event  # noqa: F401 - fixture shared with unit boundary tests
+   |                         ----- previous definition of `event` here
+15 |
+16 | pytestmark = pytest.mark.integration
+   |
+help: Remove definition: `event`
+
+F811 Redefinition of unused `event` from line 14
+  --> tests\test_integration.py:75:44
+   |
+75 | def test_real_smtp_outage_retry_dlq_replay(event, broker, monkeypatch):
+   |                                            ^^^^^ `event` redefined here
+76 |     # Real connection refused from a closed local port, not a fake SMTP sender.
+77 |     config = settings()
+   |
+  ::: tests\test_integration.py:14:25
+   |
+12 | from clinic.dlq import replay
+13 | from clinic.models import Delivery, OutboxEvent
+14 | from test_events import event  # noqa: F401 - fixture shared with unit boundary tests
+   |                         ----- previous definition of `event` here
+15 |
+16 | pytestmark = pytest.mark.integration
+   |
+help: Remove definition: `event`
+
+F811 Redefinition of unused `event` from line 14
+  --> tests\test_integration.py:92:58
+   |
+92 | def test_real_unacked_redelivered_after_connection_close(event, broker):
+   |                                                          ^^^^^ `event` redefined here
+93 |     publish(broker, event)
+94 |     with connect() as other:
+   |
+  ::: tests\test_integration.py:14:25
+   |
+12 | from clinic.dlq import replay
+13 | from clinic.models import Delivery, OutboxEvent
+14 | from test_events import event  # noqa: F401 - fixture shared with unit boundary tests
+   |                         ----- previous definition of `event` here
+15 |
+16 | pytestmark = pytest.mark.integration
+   |
+help: Remove definition: `event`
+
+Found 4 errors.

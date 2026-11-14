@@ -1,0 +1,1 @@
+sha256:bfbaeedaebeefa169b3beebffd12557a20ec9c1b8b749887ac0192b202dc9c87 user=postgres health=["CMD","/opt/health.sh"]

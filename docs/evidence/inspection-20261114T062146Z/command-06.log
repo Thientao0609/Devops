@@ -1,0 +1,1 @@
+sha256:95a6e7ab077ca7d1a3f4baecb7414b7402ccf53380e22c8b076bdac98d633b31 user=nginx health={"Interval":10000000000,"Retries":5,"Test":["CMD-SHELL","wget -q -O /dev/null http://127.0.0.1:8080/health"],"Timeout":3000000000}

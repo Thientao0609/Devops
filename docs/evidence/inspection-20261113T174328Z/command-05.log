@@ -1,0 +1,1 @@
+sha256:055cb130fdea4c216b0a67b8d48c283d2052d301af6b6a4f9a8b34379f632f74 user=10001:10001 health=["CMD-SHELL","python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=2)\""]

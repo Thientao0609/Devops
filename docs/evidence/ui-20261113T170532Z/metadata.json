@@ -1,0 +1,18 @@
+{
+  "started_at_utc": "2026-11-13T17:05:39.130Z",
+  "commit": "UNCOMMITTED",
+  "scope": "Browser -> native FastAPI -> isolated SQLite; no broker or email verification",
+  "checks": [
+    "patient login/available slots/booking/PENDING notification/mobile no horizontal overflow",
+    "patient cancellation using real API",
+    "second patient cannot see first patient appointment",
+    "admin login/create doctor/create slot/list appointments",
+    "no uncaught page errors"
+  ],
+  "bundle_sha256": {
+    "index-GhAwz9iG.js": "f116f524f504a938f1ca69363f0ccf114f13251719f429a95ef72f13f554a323",
+    "index-nnbHwyWe.css": "e7fb237f6fc8032085d3a29361f0342ab38f4ebce7d9cfd2527db78eb651f5ff"
+  },
+  "exit_code": 0,
+  "ended_at_utc": "2026-11-13T17:05:42.177Z"
+}

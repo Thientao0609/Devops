@@ -1,0 +1,41 @@
+{
+  "at_utc": "2026-11-13T18:39:56.446Z",
+  "commit": "UNCOMMITTED",
+  "scope": "Visual branding inspection on live Compose; no synthetic screenshots",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "title": "An Uyên Hospital · Đặt lịch khám",
+      "brand": "An Uyên Hospital, trang chủ",
+      "primary_color": "rgb(16, 55, 131)",
+      "logo_loaded": true,
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "title": "An Uyên Hospital · Đặt lịch khám",
+      "brand": "An Uyên Hospital, trang chủ",
+      "primary_color": "rgb(16, 55, 131)",
+      "logo_loaded": true,
+      "horizontal_overflow": false
+    }
+  ],
+  "logo": {
+    "http_status": 200,
+    "served_sha256": "d98805068434ba4745e2bc0b93a03e76158a0550216c93ade36da63b11f88d3f",
+    "original_sha256": "d98805068434ba4745e2bc0b93a03e76158a0550216c93ade36da63b11f88d3f",
+    "original_bytes_preserved": true
+  },
+  "openapi_title": "An Uyên Hospital · API đặt lịch khám",
+  "email": {
+    "message_id": "6Zga94Rw54qPKzGJs3Sgt9",
+    "subject": "An Uyên Hospital | Cập nhật lịch khám ddb7129b",
+    "from_name": "An Uyên Hospital",
+    "body_has_brand": true
+  },
+  "exit_code": 0
+}

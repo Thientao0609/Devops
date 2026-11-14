@@ -1,0 +1,35 @@
+{"timestamp": "2026-11-13T17:32:51.086624+00:00", "level": "INFO", "service": "publisher", "environment": "development", "message": "runtime_started"}
+{"timestamp": "2026-11-13T17:33:11.713398+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "bcfa20de-70c1-4e49-be89-0aaccab003b7", "correlation_id": "runtime-6d19594e-22a9-4fae-8c6c-3e45ec10742b"}
+{"timestamp": "2026-11-13T17:33:26.555058+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-13T17:33:26.555256+00:00", "level": "ERROR", "service": "outbox-publisher", "environment": "development", "message": "publish_loop_failed", "error_type": "ConnectionClosedByBroker"}
+{"timestamp": "2026-11-13T17:33:32.566563+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-13T17:33:32.567098+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:32.567389+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:32.567482+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:32.567545+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-13T17:33:32.567595+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-13T17:33:32.567898+00:00", "level": "ERROR", "service": "outbox-publisher", "environment": "development", "message": "publish_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-13T17:33:38.506486+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-13T17:33:38.506783+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:38.506866+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:38.506893+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:38.506970+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-13T17:33:38.507037+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-13T17:33:38.507186+00:00", "level": "ERROR", "service": "outbox-publisher", "environment": "development", "message": "publish_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-13T17:33:44.511072+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.selector_ioloop_adapter", "error_type": null}
+{"timestamp": "2026-11-13T17:33:44.511487+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:44.511565+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:44.511586+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.utils.connection_workflow", "error_type": null}
+{"timestamp": "2026-11-13T17:33:44.511621+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": null}
+{"timestamp": "2026-11-13T17:33:44.511649+00:00", "level": "ERROR", "service": "runtime", "message": "pika.adapters.blocking_connection", "error_type": "gaierror"}
+{"timestamp": "2026-11-13T17:33:44.511782+00:00", "level": "ERROR", "service": "outbox-publisher", "environment": "development", "message": "publish_loop_failed", "error_type": "gaierror"}
+{"timestamp": "2026-11-13T17:33:46.608402+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "e380349b-a555-4234-a120-6108a468c0c5", "correlation_id": "runtime-74ed2528-9f38-426a-9c1e-d2b7555330a7"}
+{"timestamp": "2026-11-13T17:34:02.865324+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "2651ae29-d80d-437a-9a20-de31dd2d3f94", "correlation_id": "runtime-b55a8fc8-22a9-4783-ac8e-7ec276405396"}
+{"timestamp": "2026-11-13T17:36:07.190477+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "d55ae756-ad2d-41fa-941b-ac1a11893941", "correlation_id": "6e3fb54c-88b2-45b9-92f8-09e9a5a4cffa"}
+{"timestamp": "2026-11-13T17:36:07.913017+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "99ae8c27-a025-4a1f-be8a-52047242d97f", "correlation_id": "9b75437f-d212-4606-8413-6dc25181c453"}
+{"timestamp": "2026-11-13T17:36:08.631890+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "27c8b7a2-ce35-41b6-aaaa-86e6bf6f5c84", "correlation_id": "5a738142-7121-4708-8693-ae51dd74c478"}
+{"timestamp": "2026-11-13T17:38:26.938315+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "f56394b8-4a5d-4f08-b955-e861e1c97d51", "correlation_id": "dcd3518e-d0d3-400b-8a80-9f740fd3d385"}
+{"timestamp": "2026-11-13T17:38:32.678027+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "387051a0-3368-4cd5-8bed-3373c0dd6a16", "correlation_id": "975f72aa-19b8-4f8e-b13f-7366b70f9633"}
+{"timestamp": "2026-11-13T17:44:24.099784+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "e14b6d0e-adf6-4b15-b6f3-fb92feafa5e4", "correlation_id": "ea33b08f-9a71-4130-b689-a676090ce45e"}
+{"timestamp": "2026-11-13T17:44:24.815473+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "4704e3f4-dd02-4cef-ab1f-073bfd45aff2", "correlation_id": "086eb99d-7040-4148-ae7a-bd0c16fddbd9"}
+{"timestamp": "2026-11-13T17:44:25.540793+00:00", "level": "INFO", "service": "outbox-publisher", "environment": "development", "message": "event_published", "event_id": "52252348-e725-4539-8808-ee45d72192e9", "correlation_id": "3fc931a2-469d-4fe7-8a5f-7d2a4a5af187"}

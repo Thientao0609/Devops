@@ -1,0 +1,129 @@
+ Image clinic-frontend:dev Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.17kB done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 407B 0.0s done
+#2 DONE 0.0s
+
+#3 [auth] library/nginx:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#4 [auth] library/node:pull token for registry-1.docker.io
+#4 DONE 0.0s
+
+#5 [internal] load metadata for docker.io/library/node:24.11.1-alpine
+#5 ...
+
+#6 [internal] load metadata for docker.io/library/nginx:1.28.0-alpine
+#6 DONE 1.6s
+
+#5 [internal] load metadata for docker.io/library/node:24.11.1-alpine
+#5 DONE 2.1s
+
+#7 [internal] load .dockerignore
+#7 transferring context: 64B done
+#7 DONE 0.0s
+
+#8 [stage-1 1/3] FROM docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284
+#8 resolve docker.io/library/nginx:1.28.0-alpine@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284 0.0s done
+#8 DONE 0.0s
+
+#9 [build 1/6] FROM docker.io/library/node:24.11.1-alpine@sha256:682368d8253e0c3364b803956085c456a612d738bd635926d73fa24db3ce53d7
+#9 resolve docker.io/library/node:24.11.1-alpine@sha256:682368d8253e0c3364b803956085c456a612d738bd635926d73fa24db3ce53d7 0.0s done
+#9 DONE 0.0s
+
+#10 [internal] load build context
+#10 transferring context: 53.18kB 0.0s done
+#10 DONE 0.0s
+
+#11 [build 2/6] WORKDIR /app
+#11 CACHED
+
+#12 [build 3/6] COPY package*.json .
+#12 CACHED
+
+#13 [build 4/6] RUN npm ci
+#13 CACHED
+
+#14 [build 5/6] COPY . .
+#14 DONE 0.0s
+
+#15 [build 6/6] RUN npm run build
+#15 0.414 
+#15 0.414 > clinic-frontend@0.1.0 build
+#15 0.414 > tsc -b && vite build
+#15 0.414 
+#15 2.608 vite v7.2.2 building client environment for production...
+#15 2.702 transforming...
+#15 3.534 ✓ 35 modules transformed.
+#15 3.664 rendering chunks...
+#15 3.707 computing gzip size...
+#15 3.719 dist/index.html                                             0.64 kB │ gzip:  0.43 kB
+#15 3.720 dist/assets/inter-vietnamese-400-normal-DMkecbls.woff2      4.97 kB
+#15 3.720 dist/assets/inter-vietnamese-600-normal-Cc8MFFhd.woff2      5.10 kB
+#15 3.721 dist/assets/inter-vietnamese-500-normal-DOriooB6.woff2      5.11 kB
+#15 3.722 dist/assets/inter-greek-ext-400-normal-DGGRlc-M.woff2       5.26 kB
+#15 3.722 dist/assets/inter-greek-ext-500-normal-C4iEst2y.woff2       5.43 kB
+#15 3.723 dist/assets/inter-greek-ext-600-normal-DRtmH8MT.woff2       5.43 kB
+#15 3.723 dist/assets/inter-vietnamese-400-normal-Bbgyi5SW.woff       6.50 kB
+#15 3.723 dist/assets/inter-vietnamese-500-normal-mJboJaSs.woff       6.60 kB
+#15 3.723 dist/assets/inter-vietnamese-600-normal-BuLX-rYi.woff       6.64 kB
+#15 3.723 dist/assets/inter-greek-ext-400-normal-KugGGMne.woff        7.06 kB
+#15 3.723 dist/assets/inter-greek-ext-500-normal-2j5mBUwD.woff        7.19 kB
+#15 3.723 dist/assets/inter-greek-ext-600-normal-B8X0CLgF.woff        7.21 kB
+#15 3.723 dist/assets/inter-cyrillic-400-normal-obahsSVq.woff2        7.71 kB
+#15 3.723 dist/assets/inter-greek-400-normal-B4URO6DV.woff2           7.78 kB
+#15 3.723 dist/assets/inter-cyrillic-500-normal-BasfLYem.woff2        7.90 kB
+#15 3.723 dist/assets/inter-greek-500-normal-BIZE56-Y.woff2           7.92 kB
+#15 3.723 dist/assets/inter-greek-600-normal-plRanbMR.woff2           7.94 kB
+#15 3.723 dist/assets/inter-cyrillic-600-normal-CWCymEST.woff2        7.97 kB
+#15 3.723 dist/assets/inter-cyrillic-400-normal-HOLc17fK.woff         9.78 kB
+#15 3.724 dist/assets/inter-greek-400-normal-q2sYcFCs.woff            9.92 kB
+#15 3.724 dist/assets/inter-cyrillic-600-normal-4D_pXhcN.woff         9.94 kB
+#15 3.724 dist/assets/inter-cyrillic-500-normal-CxZf_p3X.woff         9.94 kB
+#15 3.724 dist/assets/inter-greek-500-normal-Xzm54t5V.woff            9.98 kB
+#15 3.724 dist/assets/inter-greek-600-normal-BZpKdvQh.woff           10.03 kB
+#15 3.724 dist/assets/inter-cyrillic-ext-400-normal-BQZuk6qB.woff2   10.23 kB
+#15 3.724 dist/assets/inter-cyrillic-ext-500-normal-B0yAr1jD.woff2   10.43 kB
+#15 3.724 dist/assets/inter-cyrillic-ext-600-normal-Dfes3d0z.woff2   10.48 kB
+#15 3.724 dist/assets/inter-cyrillic-ext-400-normal-DQukG94-.woff    13.34 kB
+#15 3.724 dist/assets/inter-cyrillic-ext-500-normal-BmqWE9Dz.woff    13.45 kB
+#15 3.724 dist/assets/inter-cyrillic-ext-600-normal-Bcila6Z-.woff    13.46 kB
+#15 3.724 dist/assets/inter-latin-400-normal-C38fXH4l.woff2          23.66 kB
+#15 3.724 dist/assets/inter-latin-500-normal-Cerq10X2.woff2          24.27 kB
+#15 3.724 dist/assets/inter-latin-600-normal-LgqL8muc.woff2          24.45 kB
+#15 3.724 dist/assets/inter-latin-400-normal-CyCys3Eg.woff           30.70 kB
+#15 3.724 dist/assets/inter-latin-600-normal-CiBQ2DWP.woff           31.26 kB
+#15 3.724 dist/assets/inter-latin-500-normal-BL9OpVg8.woff           31.28 kB
+#15 3.724 dist/assets/inter-latin-ext-400-normal-C1nco2VV.woff2      35.00 kB
+#15 3.724 dist/assets/inter-latin-ext-500-normal-CV4jyFjo.woff2      36.02 kB
+#15 3.724 dist/assets/inter-latin-ext-600-normal-D2bJ5OIk.woff2      36.26 kB
+#15 3.724 dist/assets/inter-latin-ext-400-normal-77YHD8bZ.woff       47.56 kB
+#15 3.724 dist/assets/inter-latin-ext-500-normal-BxGbmqWO.woff       48.49 kB
+#15 3.724 dist/assets/inter-latin-ext-600-normal-CIVaiw4L.woff       48.67 kB
+#15 3.724 dist/assets/index-CLfACJZ9.css                             28.67 kB │ gzip:  5.96 kB
+#15 3.724 dist/assets/index-BIRR2IM2.js                             223.70 kB │ gzip: 69.48 kB
+#15 3.725 ✓ built in 1.08s
+#15 DONE 3.8s
+
+#16 [stage-1 2/3] COPY nginx.conf /etc/nginx/nginx.conf
+#16 CACHED
+
+#17 [stage-1 3/3] COPY --from=build --chown=nginx:nginx /app/dist /usr/share/nginx/html
+#17 DONE 0.1s
+
+#18 exporting to image
+#18 exporting layers 0.1s done
+#18 exporting manifest sha256:5dd6fdcbd508bdce72f083c33bccd502498f7a29ecbd6ea796db900dc110814c done
+#18 exporting config sha256:bb0e18b0e410fbdb516540fbe91eb07f037e9b71f52ec319815cbf5ca065a0da done
+#18 exporting attestation manifest sha256:3696acaa601bc8a6fa77422dc416000546dac178b225b78cc8dd27c55cffd383 done
+#18 exporting manifest list sha256:d5065c92527574f5ada4569abd4b7e2532a9fa515390ecf14ca4ae786ee8b51f done
+#18 naming to docker.io/library/clinic-frontend:dev done
+#18 unpacking to docker.io/library/clinic-frontend:dev 0.0s done
+#18 DONE 0.1s
+
+#19 resolving provenance for metadata file
+#19 DONE 0.0s
+ Image clinic-frontend:dev Built 

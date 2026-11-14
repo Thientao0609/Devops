@@ -1,0 +1,35 @@
+{
+  "at_utc": "2026-11-13T18:50:05.301Z",
+  "commit": "UNCOMMITTED",
+  "scope": "Blue logo visual check; no booking/data changes",
+  "source_original_sha256": "d98805068434ba4745e2bc0b93a03e76158a0550216c93ade36da63b11f88d3f",
+  "embedded_original_sha256": "d98805068434ba4745e2bc0b93a03e76158a0550216c93ade36da63b11f88d3f",
+  "views": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "logo_loaded": true,
+      "horizontal_overflow": false
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "logo_loaded": true,
+      "horizontal_overflow": false
+    }
+  ],
+  "logo_url": "/brand/an-uyen-logo-blue.svg",
+  "http_status": 200,
+  "served_sha256": "207345e6bef8c08c133f5ff5313cb74f41c22cfb95f6618cacd47829e1585f1d",
+  "asset_sha256": "207345e6bef8c08c133f5ff5313cb74f41c22cfb95f6618cacd47829e1585f1d",
+  "favicon": "/brand/an-uyen-logo-blue.svg",
+  "exit_code": 0,
+  "rendered_opaque_pixel_samples_argb": [
+    "ff103783",
+    "ff103783",
+    "ff103783"
+  ],
+  "exact_srgb_fill_verified": true
+}

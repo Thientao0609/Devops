@@ -1,0 +1,1 @@
+sha256:b2ca1da3bf1fd0d9b23459efcaf7736861e1534784e2716f0e77c23d3f60f035 user=10001:10001 health={"Interval":10000000000,"Retries":5,"StartPeriod":10000000000,"Test":["CMD-SHELL","python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=2)\""],"Timeout":3000000000}

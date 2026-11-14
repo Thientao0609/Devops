@@ -1,0 +1,37 @@
+{
+  "at_snapshot": "2026-11-13T17:57:19.775275+00:00",
+  "scope": "Final documentation/runtime-evidence audit; not gitleaks/Trivy/security gate",
+  "markdown_links": "PASS",
+  "matrix_rows": 70,
+  "required_groups": 12,
+  "demo_steps": 8,
+  "brief_acceptance_cases": 16,
+  "local_env_secret_copy_check": "PASS (does not replace gitleaks)",
+  "inspection_commands": "all exit0",
+  "inspection_http": "all200",
+  "json_stdout": [
+    {
+      "service": "clinic-dev-api-1",
+      "lines": 100,
+      "json_lines": 100
+    },
+    {
+      "service": "clinic-dev-publisher-1",
+      "lines": 35,
+      "json_lines": 35
+    },
+    {
+      "service": "clinic-dev-worker-1",
+      "lines": 10,
+      "json_lines": 10
+    }
+  ],
+  "prometheus_metric_families": {
+    "8000-metrics.txt": 19,
+    "8001-metrics.txt": 19,
+    "8002-metrics.txt": 19,
+    "rabbitmq-metrics.txt": 275,
+    "rabbitmq-metrics-per-object.txt": 277
+  },
+  "exit_code": 0
+}

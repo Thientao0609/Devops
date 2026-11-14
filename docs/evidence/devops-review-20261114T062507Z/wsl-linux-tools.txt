@@ -1,0 +1,1 @@
+{"terraform": false, "ansible-playbook": false, "kubectl": true, "virsh": false, "VBoxManage": false, "gitleaks": false, "trivy": false}
