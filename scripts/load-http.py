@@ -6,6 +6,7 @@ import json
 import ssl
 import time
 import urllib.request
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -45,7 +46,9 @@ def main():
     if not doctors:
         raise RuntimeError("Prepare synthetic doctor/slot fixtures before load")
     endpoint = base + "/api/doctors/" + doctors[0]["id"] + "/slots"
-    deadline = time.monotonic() + args.seconds
+    started_at = datetime.now(UTC).isoformat()
+    started_load = time.monotonic()
+    deadline = started_load + args.seconds
 
     def worker(_):
         durations, errors = [], 0
@@ -65,12 +68,20 @@ def main():
         results = list(pool.map(worker, range(args.concurrency)))
     durations = sorted(duration for group, _ in results for duration in group)
     errors = sum(count for _, count in results)
+    elapsed = time.monotonic() - started_load
     print(
         json.dumps(
             {
                 "scope": "Business slots HTTP load only; verify API CPU/HPA separately",
+                "started_at_utc": started_at,
+                "ended_at_utc": datetime.now(UTC).isoformat(),
+                "elapsed_seconds": elapsed,
+                "concurrency": args.concurrency,
+                "requests": len(durations) + errors,
+                "requests_per_second": (len(durations) + errors) / elapsed,
                 "successes": len(durations),
                 "errors": errors,
+                "latency_population": "successful_requests_only",
                 "p95_seconds": durations[min(len(durations) - 1, int(len(durations) * 0.95))]
                 if durations
                 else None,
