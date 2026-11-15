@@ -25,3 +25,8 @@ Lượt kiểm cuối có 80 bài unit/regression đạt và8 integration bỏ q
 Cập nhật15/11/2026: WSL và Docker đã chạy lại, Jenkins riêng18090 đã cấu hình và parser qua sau khi bỏ timestamps() không có plugin. Xem [bằng chứng mới](ci-recovery.md); các lượt lỗi ở trên giữ nguyên theo thời điểm. [Di chuyển active disk Docker sangD đã kiểm chứng](evidence/docker-storage-latest.json), giữ nguyên inventory/Jenkins và smoke image dev cũ qua. Agent/pipeline và stack/alert/demo vẫn chưa nghiệm thu; smoke này không thay build/test source M4.
 
 Cập nhật security15/11: scan8image giám sát và kiểm tra raw receipt đã qua, không thay bằng chứng app release image/CI build hoặc runtime. Chi tiết timeout→retry và sanitization checksum công khai trong [CI recovery](ci-recovery.md).
+
+
+Cập nhật **15/11/2026**: [CI và image SHA đã chạy thật](evidence/ci-runtime-latest.json). Jenkins4/5SUCCESS, unit81passed/8skip; integration33passed/0skip; build/scan đủ5imageSHA và dependency không CRITICAL. Agent online/non-root, Docker rootless qua mutualTLS đã sửa SAN. Full-stack SHA riêng:7healthy/non-root, migration/seed0, health/ready/metrics/JSON và đặt/hủy lịch/email qua. GitHub push202 tự kích Jenkins5SUCCESS; gate âm1secret và4CRITICAL có FAILURE/push-deploy skipped thật. GHCR chưa có credential, PRmain phù hợp chưa chạy ở snapshot này; không staging/production/VM/cluster. Các đoạn ngày14/11 bên dưới là lịch sử, không phải trạng thái mới nhất.
+
+Các sửa đổi metric/log M4 đã được kiểm lại trên imageSHA và runtime riêng; đây không phải Prometheus/Grafana/EFK/Alertmanager hoặc Kubernetes đã chạy.

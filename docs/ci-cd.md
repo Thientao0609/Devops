@@ -77,3 +77,11 @@ Mốc 3 bổ sung overlay/migration Job/kubeconfig namespace, trusted HTTPS smok
 
 
 Cập nhật15/11/2026: [Jenkins riêng đã khởi động và validate parser thật](ci-recovery.md); job/credential checkout đã cấu hình, agent còn offline và image agent chưa build. Tùy chọn timestamps() đã bỏ vì plugin set không có Timestamper; timeout, các gate và artifact timestamps vẫn giữ. Chưa có pipeline build/webhook/push digest. [Docker data đã chuyểnD và kiểm chứng thực](evidence/docker-storage-latest.json), Jenkins có xác thực và inventory được giữ nguyên; D còn khoảng7,55GiB do giữ toàn bộ backup, cần tính lại dung lượng trước build lớn.
+
+
+Cập nhật **15/11/2026**: [CI và image SHA đã chạy thật](evidence/ci-runtime-latest.json). Jenkins4/5SUCCESS, unit81passed/8skip; integration33passed/0skip; build/scan đủ5imageSHA và dependency không CRITICAL. Agent online/non-root, Docker rootless qua mutualTLS đã sửa SAN. Full-stack SHA riêng:7healthy/non-root, migration/seed0, health/ready/metrics/JSON và đặt/hủy lịch/email qua. GitHub push202 tự kích Jenkins5SUCCESS; gate âm1secret và4CRITICAL có FAILURE/push-deploy skipped thật. GHCR chưa có credential, PRmain phù hợp chưa chạy ở snapshot này; không staging/production/VM/cluster. Các đoạn ngày14/11 bên dưới là lịch sử, không phải trạng thái mới nhất.
+
+Engine phải có `DOCKER_TLS_SAN: DNS:engine` để chứng chỉ khớp `DOCKER_HOST=tcp://engine:2376`; kiểm thực sau recreate riêng engine đã qua, không tắt verify. [Webhook HTTPS local](runbooks/github-webhook.md) có phiên bản tunnel/SHA256 ghim trong ci/cloudflared.json.
+
+
+Kiểm chứng gate bổ sung15/11: [Jenkins6/7](evidence/ci-agent-20261115T064424Z/publish-requested-negative-checks.json) yêu cầu PUBLISH_IMAGES=true, DEPLOY=false nhưng scanner thật phát hiện1secret/4CRITICAL, buildFAILURE và push SKIPPED_FOR_FAILURE; không chỉ chứng minh stage bị tắt bởi tham số. Không đăng nhập/push registry hoặc deploy.

@@ -52,3 +52,6 @@ Nguồn chính thức: [Docker Desktop WSL2 – nơi lưu dữ liệu và đổi
 
 
 Khôi phục sớm15/11/2026 (trước lần chuyển thành công): Docker engine đã chạy lại nhưng probe thực vẫn thấy VHD C bị giữ mở, bản D cũ mở độc quyền được, D:\DockerData\active chưa tồn tại. Có bản sao tại `D:\CODE\OOPs\Do_An\.ci-local\recovery-backups\before-recovery-20261115T005310\disk\docker_data.vhdx` và manifest trong evidence CI recovery, SHA256/bytes đã đối chiếu khi source giữ read-only độc quyền. Bản sao này tiếp tục được giữ; xem trạng thái mới ở đầu tài liệu.
+
+
+Cập nhật dung lượng sau CI15/11: người dùng đã duyệt xóa riêng `D:\DockerData\DockerDesktopWSL`. Cả2VHD đã kiểm lại SHA256 với `D:\DockerBackup\before-m2-20261114`, mở độc quyền được và không phải active disk; kiểm backend/path/reparse trước xóa bằng Remove-Item đúng đường dẫn cố định. Đã lấy lại10,31GiB, D tăng từ~3 lên~13,31GiB trước build tiếp. Mọi backup thật và `D:\DockerData\active` giữ nguyên. [Manifest duyệt/thực thi](../evidence/ci-agent-20261115T064424Z/duplicate-copy-cleanup-executed.json); mọi phát biểu giữ bản tạmD cũ phía trên là lịch sử trước lần duyệt mới.
