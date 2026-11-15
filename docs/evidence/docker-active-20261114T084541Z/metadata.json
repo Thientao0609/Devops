@@ -1,0 +1,46 @@
+{
+  "at_utc": "2026-11-14T08:45:41.7010416Z",
+  "status": "BLOCKED_D_NOT_VERIFIED",
+  "scope": "Read-only paths/locks and engine inventory; no data removed, no stack health/business claim",
+  "source": {
+    "error_code": 32,
+    "exclusive_read": false,
+    "exists": true,
+    "sharing_locked": true,
+    "path": "C:\\Users\\Acer\\AppData\\Local\\Docker\\wsl\\disk\\docker_data.vhdx"
+  },
+  "target": {
+    "exists": false,
+    "sharing_locked": false,
+    "path": "D:\\DockerData\\active\\DockerDesktopWSL\\disk\\docker_data.vhdx"
+  },
+  "engine_available": true,
+  "containers": [
+    "clinic-dev-publisher-1|clinic-app:dev|Up 20 minutes (healthy)",
+    "clinic-dev-api-1|clinic-app:dev|Up 20 minutes (healthy)",
+    "clinic-dev-frontend-1|clinic-frontend:dev|Exited (255) 20 minutes ago",
+    "clinic-dev-worker-1|clinic-app:dev|Up 20 minutes (healthy)",
+    "clinic-dev-seed-1|clinic-app:dev|Exited (0) 2 hours ago",
+    "clinic-dev-migrate-1|clinic-app:dev|Exited (0) 2 hours ago",
+    "clinic-dev-postgres-1|f7c623bbf514|Exited (255) 20 minutes ago",
+    "clinic-dev-rabbitmq-1|28e9ed1bb328|Exited (255) 20 minutes ago",
+    "clinic-dev-mailpit-1|axllent/mailpit:v1.27.10|Exited (255) 20 minutes ago",
+    "my-jenkins|my-jenkins|Up 20 minutes",
+    "stoic_shannon|hello-world|Exited (0) 5 weeks ago",
+    "jenkins-docker|docker:dind|Exited (137) 5 weeks ago"
+  ],
+  "volumes": [
+    "17f13c1b6caf4594d78314e74e32b49e346677f847fa3c46e9c4cff1d2cac9b5",
+    "9402ee669d1a94f9f3ee16dc72392315b5ef1a6831956e24be3efb46e15960f3",
+    "clinic-dev_postgres-data",
+    "clinic-dev_postgres-data-alpine",
+    "clinic-dev_rabbitmq-data",
+    "clinic-m2-trivy-cache",
+    "install-jenkins-docker_jenkins-data",
+    "install-jenkins-docker_jenkins-docker-certs"
+  ],
+  "disk_free_bytes": {
+    "D": 52349071360,
+    "C": 4561735680
+  }
+}

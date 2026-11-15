@@ -1,0 +1,52 @@
+{
+  "recorded_at_utc": "2026-11-14T08:47:52.409162+00:00",
+  "checks": [
+    {
+      "operation": "Existing local Jenkins 8080 declarative validator",
+      "result": "Jenkinsfile successfully validated",
+      "scope": "Parser only; no credentials sent or jobs/config modified"
+    },
+    {
+      "operation": "docker compose --env-file .env.ci -f compose.ci.yaml --profile agent --profile webhook config --quiet",
+      "exit_code": 0,
+      "scope": "Configuration only, no build/up"
+    },
+    {
+      "operation": "docker compose -f compose.yaml config --quiet",
+      "exit_code": 0,
+      "scope": "Configuration only, custom Mailpit runtime not run"
+    },
+    {
+      "operation": "docker compose -f ci/compose.test.yaml config --quiet",
+      "exit_code": 0,
+      "scope": "Syntax-only environment values, no services started; initial missing-variable attempt failed as expected"
+    },
+    {
+      "operation": "PowerShell Language.Parser over scripts/*.ps1",
+      "result": "No parse errors",
+      "scope": "Syntax only; does not prove each script execution"
+    }
+  ],
+  "failures_preserved": [
+    {
+      "operation": "Initial Docker app Trivy scan",
+      "result": "BLOCKED; Docker/containerd cache I/O, exit125",
+      "security_pass": false
+    },
+    {
+      "operation": "First native negative Trivy demo",
+      "result": "BLOCKED; DB download tried C Temp, insufficient space; report absent",
+      "security_pass": false,
+      "fix": "Child TEMP/TMP/TMPDIR on D; later real scan reports 4 CRITICAL"
+    },
+    {
+      "operation": "Manual WslDataFolder settings attempt",
+      "result": "Not effective; live engine still holds C data disk",
+      "evidence": "../docker-active-20261114T084541Z/metadata.json"
+    },
+    {
+      "operation": "Delete C data disk before D runtime verification",
+      "result": "Automatic review rejected because original disk would be removed before proof D works; no source disk removed"
+    }
+  ]
+}

@@ -1,10 +1,10 @@
-FROM node:24.11.1-alpine AS build
+FROM node:24.22.1-alpine3.24 AS build
 WORKDIR /app
 COPY package*.json .
 RUN npm ci
 COPY . .
 RUN npm run build
-FROM nginx:1.28.0-alpine
+FROM nginx:1.30.6-alpine3.24@sha256:901e593c95dc85f5a729f5765516321366ef4ac401821431d408897e95287d0a
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build --chown=nginx:nginx /app/dist /usr/share/nginx/html
 USER nginx

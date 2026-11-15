@@ -1,0 +1,94 @@
+name: clinic-ci
+services:
+  webhook:
+    profiles: [webhook]
+    build:
+      context: .
+      dockerfile: ci/webhook/Dockerfile
+    image: clinic-ci-webhook:0.2.0
+    environment:
+      CLINIC_WEBHOOK_SECRET_FILE: /run/clinic/webhook-secret
+      CLINIC_WEBHOOK_CONFIG: /run/clinic/webhook-config.json
+    ports: ["127.0.0.1:18085:8085"]
+    volumes:
+      - ./.ci-local/webhook:/run/clinic:ro
+      - webhook-data:/data
+    networks: [control]
+    depends_on:
+      controller: {condition: service_healthy}
+    restart: unless-stopped
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    mem_limit: 128m
+  controller:
+    build:
+      context: .
+      dockerfile: ci/controller/Dockerfile
+    image: clinic-ci-controller:2.580.1
+    environment:
+      CLINIC_JENKINS_ADMIN_PASSWORD: ${CLINIC_JENKINS_ADMIN_PASSWORD:?Run bootstrap-ci.py init}
+      CLINIC_JENKINS_URL: http://localhost:18090/
+    ports: ["127.0.0.1:18090:8080"]
+    volumes: [controller-home:/var/jenkins_home]
+    networks: [control]
+    restart: unless-stopped
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    mem_limit: 1100m
+  engine:
+    build:
+      context: .
+      dockerfile: ci/engine/Dockerfile
+    image: clinic-ci-engine:29.9.3
+    privileged: true
+    environment:
+      DOCKER_TLS_CERTDIR: /certs
+      DOCKER_TLS_SAN: DNS:engine
+    volumes:
+      - engine-data:/home/rootless/.local/share/docker
+      - engine-certs:/certs
+      - engine-client-certs:/certs/client
+      - agent-workspace:/home/jenkins/agent
+    networks: [build]
+    restart: unless-stopped
+    mem_limit: 3g
+  agent:
+    profiles: [agent]
+    build:
+      context: .
+      dockerfile: ci/agent/Dockerfile
+    image: clinic-ci-agent:3391
+    environment:
+      JENKINS_URL: http://controller:8080/
+      JENKINS_AGENT_NAME: clinic-ci-linux
+      JENKINS_SECRET: ${CLINIC_JENKINS_AGENT_SECRET:-}
+      JENKINS_WEB_SOCKET: 'true'
+      JENKINS_AGENT_WORKDIR: /home/jenkins/agent
+      DOCKER_HOST: tcp://engine:2376
+      DOCKER_TLS_VERIFY: '1'
+      DOCKER_CERT_PATH: /certs/client
+      TRIVY_CACHE_DIR: /home/jenkins/.cache/trivy
+    volumes:
+      - agent-workspace:/home/jenkins/agent
+      - agent-cache:/home/jenkins/.cache
+      - engine-client-certs:/certs/client:ro
+    networks: [control, build]
+    depends_on:
+      controller: {condition: service_healthy}
+      engine: {condition: service_healthy}
+    restart: unless-stopped
+    init: true
+    mem_limit: 1500m
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+volumes:
+  webhook-data:
+  controller-home:
+  engine-data:
+  engine-certs:
+  engine-client-certs:
+  agent-workspace:
+  agent-cache:
+networks:
+  control:
+  build:

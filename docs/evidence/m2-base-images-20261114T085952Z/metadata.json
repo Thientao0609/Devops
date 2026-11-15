@@ -1,0 +1,104 @@
+{
+  "recorded_at_utc": "2026-11-14T08:59:52.033484+00:00",
+  "scope": "Remote upstream image scans only; not built custom images, Jenkins, integration or registry release evidence",
+  "scanner": "Trivy0.76.2; CRITICAL exit-code1; empty ignorefile; ignore-unfixed false",
+  "records": [
+    {
+      "name": "python-base",
+      "artifact": "docker.io/library/python:3.12.12-slim-bookworm",
+      "repo_digests": [
+        "python@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c"
+      ],
+      "image_id": "sha256:9cb180cb36bd45dc786105b834d3cb5f3b1d69a6a63c79ca10fc64f108aa649a",
+      "critical": 9,
+      "report_sha256": "f70e1a0ef98bb98ffc982d950c3c92f1abeb6c31ce61c4b723e044df0d8f17ae",
+      "raw_report_sha256": "92d49ba436933aef0f32a248b52865d011cb690b04d2a2de8fe7ebead4364e82",
+      "public_fingerprint_redacted": true
+    },
+    {
+      "name": "nginx-base",
+      "artifact": "docker.io/library/nginx:1.28.0-alpine",
+      "repo_digests": [
+        "nginx@sha256:30f1c0d78e0ad60901648be663a710bdadf19e4c10ac6782c235200619158284"
+      ],
+      "image_id": "sha256:c318e336065b17ff460aeac6d14bce5d0b13e35f25d5cb1843b635359fc00c9a",
+      "critical": 3,
+      "report_sha256": "191c0582ad5b0485771cd43946d82e0c2774d94d6bd69d276a0e3b2cf8e23a88"
+    },
+    {
+      "name": "postgres-base",
+      "artifact": "docker.io/library/postgres:17.12-alpine3.24@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f",
+      "repo_digests": [
+        "postgres@sha256:34261f594522cf41dfcb76aefd42b9d201098b0e6b23c9c68733f169e4218b6f"
+      ],
+      "image_id": "sha256:6b75136145ddabf3d9a4b69660402082de7c56b734cfe50555b0674774dd742a",
+      "critical": 1,
+      "report_sha256": "579ebe31f55028c6b257c4d02c458206dab734d9fa8323c51974ac7065419ce0"
+    },
+    {
+      "name": "rabbitmq-base",
+      "artifact": "docker.io/library/rabbitmq:4.2.9-management",
+      "repo_digests": [
+        "rabbitmq@sha256:7fa20d0d23d63ed90499bbf62e24af48ec4ae5eb22d173f3db96e3f85b26884a"
+      ],
+      "image_id": "sha256:eb8cc2139494277cd547c3515a89219d7a21e9db426205c83d37fa96d1da424b",
+      "critical": 0,
+      "report_sha256": "f0db00a9eb2e80a60f9fc968694daeac5b80da61b69a0e0f189b3c57695adceb"
+    },
+    {
+      "name": "mailpit-binary-source",
+      "artifact": "docker.io/axllent/mailpit:v1.27.10",
+      "repo_digests": [
+        "axllent/mailpit@sha256:b1f1be18af530d939a11ee8820b379e0c88eeec204d904bfad68862adced3a5a"
+      ],
+      "image_id": "sha256:28ccd879e7d68e36c5c45680c3c691849fd2b2684e3b802163a3349a65887265",
+      "critical": 3,
+      "report_sha256": "5422aa2e2b87b2886cd85bf91b6ff30e824050a9bc235b56c2c4c7c75c705dd2"
+    },
+    {
+      "name": "python-candidate",
+      "artifact": "docker.io/library/python:3.12.16-slim-trixie",
+      "repo_digests": [
+        "python@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b"
+      ],
+      "image_id": "sha256:78976a69c067520ef8be34cde307ef9f6fea6dcefa50edb57039773d241ca0db",
+      "critical": 0,
+      "report_sha256": "9dd7534b9ee00ec432fde196ec22107ce07012c646bc3135e7f4863105725af7",
+      "raw_report_sha256": "f9bf83109d854dd5380eb28898acd85f24549f810bc2697d0252b17828baba76",
+      "public_fingerprint_redacted": true
+    },
+    {
+      "name": "nginx-candidate",
+      "artifact": "docker.io/library/nginx:1.30.6-alpine3.24",
+      "repo_digests": [
+        "nginx@sha256:901e593c95dc85f5a729f5765516321366ef4ac401821431d408897e95287d0a"
+      ],
+      "image_id": "sha256:1390db6b01a8b0c865b157c7f036b0772534418b1701f598737de546d208b6e4",
+      "critical": 0,
+      "report_sha256": "56a1eb6c07a68e01df6d0cc84bdf66a87826d63523afde0d0a532269333c6d5d"
+    },
+    {
+      "name": "mailpit-candidate",
+      "artifact": "docker.io/axllent/mailpit:v1.33.1",
+      "repo_digests": [
+        "axllent/mailpit@sha256:aef2aacc11f075ec0fb6874275ee4a421e688e11a96ebb296134d1735c7761ce"
+      ],
+      "image_id": "sha256:cfdafb05e489fd0a93f82045a641610317dbaa7ea1da3d7a847cdb82f1001937",
+      "critical": 0,
+      "report_sha256": "a56eab1aad8d1b679a53b1175e55598721b3e148a56a765319a4d18bdf6f8a60"
+    }
+  ],
+  "changes_not_runtime_verified": [
+    "Python3.12.16-slim-trixie and Nginx1.30.6-alpine3.24 pinned to scanned digest",
+    "Mailpit1.33.1 binary source pinned to scanned digest; custom runtime Alpine3.24",
+    "PostgreSQL removes actual unused /usr/local/bin/gosu, not scanner/package metadata. USERpostgres never uses root-drop gosu path; initdb/runtime still pending",
+    "Node build/agent24.22.1; no built-image claim"
+  ],
+  "sources": [
+    "https://raw.githubusercontent.com/docker-library/python/master/versions.json",
+    "https://raw.githubusercontent.com/nginx/docker-nginx/master/stable/alpine/Dockerfile",
+    "https://github.com/axllent/mailpit/releases/tag/v1.33.1",
+    "https://raw.githubusercontent.com/docker-library/postgres/master/17/alpine3.24/docker-entrypoint.sh"
+  ],
+  "publication_note": "Only public Python release GPG fingerprint environment values are redacted to avoid Gitleaks false positives. Vulnerability results are unchanged. Raw scanner reports remain in ignored tmp; raw and published hashes recorded separately. No Gitleaks rule/ignore changed."
+}

@@ -1,0 +1,48 @@
+services:
+  postgres:
+    image: ${CI_REGISTRY:?}/devops-postgres:${CI_COMMIT:?}
+    pull_policy: never
+    environment:
+      POSTGRES_USER: clinic
+      POSTGRES_DB: clinic
+      POSTGRES_PASSWORD: ${CI_DB_PASSWORD:?}
+    volumes: [postgres-test:/var/lib/postgresql/data]
+    networks: [test]
+  rabbitmq:
+    image: ${CI_REGISTRY:?}/devops-rabbitmq:${CI_COMMIT:?}
+    pull_policy: never
+    environment:
+      RABBITMQ_DEFAULT_USER: clinic
+      RABBITMQ_DEFAULT_PASS: ${CI_BROKER_PASSWORD:?}
+      RABBITMQ_DEFAULT_VHOST: clinic-ci
+    networks: [test]
+  mailpit:
+    image: ${CI_REGISTRY:?}/devops-mailpit:${CI_COMMIT:?}
+    pull_policy: never
+    networks: [test]
+  test:
+    image: ${CI_REGISTRY:?}/devops-app:${CI_COMMIT:?}
+    pull_policy: never
+    environment:
+      DATABASE_URL: postgresql+psycopg://clinic:${CI_DB_PASSWORD:?}@postgres:5432/clinic
+      TEST_DATABASE_URL: postgresql+psycopg://clinic:${CI_DB_PASSWORD:?}@postgres:5432/clinic
+      RABBITMQ_URL: amqp://clinic:${CI_BROKER_PASSWORD:?}@rabbitmq:5672/clinic-ci
+      JWT_SECRET: ${CI_JWT_SECRET:?}
+      SMTP_HOST: mailpit
+      SMTP_PORT: '1025'
+      MAILPIT_API_URL: http://mailpit:8025
+      RUN_BROKER_TESTS: '1'
+      ENVIRONMENT: test
+    command: [python, -m, pytest, -q, -s, --tb=short, -o, faulthandler_timeout=30, -o, cache_dir=/tmp/pytest_cache, --junitxml=/tmp/junit.xml]
+    volumes:
+      - ../tests:/app/tests:ro
+      - ../pyproject.toml:/app/pyproject.toml:ro
+    networks: [test]
+    depends_on:
+      postgres: {condition: service_healthy}
+      rabbitmq: {condition: service_healthy}
+      mailpit: {condition: service_healthy}
+volumes:
+  postgres-test:
+networks:
+  test:

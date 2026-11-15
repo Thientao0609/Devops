@@ -1,0 +1,98 @@
+import hashlib
+import hmac
+
+import pytest
+
+from ci.webhook.relay import DeliveryStore, parameters, validate_signature
+
+
+def push():
+    return {
+        "repository": {"full_name": "vxxngw/DevOps"},
+        "ref": "refs/heads/main",
+        "after": "a" * 40,
+        "deleted": False,
+    }
+
+
+def test_signature_covers_exact_bytes():
+    secret = b"generated-test-value-not-an-api-key"
+    body = b'{"event":"push"}'
+    signed = "sha256=" + hmac.new(secret, body, hashlib.sha256).hexdigest()
+    assert validate_signature(secret, body, signed)
+    assert not validate_signature(secret, body + b" ", signed)
+    assert not validate_signature(secret, body, None)
+
+
+def test_push_pins_exact_commit_but_never_auto_deploys():
+    result = parameters("push", push())
+    assert result["SOURCE_REF"] == "a" * 40
+    assert result["SOURCE_BRANCH"] == "main"
+    assert result["PUBLISH_IMAGES"] == "true"
+    assert result["DEPLOY"] == "false"
+
+
+def test_feature_push_does_not_receive_publication():
+    event = push()
+    event["ref"] = "refs/heads/codex/milestone-2"
+    assert parameters("push", event)["PUBLISH_IMAGES"] == "false"
+
+
+def test_deleted_branch_has_no_build():
+    event = push()
+    event["deleted"] = True
+    assert parameters("push", event) is None
+
+
+def test_foreign_repository_is_rejected():
+    event = push()
+    event["repository"]["full_name"] = "someone/else"
+    with pytest.raises(ValueError):
+        parameters("push", event)
+
+
+@pytest.mark.parametrize("revision", ["main;command", "../main", "f" * 39, "https://example.test"])
+def test_invalid_revision_cannot_reach_checkout(revision):
+    event = push()
+    event["after"] = revision
+    with pytest.raises(ValueError):
+        parameters("push", event)
+
+
+def pr(owner="vxxngw/DevOps"):
+    return {
+        "repository": {"full_name": "vxxngw/DevOps"},
+        "action": "synchronize",
+        "pull_request": {
+            "draft": False,
+            "base": {"ref": "main"},
+            "head": {"ref": "feature", "sha": "b" * 40, "repo": {"full_name": owner}},
+        },
+    }
+
+
+def test_same_repo_pr_never_publishes_or_deploys():
+    result = parameters("pull_request", pr())
+    assert result["IS_PR"] == "true"
+    assert result["PUBLISH_IMAGES"] == "false"
+    assert result["DEPLOY"] == "false"
+
+
+def test_fork_pr_does_not_run_on_trusted_agent():
+    with pytest.raises(ValueError):
+        parameters("pull_request", pr("outsider/fork"))
+
+
+def test_delivery_deduplication_survives_restart(tmp_path):
+    database = tmp_path / "deliveries.db"
+    store = DeliveryStore(database)
+    assert store.claim("payload-sha")
+    store.finish("payload-sha", True)
+    assert not DeliveryStore(database).claim("payload-sha")
+
+
+def test_failed_queue_can_be_redelivered(tmp_path):
+    store = DeliveryStore(tmp_path / "deliveries.db")
+    assert store.claim("payload-sha")
+    store.finish("payload-sha", False)
+    assert store.claim("payload-sha")
